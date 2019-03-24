@@ -1,0 +1,8 @@
+[package]
+name = "hello-vuduo"
+version = "0.1.0"
+authors = ["Jedzia <jed69@gmx.de>"]
+edition = "2018"
+
+[dependencies]
+#std = {features = ["panic_unwind", "jemalloc"]}
