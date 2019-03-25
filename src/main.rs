@@ -37,5 +37,5 @@ fn main() {
 	}
 
 
-    println!("you dipshit");
+    println!("finished.");
 }
