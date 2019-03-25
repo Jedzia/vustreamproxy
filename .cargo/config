@@ -5,8 +5,11 @@ target = "mipsel-unknown-linux-gnu"
 rustflags = [
   "-C", "link-arg=-EL",
   "-C", "target-cpu=mips32",
-  "-C", "target-feature=+mips32,-mips32r2,-fpxx,-nooddspreg",
+  "-C", "target-feature=+mips32,-mips32r2,+fpxx,+nooddspreg",
 ]
+
+#  "-C", "target-feature=+mips32,-mips32r2,-fpxx,-nooddspreg",
+
 
 #  "-C", "link-arg=-g2",
 #  "-C", "link-arg=-mhard-float",
