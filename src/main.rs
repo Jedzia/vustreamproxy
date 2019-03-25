@@ -36,9 +36,16 @@ fn main() -> Result<(), Box<dyn Error>> {
             for _j in 0..100000 {
                 let y1: f64 = rng.gen(); // generates a float between 0 and 1
                 z1 += y1;
-                if y1 > 0.9999 { break ; }
+                let hit = (y1 * 10000.0).round() / 10000.0;
+                if hit == 0.42 {
+                    println!("    I[{}] got a 42%, yeah;)", i);
+                }
+
+                if y1 > 0.9999 {
+                    break;
+                }
             }
-            println!("this is thread number {} -> {}", i, z1);
+            println!("this is thread number {} finishing -> {}", i, z1);
         }));
     }
 
