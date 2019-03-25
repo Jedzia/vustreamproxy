@@ -1,5 +1,7 @@
 [dependencies]
 std = {features = ["panic_unwind"]}
+#test = {features = ["panic_unwind"]}
+
 
 #cc = ficken
 #linker = "mips-linux-gnu-gcc"

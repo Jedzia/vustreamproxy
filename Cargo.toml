@@ -6,3 +6,4 @@ edition = "2018"
 
 [dependencies]
 #std = {features = ["panic_unwind", "jemalloc"]}
+rand = "0.6.5"
