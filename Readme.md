@@ -3,6 +3,7 @@ Minimal build for VU+ DUO2 mipsel-unknown-linux-gnu with Rust on Windows
 
 To save you some hours i describe the process how i build a hello world without
 ending up with `Illegal instruction` errors on the **BCM7425B2 STB platform**.
+And irc is no help. No clue. I thank #Linuxger Stuttgart for the support.
 
 Target Specs
 
