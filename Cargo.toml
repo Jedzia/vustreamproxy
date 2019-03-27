@@ -1,9 +1,10 @@
 [package]
-name = "hello-vuduo"
+name = "vustreamproxy"
 version = "0.1.0"
 authors = ["Jedzia <jed69@gmx.de>"]
 edition = "2018"
 
 [dependencies]
-#std = {features = ["panic_unwind", "jemalloc"]}
-rand = "0.6.5"
+#rand = "0.6.5"
+hyper = "0.12.25"
+pretty_env_logger = "0.2.0"

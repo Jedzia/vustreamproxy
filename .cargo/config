@@ -54,3 +54,6 @@ runner = "run.bat"
 
 #  "-C", "target-cpu=native",
 
+[target.x86_64-pc-windows-gnu]
+ar = "x86_64-w64-mingw32-ar"
+linker="x86_64-w64-mingw32-gcc"

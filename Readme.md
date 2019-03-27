@@ -3,7 +3,6 @@ Minimal build for VU+ DUO2 mipsel-unknown-linux-gnu with Rust on Windows
 
 To save you some hours i describe the process how i build a hello world without
 ending up with `Illegal instruction` errors on the **BCM7425B2 STB platform**.
-And irc is no help. No clue. I thank #Linuxger Stuttgart for the support.
 
 Target Specs
 
@@ -52,7 +51,7 @@ To compile for the target i used **Codescape GNU Tools 2018.09-03 Binaries**
 
 Rust components used: 
 
-    E:\Projects\Rust\vuduo2\hello-vuduo>rustup show
+    E:\Projects\Rust\vuduo2\vustreamproxy>rustup show
     Default host: x86_64-pc-windows-gnu
     
     installed targets for active tool chain
@@ -103,7 +102,7 @@ Specify the compiler setup to use:
 Any minimal `Cargo.toml`. Nothing special:
 
     [package]
-    name = "hello-vuduo"
+    name = "vustreamproxy"
     version = "0.1.0"
     authors = ["Jedzia <jed69@gmx.de>"]
     edition = "2018"
@@ -175,7 +174,7 @@ Local [cargo configuration](https://doc.rust-lang.org/cargo/reference/config.htm
   Something like:
         run.bat:
         cp %1 \\VUDUO2/Harddisk/jedzia/rust
-        ssh jedzia@vuduo2 /media/hdd/jedzia/rust/hello-vuduo 
+        ssh jedzia@vuduo2 /media/hdd/jedzia/rust/vustreamproxy 
   
 > I was able to successfully compile and run with the fpxx and nooddspreg options enabled 
 > (`"-C", "target-feature=+mips32,-mips32r2,+fpxx,+nooddspreg"`). 

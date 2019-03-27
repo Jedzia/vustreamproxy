@@ -1,65 +1,84 @@
 // cargo build --target=mips-unknown-linux-gnu
-extern crate rand;
+//extern crate rand;
+#![deny(warnings)]
+extern crate hyper;
+extern crate pretty_env_logger;
 
+use hyper::rt::{self, Future};
+use hyper::service::service_fn;
+use hyper::{Client, Server};
 use std::error::Error;
-use std::thread;
+use std::net::SocketAddr;
 
-use rand::Rng;
+//use std::thread;
 
-static NTHREADS: i32 = 10;
+//use rand::Rng;
+
+//static NTHREADS: i32 = 10;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    println!("Hello, lovely vuduo!");
+    println!("Hello, lovely VU Duo!");
 
-    let y: f32 = 3.0;
-    let x: f32 = 2.0;
+    let y: f32 = 5.0;
 
-    //let y  = 3.0;
-    //let x = 7.0;
-
-    let z = x * y;
-    if z > 4.0 {
-        println!("bigger than 4");
-        //return;
-    }
-
-    println!("x={:.1} y={:.1} x/y={:}", x, y, x / y);
-
-    // Make a vector to hold the children which are spawned.
-    let mut children = vec![];
-
-    for i in 0..NTHREADS {
-        // Spin up another thread
-        children.push(thread::spawn(move || {
-            let mut rng = rand::thread_rng();
-            let mut z1: f64 = (z * 0.999).into();
-            for _j in 0..100000 {
-                let y1: f64 = rng.gen(); // generates a float between 0 and 1
-                z1 += y1;
-                let hit = (y1 * 10000.0).round() / 10000.0;
-                if hit == 0.42 {
-                    println!("    I[{}] got a 42%, yeah;)", i);
-                }
-
-                if y1 > 0.9999 {
-                    break;
-                }
-            }
-            println!("this is thread number {} finishing -> {}", i, z1);
-        }));
-    }
-
-    for child in children {
-        // Wait for the thread to finish. Returns a result.
-        let _ = child.join();
-    }
-
-    println!("finished.");
-
-    if z < 4.0 {
+    if y < 4.0 {
         // https://stackoverflow.com/questions/51550167/how-to-manually-return-a-result-boxerror
         return Err("Bad request".into());
     }
 
+    // http://192.168.2.43:3000/
+    //let addr = ([0, 0, 0, 0], 3000).into();
+    //let addr = ([127, 0, 0, 1], 3000).into();
+    //let addr = ([192, 168, 2, 43], 3000).into();
+
+    pretty_env_logger::init();
+
+    let in_addr = ([127, 0, 0, 1], 3001).into();
+    let out_addr: SocketAddr = ([127, 0, 0, 1], 3000).into();
+    // google.de 216.58.208.35
+    //let out_addr: SocketAddr = ([216, 58, 208, 35], 443).into();
+
+    let client_main = Client::new();
+
+    let out_addr_clone = out_addr.clone();
+    // new_service is run for each connection, creating a 'service'
+    // to handle requests for that specific connection.
+    let new_service = move || {
+        let client = client_main.clone();
+        // This is the `Service` that will handle the connection.
+        // `service_fn_ok` is a helper to convert a function that
+        // returns a Response into a `Service`.
+        service_fn(move |mut req| {
+            let uri_string = format!(
+                "http://{}/{}",
+                out_addr_clone,
+                req.uri().path_and_query().map(|x| x.as_str()).unwrap_or("")
+            );
+            let uri = uri_string.parse().unwrap();
+
+            let in_uri_string = format!("http://{}/{}", in_addr, req.uri());
+            let in_remove_string = format!("http://{}//", in_addr);
+            println!("req.uri(): {}", in_uri_string);
+            let result = in_uri_string.replace(&in_remove_string, "");
+
+            //let result = in_uri_string.split(in_remove_string.unwrap_or("")).take(1).next().unwrap_or("");
+
+            println!("result: {}", result);
+
+            *req.uri_mut() = uri;
+            client.request(req)
+        })
+    };
+
+    let server = Server::bind(&in_addr)
+        .serve(new_service)
+        .map_err(|e| eprintln!("server error: {}", e));
+
+    println!("Listening on http://{}", in_addr);
+    println!("Proxying on http://{}", out_addr);
+
+    rt::run(server);
+
+    println!("finished.");
     Ok(())
 }

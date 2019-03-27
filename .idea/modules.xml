@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hello-vuduo.iml" filepath="$PROJECT_DIR$/.idea/hello-vuduo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/vustreamproxy.iml" filepath="$PROJECT_DIR$/.idea/vustreamproxy.iml" />
     </modules>
   </component>
 </project>

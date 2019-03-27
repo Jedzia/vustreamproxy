@@ -9,7 +9,10 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="" />
+    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,12 +20,30 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+            <state relative-caret-position="290">
+              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/liballoc/str.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="255" column="37" lean-forward="true" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="37" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libcore/str/mod.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="8">
+              <caret line="3429" column="11" selection-start-line="3429" selection-start-column="11" selection-end-line="3429" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -30,8 +51,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cargo.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -39,8 +60,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Xargo.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+            <state>
+              <caret column="1" selection-start-column="1" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.cargo/config">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="349">
+              <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -53,8 +83,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Xargo.toml" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
+        <option value="$PROJECT_DIR$/Xargo.toml" />
+        <option value="$PROJECT_DIR$/.cargo/config" />
         <option value="$PROJECT_DIR$/src/main.rs" />
       </list>
     </option>
@@ -71,23 +102,61 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="hello-vuduo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hello-vuduo" type="462c0819:PsiDirectoryNode" />
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hello-vuduo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hello-vuduo" type="462c0819:PsiDirectoryNode" />
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
+              <item name=".cargo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="alloc" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="alloc" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="liballoc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="libcore" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="libcore" type="462c0819:PsiDirectoryNode" />
+              <item name="str" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -110,7 +179,12 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.run">
+  <component name="RunManager" selected="Cargo Command.run (local)">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="cargo run --package vustreamproxy --bin vustreamproxy --target=x86_64-pc-windows-gnu" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="build" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="build" />
@@ -121,9 +195,23 @@
       <envs />
       <method v="2" />
     </configuration>
+    <configuration name="run (local)" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package vustreamproxy --bin vustreamproxy --target=x86_64-pc-windows-gnu" />
+      <option name="allFeatures" value="false" />
+      <option name="nocapture" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs>
+        <env name="CC" value="x86_64-w64-mingw32-gcc" />
+        <env name="RUSTFLAGS" value="-LC:/Toolchain/mingw-w64/x86_64-6.2.0-posix-seh-rt_v5-rev1/mingw64/lib" />
+        <env name="PATH" value="C:\Toolchain\mingw-w64\x86_64-6.2.0-posix-seh-rt_v5-rev1\mingw64\bin" />
+      </envs>
+      <method v="2" />
+    </configuration>
     <configuration name="run" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
-      <option name="command" value="run --package hello-vuduo --bin hello-vuduo" />
+      <option name="command" value="run --package vustreamproxy --bin vustreamproxy" />
       <option name="allFeatures" value="false" />
       <option name="nocapture" value="false" />
       <option name="backtrace" value="SHORT" />
@@ -131,6 +219,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Cargo Command.build" />
+      <item itemvalue="Cargo Command.run" />
+      <item itemvalue="Cargo Command.run (local)" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo Command.run" />
@@ -149,7 +242,8 @@
       <option name="presentableId" value="Default" />
       <updated>1553481049146</updated>
       <workItem from="1553481050527" duration="17000" />
-      <workItem from="1553481251404" duration="5104000" />
+      <workItem from="1553481251404" duration="4491000" />
+      <workItem from="1553517988262" duration="13178000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -165,18 +259,32 @@
       <option name="project" value="LOCAL" />
       <updated>1553491254021</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="local build on host">
+      <created>1553524675875</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1553524675875</updated>
+    </task>
+    <task id="LOCAL-00004" summary="string fuckery">
+      <created>1553528619605</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1553528619605</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5121000" />
+    <option name="totallyTimeSpent" value="17686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.18550107" />
-      <window_info x="-621" y="-48" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.18763326" />
+      <window_info x="1210" y="4" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
       <window_info id="Favorites" order="2" sideWeight="0.39517346" side_tool="true" type="SLIDING" weight="0.35607675" />
       <window_info id="Designer" order="3" />
       <window_info id="Learn" order="4" />
@@ -186,8 +294,8 @@
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49626866" weight="0.32883817" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7574627" weight="0.31224066" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49307036" weight="0.39834026" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7553305" weight="0.31224066" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49200428" weight="0.39834026" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4978678" weight="0.32883817" />
@@ -195,8 +303,8 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49946696" weight="0.32936507" />
       <window_info anchor="bottom" id="Tool Output" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4914712" weight="0.32883817" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.24253732" side_tool="true" visible="true" weight="0.31224066" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.4904051" weight="0.32883817" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.24466951" side_tool="true" visible="true" weight="0.31224066" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="14" />
       <window_info anchor="bottom" id="DB Execution Console" order="15" />
@@ -235,27 +343,50 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="fun with random numbers" />
     <MESSAGE value="more fun with random numbers" />
-    <option name="LAST_COMMIT_MESSAGE" value="more fun with random numbers" />
+    <MESSAGE value="local build on host" />
+    <MESSAGE value="string fuckery" />
+    <option name="LAST_COMMIT_MESSAGE" value="string fuckery" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Xargo.toml">
+    <entry file="file://$PROJECT_DIR$/Cargo.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cargo.toml">
+    <entry file="file://$PROJECT_DIR$/Xargo.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.cargo/config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="46" column="14" lean-forward="true" selection-start-line="46" selection-start-column="14" selection-end-line="46" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libcore/str/mod.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8">
+          <caret line="3429" column="11" selection-start-line="3429" selection-start-column="11" selection-end-line="3429" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/liballoc/str.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="255" column="37" lean-forward="true" selection-start-line="255" selection-start-column="26" selection-end-line="255" selection-end-column="37" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        <state relative-caret-position="290">
+          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
         </state>
       </provider>
     </entry>

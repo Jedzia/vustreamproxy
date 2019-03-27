@@ -3,4 +3,4 @@
 
 
 cp %1 \\VUDUO2X/Harddisk/jedzia/rust
-"C:/Program Files/Git/usr/bin/ssh.exe"  root@vuduo2x /media/hdd/jedzia/rust/hello-vuduo
+"C:/Program Files/Git/usr/bin/ssh.exe"  root@vuduo2x /media/hdd/jedzia/rust/vustreamproxy
