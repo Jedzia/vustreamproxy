@@ -4,7 +4,6 @@
 extern crate futures;
 extern crate hyper;
 extern crate pretty_env_logger;
-extern crate filebuffer;
 
 use futures::future;
 use hyper::rt::{self, Future, Stream};
@@ -37,21 +36,59 @@ type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
 fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
     let mut response = Response::new(Body::empty());
 
+    match (req.method()) {
+        (&Method::GET) => {
+            if  req.uri().path().starts_with("/fwd/") {
+
+                let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+                let uri_string = req.uri().path_and_query().map(|x| x.as_str()).unwrap_or("");
+                let uri: String = uri_string.parse().unwrap();
+
+                //let in_uri_string = format!("http://{}/{}", in_addr, req.uri());
+                let in_remove_string = "/fwd/";
+                println!("uri_string: {}", uri_string);
+                let result = uri_string.replace(&in_remove_string, "");
+                println!("result: {}", result);
+
+                //let result = in_uri_string.split(in_remove_string.unwrap_or("")).take(1).next().unwrap_or("");
+
+
+                *response.body_mut() = Body::from("Lets forward: ".to_owned() + &result);
+                //*req.uri_mut() = uri;
+                //client.request(req)
+
+            }
+            //*response.body_mut() = Body::from("Jahahahahaha");
+        }
+        _ => {
+            //println!("404 not found.");
+            //*response.status_mut() = StatusCode::NOT_FOUND;
+        }
+    }
+
     match (req.method(), req.uri().path()) {
         // Serve some instructions at /
         (&Method::GET, "/") => {
+            let mut f = File::open("p.mp3").expect("failed to open file!");
+            let mut buffer: Vec<u8> = Vec::new();
+            f.read_to_end(&mut buffer)
+                .expect("failed to read mp3 file.");
+            *response.body_mut() = Body::from(buffer);
+
             //let fbuffer = filebuffer::FileBuffer::open("p.mp3").expect("failed to open file");
             //let rustShitFUCK = fbuffer.leak();
             //let fuckingBuffer: Vec<u8> = rustShitFUCK.iter().cloned().collect();
             //*response.body_mut() = Body::from(rustShitFUCK);
-            *response.body_mut() = Body::from("Try POSTing data to /echo");
+            //*response.body_mut() = Body::from("Try POSTing data to /echo");
         }
 
         // Simply echo the body back to the client.
         (&Method::POST, "/echo") => {
             *response.body_mut() = req.into_body();
         }
-
+        //(&Method::GET, Some("/fwd/")) => {
+        //    *response.body_mut() = Body::from("Jahahahahaha");
+        //}
         // Convert to uppercase before sending back to client.
         (&Method::POST, "/echo/uppercase") => {
             let mapping = req.into_body().map(|chunk| {
@@ -82,6 +119,7 @@ fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
 
         // The 404 Not Found route...
         _ => {
+            println!("404 not found.");
             *response.status_mut() = StatusCode::NOT_FOUND;
         }
     };
@@ -157,13 +195,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     rt::run(server);*/
 
-    let mut f = File::open("p.mp3")?;
-    let mut buffer: Vec<u8> = Vec::new();
-    f.read_to_end(&mut buffer)?;
-    let b = buffer.clone();
+    //let mut f = File::open("p.mp3")?;
+    //let mut buffer: Vec<u8> = Vec::new();
+    //f.read_to_end(&mut buffer)?;
+    //let b = buffer.clone();
 
     let server = Server::bind(&in_addr)
-        .serve(|| service_fn(|req| echo(req,  Vec::new())))
+        .serve(|| service_fn(|req| echo(req, Vec::new())))
         .map_err(|e| eprintln!("server error: {}", e));
 
     println!("Listening on http://{}", in_addr);
