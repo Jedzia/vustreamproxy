@@ -8,7 +8,7 @@ extern crate hyper;
 extern crate pretty_env_logger;
 
 use futures::future;
-use hyper::rt::{self, Future, Stream};
+use hyper::rt::{Future, Stream};
 use hyper::service::service_fn;
 use hyper::{Body, Method, Request, Response, Server, StatusCode};
 //use hyper::{Client, Server, Method, Body, Response, Request};
@@ -16,8 +16,8 @@ use std::error::Error;
 use std::net::SocketAddr;
 
 use std::fs::File;
-use std::io;
-use std::io::prelude::*;
+//use std::io;
+//use std::io::prelude::*;
 
 use std::io::prelude::*;
 use std::process::{Command, Stdio};
@@ -50,16 +50,17 @@ fn get_in_addr() -> SocketAddr
 
 /// This is our service handler. It receives a Request, routes on its
 /// path, and returns a Future of a Response.
-fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
+//fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
+fn echo(req: Request<Body>) -> BoxFut {
     let mut response = Response::new(Body::empty());
     println!("method: {}, uri: {}", req.method(), req.uri());
 
-    match (req.method()) {
-        (&Method::GET) => {
+    match req.method() {
+        &Method::GET => {
             if req.uri().path().starts_with("/fwd/") {
-                let in_addr: SocketAddr = get_in_addr();
+                //let in_addr: SocketAddr = get_in_addr();
                 let uri_string = req.uri().path_and_query().map(|x| x.as_str()).unwrap_or("");
-                let uri: String = uri_string.parse().unwrap();
+                //let uri: String = uri_string.parse().unwrap();
 
                 //let in_uri_string = format!("http://{}/{}", in_addr, req.uri());
                 let in_remove_string = "/fwd/";
@@ -214,7 +215,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     //let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
 
-    let mut in_addr = get_in_addr();
+    let in_addr = get_in_addr();
 
     /*let out_addr: SocketAddr = ([127, 0, 0, 1], 3000).into();
     // google.de 216.58.208.35
@@ -267,7 +268,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     //let b = buffer.clone();
 
     let server = Server::bind(&in_addr)
-        .serve(|| service_fn(|req| echo(req, Vec::new())))
+        //.serve(|| service_fn(|req| echo(req, Vec::new())))
+        .serve(|| service_fn(echo ))
         .map_err(|e| eprintln!("server error: {}", e));
 
     println!("Listening on http://{}", in_addr);
