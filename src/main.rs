@@ -1,6 +1,8 @@
 // cargo build --target=mips-unknown-linux-gnu
 //extern crate rand;
 //#![deny(warnings)]
+#![feature(type_ascription)]
+
 extern crate futures;
 extern crate hyper;
 extern crate pretty_env_logger;
@@ -16,6 +18,11 @@ use std::net::SocketAddr;
 use std::fs::File;
 use std::io;
 use std::io::prelude::*;
+
+use std::io::prelude::*;
+use std::process::{Command, Stdio};
+
+static PANGRAM: &'static str = "the quick brown fox jumped over the lazy dog\n";
 
 //use std::thread;
 
@@ -35,11 +42,11 @@ type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
 /// path, and returns a Future of a Response.
 fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
     let mut response = Response::new(Body::empty());
+    println!("method: {}, uri: {}", req.method(), req.uri());
 
     match (req.method()) {
         (&Method::GET) => {
-            if  req.uri().path().starts_with("/fwd/") {
-
+            if req.uri().path().starts_with("/fwd/") {
                 let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
                 let uri_string = req.uri().path_and_query().map(|x| x.as_str()).unwrap_or("");
                 let uri: String = uri_string.parse().unwrap();
@@ -52,11 +59,9 @@ fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
 
                 //let result = in_uri_string.split(in_remove_string.unwrap_or("")).take(1).next().unwrap_or("");
 
-
                 *response.body_mut() = Body::from("Lets forward: ".to_owned() + &result);
                 //*req.uri_mut() = uri;
                 //client.request(req)
-
             }
             //*response.body_mut() = Body::from("Jahahahahaha");
         }
@@ -69,10 +74,58 @@ fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
     match (req.method(), req.uri().path()) {
         // Serve some instructions at /
         (&Method::GET, "/") => {
-            let mut f = File::open("p.mp3").expect("failed to open file!");
+            //let mut f = File::open("./p.mp3").expect("failed to open mp3 file!");
+            let mut filepath = "/media/hdd/jedzia/rust/p.mp3";
+            if cfg!(target_os = "windows") {
+               filepath = "p.mp3";
+            }
+
+            let mut f = File::open(filepath).expect("failed to open mp3 file!");
             let mut buffer: Vec<u8> = Vec::new();
             f.read_to_end(&mut buffer)
                 .expect("failed to read mp3 file.");
+
+
+            let mut wcpath = "wc";
+            if cfg!(target_os = "windows") {
+                wcpath = "C:/msys64/usr/bin/wc.exe";
+            }
+
+            // Spawn the `wc` command
+            let process = match Command::new(wcpath)
+                .stdin(Stdio::piped())
+                .stdout(Stdio::piped())
+                .spawn()
+            {
+                Err(why) => panic!("couldn't spawn wc: {}", why.description()),
+                Ok(process) => process,
+            };
+
+
+            // Write a string to the `stdin` of `wc`.
+            //
+            // `stdin` has type `Option<ChildStdin>`, but since we know this instance
+            // must have one, we can directly `unwrap` it.
+            match process.stdin.unwrap().write_all(PANGRAM.as_bytes()) {
+                Err(why) => panic!("couldn't write to wc stdin: {}",
+                                   why.description()),
+                Ok(_) => println!("sent pangram to wc"),
+            }
+
+            // Because `stdin` does not live after the above calls, it is `drop`ed,
+            // and the pipe is closed.
+            //
+            // This is very important, otherwise `wc` wouldn't start processing the
+            // input we just sent.
+
+            // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
+            let mut s = String::new();
+            match process.stdout.unwrap().read_to_string(&mut s) {
+                Err(why) => panic!("couldn't read wc stdout: {}",
+                                   why.description()),
+                Ok(_) => print!("wc responded with:\n{}", s),
+            }
+
             *response.body_mut() = Body::from(buffer);
 
             //let fbuffer = filebuffer::FileBuffer::open("p.mp3").expect("failed to open file");
@@ -149,7 +202,13 @@ fn main() -> Result<(), Box<dyn Error>> {
     //let mut buffer = String::new();
     //f.read_to_string(&mut buffer)?;
 
-    let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+    //let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+    let mut in_addr: SocketAddr = ([192, 168, 3, 43], 3333).into();
+
+    if cfg!(target_os = "windows") {
+        in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+    }
+
     /*let out_addr: SocketAddr = ([127, 0, 0, 1], 3000).into();
     // google.de 216.58.208.35
     //let out_addr: SocketAddr = ([216, 58, 208, 35], 443).into();
