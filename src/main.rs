@@ -38,6 +38,16 @@ static PANGRAM: &'static str = "the quick brown fox jumped over the lazy dog\n";
 /// and extend with more types. Advanced users could switch to `Either`.
 type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
 
+fn get_in_addr() -> SocketAddr
+{
+    let mut in_addr: SocketAddr = ([192, 168, 3, 43], 3333).into();
+
+    if cfg!(target_os = "windows") {
+        in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+    }
+    return in_addr;
+}
+
 /// This is our service handler. It receives a Request, routes on its
 /// path, and returns a Future of a Response.
 fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
@@ -47,7 +57,7 @@ fn echo(req: Request<Body>, buf: Vec<u8>) -> BoxFut {
     match (req.method()) {
         (&Method::GET) => {
             if req.uri().path().starts_with("/fwd/") {
-                let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+                let in_addr: SocketAddr = get_in_addr();
                 let uri_string = req.uri().path_and_query().map(|x| x.as_str()).unwrap_or("");
                 let uri: String = uri_string.parse().unwrap();
 
@@ -203,11 +213,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     //f.read_to_string(&mut buffer)?;
 
     //let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
-    let mut in_addr: SocketAddr = ([192, 168, 3, 43], 3333).into();
 
-    if cfg!(target_os = "windows") {
-        in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
-    }
+    let mut in_addr = get_in_addr();
 
     /*let out_addr: SocketAddr = ([127, 0, 0, 1], 3000).into();
     // google.de 216.58.208.35

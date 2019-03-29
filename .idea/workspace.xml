@@ -9,9 +9,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="filebuffer is SHIT">
+    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+            <state relative-caret-position="450">
+              <caret line="47" selection-start-line="47" selection-end-line="47" />
             </state>
           </provider>
         </entry>
@@ -81,6 +80,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>futures</find>
+      <find>junked</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -222,7 +222,7 @@
       <workItem from="1553481251404" duration="4491000" />
       <workItem from="1553517988262" duration="13178000" />
       <workItem from="1553676632341" duration="1434000" />
-      <workItem from="1553764224446" duration="10090000" />
+      <workItem from="1553764224446" duration="14435000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -259,15 +259,28 @@
       <option name="project" value="LOCAL" />
       <updated>1553816222112</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="parse /fwd/ route">
+      <created>1553818306002</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1553818306002</updated>
+    </task>
+    <task id="LOCAL-00007" summary="conditional compilation for the video box">
+      <created>1553835549260</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1553835549260</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29210000" />
+    <option name="totallyTimeSpent" value="33555000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.19189766" />
       <window_info x="-614" y="-51" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
@@ -332,14 +345,16 @@
     <MESSAGE value="local build on host" />
     <MESSAGE value="string fuckery" />
     <MESSAGE value="filebuffer is SHIT" />
-    <option name="LAST_COMMIT_MESSAGE" value="filebuffer is SHIT" />
+    <MESSAGE value="parse /fwd/ route" />
+    <MESSAGE value="conditional compilation for the video box" />
+    <option name="LAST_COMMIT_MESSAGE" value="conditional compilation for the video box" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/main.rs</url>
-          <line>126</line>
+          <line>189</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
@@ -412,10 +427,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+        <state relative-caret-position="450">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
         </state>
       </provider>
     </entry>
