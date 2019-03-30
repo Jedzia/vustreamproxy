@@ -11,8 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/chunk.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/chunk.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,8 +34,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/chunk.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+            <state relative-caret-position="258">
+              <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/process.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="830" column="11" selection-start-line="830" selection-start-column="11" selection-end-line="830" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -50,10 +59,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Cargo.toml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-fs-0.1.6/src/file/mod.rs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="416">
-              <caret line="113" column="36" lean-forward="true" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
+              <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -62,7 +80,7 @@
         <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-fs-0.1.6/src/file/open.rs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+              <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -81,15 +99,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="212">
               <caret line="245" column="9" selection-start-line="245" selection-start-column="9" selection-end-line="245" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-0.1.25/src/future/mod.rs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="176" column="10" selection-start-line="176" selection-start-column="10" selection-end-line="176" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -145,15 +154,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/http-0.1.16/src/status.rs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="42" column="11" selection-start-line="42" selection-start-column="11" selection-end-line="42" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -186,10 +186,10 @@
         <option value="$PROJECT_DIR$/Xargo.toml" />
         <option value="$PROJECT_DIR$/.cargo/config" />
         <option value="$PROJECT_DIR$/doc/DevelNotes.md" />
-        <option value="$PROJECT_DIR$/Cargo.toml" />
         <option value="$PROJECT_DIR$/src/fileio.rs" />
         <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/hyper-0.12.25/src/error.rs" />
+        <option value="$PROJECT_DIR$/Cargo.toml" />
         <option value="$PROJECT_DIR$/src/chunk.rs" />
       </list>
     </option>
@@ -510,7 +510,7 @@
       <workItem from="1553481251404" duration="4491000" />
       <workItem from="1553517988262" duration="13178000" />
       <workItem from="1553676632341" duration="1434000" />
-      <workItem from="1553764224446" duration="49506000" />
+      <workItem from="1553764224446" duration="51946000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -617,11 +617,18 @@
       <option name="project" value="LOCAL" />
       <updated>1553936540663</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="before tokio-process">
+      <created>1553943099366</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1553943099366</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68626000" />
+    <option name="totallyTimeSpent" value="71066000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -700,7 +707,8 @@
     <MESSAGE value="bytes" />
     <MESSAGE value="handle file io separate" />
     <MESSAGE value="what a fucking shit with that rust gibberish" />
-    <option name="LAST_COMMIT_MESSAGE" value="what a fucking shit with that rust gibberish" />
+    <MESSAGE value="before tokio-process" />
+    <option name="LAST_COMMIT_MESSAGE" value="before tokio-process" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Xargo.toml">
@@ -769,13 +777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="194">
           <caret line="572" column="33" selection-start-line="572" selection-start-column="28" selection-end-line="572" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/process.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="484" column="11" selection-start-line="484" selection-start-column="11" selection-end-line="484" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -890,13 +891,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cargo.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="1" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/http-0.1.16/src/response.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="212">
@@ -977,7 +971,7 @@
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-fs-0.1.6/src/file/mod.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="416">
-          <caret line="113" column="36" lean-forward="true" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
+          <caret line="113" column="36" selection-start-line="113" selection-start-column="36" selection-end-line="113" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -991,7 +985,7 @@
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/tokio-fs-0.1.6/src/file/open.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="11" column="22" lean-forward="true" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -1009,10 +1003,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Cargo.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/process.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="830" column="11" selection-start-line="830" selection-start-column="11" selection-end-line="830" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/chunk.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="118" column="12" selection-start-line="118" selection-start-column="12" selection-end-line="118" selection-end-column="12" />
+        <state relative-caret-position="258">
+          <caret line="160" column="12" selection-start-line="160" selection-start-column="12" selection-end-line="160" selection-end-column="12" />
         </state>
       </provider>
     </entry>

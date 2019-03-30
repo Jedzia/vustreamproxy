@@ -3,6 +3,8 @@ extern crate futures;
 //extern crate http;
 extern crate hyper;
 extern crate tokio;
+extern crate tokio_io;
+extern crate tokio_process;
 
 use std::net::{IpAddr, Ipv4Addr, SocketAddr};
 use std::path::PathBuf;
@@ -19,10 +21,11 @@ use futures::future::ok;
 use crate::fileio::load_local_mp3_buffer;
 use std::process::{Command, Stdio};
 //use std::error::Error;
-use std::io::{Read, ErrorKind};
+use std::io::{Read, ErrorKind, stdout};
 use core::borrow::BorrowMut;
 use std::error::Error;
 use std::convert::TryInto;
+use self::tokio_process::CommandExt;
 
 
 /*impl From<hyper::Error> for Error {
@@ -103,23 +106,68 @@ pub fn handle_request(req: Request<Body>) -> impl Future<Item = Response<Body>, 
                 ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
             }
 
-            // Spawn the `wc` command
-            let process = match Command::new(ffmpeg_path)
+            // Use the standard library's `Command` type to build a process and
+            // then execute it via the `CommandExt` trait.
+            let process = Command::new(ffmpeg_path)
                 .args(&command_opts)
-                .stdin(Stdio::piped())
-                .stdout(Stdio::piped())
-                .spawn()
-                {
-                    Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
-                    Ok(process) => process,
-                };
+                //.stdin(Stdio::piped())
+                //.stdout(Stdio::piped())
+                .output_async();
+                //{
+//                    Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
+  //                  Ok(process) => process,
+    //            };
 
-            // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
+            use std::io;
+            use std::process::{Command, Stdio, Output};
+
+            use futures::{Future, Stream};
+            use tokio_process::{CommandExt, Child};
+
+
+            fn print_lines(mut cat: Child) -> Box<Future<Item = (), Error = ()> + Send + 'static> {
+                let stdout = cat.stdout().take().unwrap();
+                let reader = io::BufReader::new(stdout);
+                let lines = tokio_io::io::lines(reader);
+                let cycle = lines.for_each(|l| {
+                    println!("Line: {}", l);
+                    Ok(())
+                });
+
+                let future = cycle.join(cat)
+                    .map(|_| ())
+                    .map_err(|e| panic!("{}", e));
+
+                Box::new(future)
+            }
+
+
+            /*let future = process.map_err(|e| panic!("failed to collect output: {}", e))
+                .map(|output: Output| {
+                    //assert!(output.status.success());
+                    //assert_eq!(output.stdout, b"hello world\n");
+
+                    let stdout = output.stdout;
+                    let reader = io::BufReader::new(stdout);
+                   // let lines = tokio_io::io::lines(reader);
+                   // let cycle = lines.for_each(|l| {
+                   //     println!("Line: {}", l);
+                  //      Ok(())
+                 //   });
+
+                });*/
+
+            let mut cmd = Command::new(ffmpeg_path);
+            cmd.args(&command_opts);
+            cmd.stdout(Stdio::piped());
+            let future = print_lines(cmd.spawn_async().expect("failed to spawn command"));
+            tokio::spawn(future);
+            /*// The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
             let mut buffer: Vec<u8> = Vec::new();
             match process.stdout.unwrap().read_to_end(&mut buffer) {
                 Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
                 Ok(_) => println!("buffer size:[{}]", buffer.len()),
-            }
+            }*/
 
             //**/response.body_mut() = Body::from(buffer);
             //return Box::new( future::ok(response));
@@ -129,12 +177,9 @@ pub fn handle_request(req: Request<Body>) -> impl Future<Item = Response<Body>, 
 
 
 
-            //let aaa = fff.flatten();
             //let buffer = load_local_mp3_buffer();
-            Response::new(Body::from(buffer))
-
-            //Response::new(fff.flatten())
-
+            //Response::new(Body::from(buffer))
+            Response::new(Body::from("tokioooooooo"))
         });
     return myfuture;
 /**/
