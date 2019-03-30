@@ -33,6 +33,7 @@ use tokio::codec;
 use futures::future;
 use futures::try_ready;
 use bytes::BytesMut;
+use self::tokio::codec::BytesCodec;
 
 /*impl From<hyper::Error> for Error {
     fn from(error: hyper::Error) -> Self {
@@ -43,18 +44,30 @@ use bytes::BytesMut;
 
 struct ByteStream<R>(R);
 
+/*impl AsyncRead for ByteStream<Chunk> {
+    unsafe fn prepare_uninitialized_buffer(&self, _: &mut [u8]) -> bool {
+        false
+    }
+
+    fn read(&mut self, buf: &mut [u8]) -> Result<usize> {
+        Result::Ok(5)
+    }
+}*/
+
 impl <R: AsyncRead> Stream for ByteStream<R> {
 
     // The same as our future above:
     type Item = hyper::Chunk;
     type Error = io::Error;
 
+
     // poll is very similar to our Future implementation, except that
     // it returns an `Option<u8>` instead of a `u8`. This is so that the
     // Stream can signal that it's finished by returning `None`:
     fn poll(&mut self) -> Result<Async<Option<hyper::Chunk>>, io::Error> {
+        const BUFFER_SIZE:usize = 8 * 8 * 1024;
         use bytes::{BytesMut, BufMut};
-        let mut buf = [0;128];
+        let mut buf = [0;BUFFER_SIZE];
         match self.0.poll_read(&mut buf) {
             Ok(Async::Ready(n)) => {
                 // By convention, if an AsyncRead says that it read 0 bytes,
@@ -68,9 +81,9 @@ impl <R: AsyncRead> Stream for ByteStream<R> {
                     let xbuf = buf[0];
                     let cbuf = &[xbuf];
                     //let bbuf: &mut bytes::BytesMut;
-                    let mut bbuf = BytesMut::with_capacity(128);
+                    let mut bbuf = BytesMut::with_capacity(n);
                     //buf.iter().map(|b| bbuf.put_u8(*b));
-                    for i in 0..128 {
+                    for i in 0..n {
                         bbuf.put(buf[i]);
                     }
 
@@ -294,8 +307,8 @@ pub fn handle_request(
 
         //let byte_stream2 = ByteStream(io::stdin());
         //let file: tokio::fs::File = File::open("p.mp3").map_err(|err| println!("file error = {:?}", err)).into();
-        let std_file = std::fs::File::open("p.mp3").unwrap();
-        let file = tokio::fs::File::from_std(std_file);
+        // x let std_file = std::fs::File::open("p.mp3").unwrap();
+        // x let file = tokio::fs::File::from_std(std_file);
         //let byte_stream2 = ByteStream(file);
 
         //let xxxxx: tokio_io::AsyncRead = file;
@@ -324,12 +337,17 @@ pub fn handle_request(
         //reader.read_to_end(&mut buf);
         //Response::new(Body::from(buf))
 
+        let std_file = std::fs::File::open("p.mp3").unwrap();
+        let file = tokio::fs::File::from_std(std_file);
 
-        //let byte_stream2 = ByteStream(child.stdout.unwrap());
-        let byte_stream2 = ByteStream(file);
+        //let filex = tokio::fs::File::framed(file, ChunkDecoder);
+        //let blalalad = filex.
+
+        //let byte_stream2: ByteStream<ChildStdout> = ByteStream(child.stdout.unwrap());
+        let byte_stream2: ByteStream<File> = ByteStream(file);
         Response::new(Body::wrap_stream(byte_stream2))
     });
-    return fuckfuture;
+//    return fuckfuture;
 
     //let mut result = Result::Ok(());
     //let custom_error = Error::new(ErrorKind::Other, "oh no!");
@@ -377,15 +395,16 @@ pub fn handle_request(
 
         // Use the standard library's `Command` type to build a process and
         // then execute it via the `CommandExt` trait.
-        let process = Command::new(ffmpeg_path)
+        let process = match Command::new(ffmpeg_path)
             .args(&command_opts)
-            //.stdin(Stdio::piped())
-            //.stdout(Stdio::piped())
-            .output_async();
-        //{
-        //                    Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
-        //                  Ok(process) => process,
-        //            };
+            .stdin(Stdio::piped())
+            .stdout(Stdio::piped())
+            .spawn()
+            {
+                Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
+                Ok(process) => process,
+            };
+
 
         use std::io;
         use std::process::{Command, Output, Stdio};
@@ -427,12 +446,13 @@ pub fn handle_request(
         cmd.stdout(Stdio::piped());
         let future = print_lines(cmd.spawn_async().expect("failed to spawn command"));
         tokio::spawn(future);
-        /*// The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
+        // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
         let mut buffer: Vec<u8> = Vec::new();
+
         match process.stdout.unwrap().read_to_end(&mut buffer) {
             Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
             Ok(_) => println!("buffer size:[{}]", buffer.len()),
-        }*/
+        }
 
         //**/response.body_mut() = Body::from(buffer);
         //return Box::new( future::ok(response));
@@ -442,7 +462,7 @@ pub fn handle_request(
         //let stream = FramedRead::new(file, ChunkDecoder);
         //Response::new(Body::wrap_stream(stream))
 
-        let buffer = load_local_mp3_buffer();
+        //let buffer = load_local_mp3_buffer();
         let body = Body::from(buffer);
         Response::new(body)
 
