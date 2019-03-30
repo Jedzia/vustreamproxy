@@ -25,7 +25,7 @@ use self::tokio_process::CommandExt;
 use core::borrow::BorrowMut;
 use std::convert::TryInto;
 use std::error::Error;
-use std::io::{stdout, ErrorKind, Read};
+use std::io::{stdout, ErrorKind, Read, BufReader};
 use self::tokio::prelude::future::IntoFuture;
 
 use tokio::prelude::*;
@@ -64,6 +64,7 @@ impl <R: AsyncRead> Stream for ByteStream<R> {
                     Ok(Async::Ready(None))
                 } else {
                     //Ok(Async::Ready(Some(Chunk::from("Chunky!"))))
+                    println!("Chunk read[{}]", n);
                     let xbuf = buf[0];
                     let cbuf = &[xbuf];
                     //let bbuf: &mut bytes::BytesMut;
@@ -87,6 +88,51 @@ impl <R: AsyncRead> Stream for ByteStream<R> {
     }
 }
 
+
+pub struct FuckReader<R> {
+    inner: R,
+    buf: Box<[u8]>,
+    pos: usize,
+    cap: usize,
+}
+
+impl<R: Read> FuckReader<R> {
+
+    const DEFAULT_BUF_SIZE: usize = 8 * 1024;
+
+    /// Creates a new `BufReader` with a default buffer capacity. The default is currently 8 KB,
+    /// but may change in the future.
+    ///
+    /// # Examples
+    ///
+    /// ```no_run
+    /// use std::io::BufReader;
+    /// use std::fs::File;
+    ///
+    /// fn main() -> std::io::Result<()> {
+    ///     let f = File::open("log.txt")?;
+    ///     let reader = BufReader::new(f);
+    ///     Ok(())
+    /// }
+    /// ```
+    pub fn new(inner: R) -> FuckReader<R> {
+        FuckReader::with_capacity(8 * 1024, inner)
+    }
+
+    pub fn with_capacity(cap: usize, inner: R) -> FuckReader<R> {
+        unsafe {
+            let mut buffer = Vec::with_capacity(cap);
+            buffer.set_len(cap);
+            //inner.initializer().initialize(&mut buffer);
+            FuckReader {
+                inner,
+                buf: buffer.into_boxed_slice(),
+                pos: 0,
+                cap: 0,
+            }
+        }
+    }
+}
 
 //pub fn handle_request(req: Request<Body>) -> impl Future<Item = Response<Body>, Error = std::io::Error> {
 pub fn handle_request(
@@ -164,10 +210,122 @@ pub fn handle_request(
             // flatten our stream of streams down into one stream:
             .flatten();*/
 
+
+
+        let command_name = "ffmpeg";
+        //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
+        //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
+        // -acodec libmp3   lame -ab 128k -aq 60 -f mp3 - > bla.mp3
+
+        //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
+        let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+        let command_opts = [
+            "-i",
+            media_addr,
+            "-acodec",
+            "libmp3lame",
+            "-ab",
+            "128k",
+            "-aq",
+            "60",
+            "-f",
+            "mp3",
+            "-",
+        ];
+        let mut ffmpeg_path = command_name;
+        if cfg!(target_os = "windows") {
+            ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
+        }
+
+        // Use the standard library's `Command` type to build a process and
+        // then execute it via the `CommandExt` trait.
+        let process = Command::new(ffmpeg_path)
+            .args(&command_opts)
+            //.stdin(Stdio::piped())
+            .stdout(Stdio::piped());
+            //.output_async();
+
+        use std::io;
+        use std::process::{Command, Output, Stdio};
+
+        use futures::{Future, Stream};
+        use tokio_process::{Child, CommandExt};
+
+        fn print_lines(mut cat: Child) -> Box<Future<Item = (), Error = ()> + Send + 'static> {
+            let stdout = cat.stdout().take().unwrap();
+            let reader = io::BufReader::new(stdout);
+            let lines = tokio_io::io::lines(reader);
+            let cycle = lines.for_each(|l| {
+                println!("Line: {}", l);
+                Ok(())
+            });
+
+            let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));
+
+            Box::new(future)
+        }
+
+        fn async_stream(mut cat: Child) -> Box<Future<Item = (), Error = ()> + Send + 'static> {
+
+            let stdout = cat.stdout().take().unwrap();
+            let reader = io::BufReader::new(stdout);
+            let lines = tokio_io::io::lines(reader);
+            let cycle = lines.for_each(|l| {
+                println!("Line: {}", l);
+                Ok(())
+            });
+
+            let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));
+
+            Box::new(future)
+        }
+
+        let mut cmd = Command::new(ffmpeg_path);
+        cmd.args(&command_opts);
+        cmd.stdout(Stdio::piped());
+        //let future = print_lines(cmd.spawn_async().expect("failed to spawn command"));
+        //tokio::spawn(future);
+
+        /*impl AsyncRead for File {
+            unsafe fn prepare_uninitialized_buffer(&self, _: &mut [u8]) -> bool {
+                false
+            }
+        }*/
+
         //let byte_stream2 = ByteStream(io::stdin());
         //let file: tokio::fs::File = File::open("p.mp3").map_err(|err| println!("file error = {:?}", err)).into();
         let std_file = std::fs::File::open("p.mp3").unwrap();
         let file = tokio::fs::File::from_std(std_file);
+        //let byte_stream2 = ByteStream(file);
+
+        //let xxxxx: tokio_io::AsyncRead = file;
+
+        //let mut child = cmd.spawn_async().expect("failed to spawn command");
+        //let childout = child.stdout().expect( "Fuck ya" );
+
+        //use std::io;
+        use std::process::ChildStdout;
+        //use std::process::Stdio;
+        //use std::io::BufReader;
+
+        // Use the standard library's `Command` type to build a process and
+        // then execute it via the `CommandExt` trait.
+        let child = Command::new(ffmpeg_path)
+            .args(&command_opts)
+            //.stdin(Stdio::piped())
+            .stdout(Stdio::piped())
+        .spawn().expect("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        //.output_async();
+
+        //let byte_stream2 = ByteStream(child.stdout.unwrap());
+        //let mut reader = BufReader::new(child.stdout.unwrap());
+        //let mut reader = FuckReader::new(child.stdout.unwrap());
+        //let mut buf = Vec::new();
+        //reader.read_to_end(&mut buf);
+        //Response::new(Body::from(buf))
+
+
+        //let byte_stream2 = ByteStream(child.stdout.unwrap());
         let byte_stream2 = ByteStream(file);
         Response::new(Body::wrap_stream(byte_stream2))
     });
