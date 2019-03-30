@@ -6,6 +6,8 @@
 extern crate futures;
 extern crate hyper;
 extern crate pretty_env_logger;
+extern crate bytes;
+//extern crate tokio;
 #[macro_use]
 extern crate log;
 
@@ -23,6 +25,14 @@ use std::fs::File;
 
 use std::io::prelude::*;
 use std::process::{Command, Stdio};
+use std::io;
+use futures::future::FutureResult;
+
+
+//use tokio::codec::{Decoder, FramedRead};
+//use tokio::prelude::{AsyncRead};
+//use tokio::fs::File;
+//use tokio::io;
 
 //use std::thread;
 
@@ -170,10 +180,57 @@ fn echo(req: Request<Body>) -> BoxFut {
             let my_stream = MyStream::new(5);
             //let xstream = futures::stream::iter_ok::<_, ::std::io::Error>(my_stream.iter());
 
+            //let mut file = &get_local_mp3_path();
+            let mut filepath = "/media/hdd/jedzia/rust/p.mp3";
+            if cfg!(target_os = "windows") {
+                filepath = "p.mp3";
+            }
 
+            //let file = File::open(filepath).map(file_response).or_else(|_| status_response(StatusCode::NOT_FOUND));
+            //.expect("failed to open file")
+            //let file = tokio::fs::File::open(filepath).catch_unwind();
+            //let fstream = FramedRead::new(file, ChunkDecoder);
+
+            /*fn decode(buf: Vec<u8>) -> Result<Option<Chunk>, io::Error> {
+                let len = buf.len();
+                if len > 0 {
+                    //Ok(Some(buf.iter().take(32).freeze().into()))
+                    Ok(Some(buf.iter().take(32).into()))
+                } else {
+                    Ok(None)
+                }
+            }
+
+            let akjsd = decode(chunks);*/
+
+            use bytes::{Buf, IntoBuf, BigEndian,BytesMut, BufMut};
+
+            let bytes = b"\x00\x01hello world";
+            let mut bytes_buf = bytes.into_buf();
+            let bytes_stream = futures::stream::iter_ok::<_, ::std::io::Error>(bytes);
+
+
+            //*response.body_mut() = Body::wrap_stream(bytes_stream);
             *response.body_mut() = Body::wrap_stream(stream_fuck);
             //*response.body_mut() = Body::empty();
             //*response.set_body(Box::new(stream));
+
+            // type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
+            //let future_result = future::ok(response);
+
+
+            let mut buf = BytesMut::with_capacity(1024);
+            buf.put(&b"hello world"[..]);
+
+            //let mut response1 = Response::new("Fuck");
+            let mut response1 = Response::new(Body::from(buf.freeze()));
+
+            let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response1);
+
+
+
+            //let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response);
+            return Box::new(future_result);
         }
 
         // Simply echo the body back to the client.
@@ -221,6 +278,21 @@ fn echo(req: Request<Body>) -> BoxFut {
     Box::new(future::ok(response))
 }
 
+/*struct ChunkDecoder;
+
+impl Decoder for ChunkDecoder {
+    type Item = Chunk;
+    type Error = io::Error;
+
+    fn decode(&mut self, buf: &mut bytes::BytesMut) -> Result<Option<Chunk>, io::Error> {
+        let len = buf.len();
+        if len > 0 {
+            Ok(Some(buf.take().freeze().into()))
+        } else {
+            Ok(None)
+        }
+    }
+}*/
 
 struct MyStream {
     current: u32,
@@ -250,6 +322,15 @@ impl Stream for MyStream {
         }
     }
 }
+
+/*fn get_local_mp3_path() -> &str {
+    //let mut f = File::open("./p.mp3").expect("failed to open mp3 file!");
+    let mut filepath = "/media/hdd/jedzia/rust/p.mp3";
+    if cfg!(target_os = "windows") {
+        filepath = "p.mp3";
+    }
+    filepath
+}*/
 
 fn load_local_mp3_buffer() -> Vec<u8> {
     //let mut f = File::open("./p.mp3").expect("failed to open mp3 file!");
