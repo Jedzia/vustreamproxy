@@ -237,7 +237,8 @@ fn echo(req: Request<Body>) -> BoxFut {
 
             //return Box::new( future_result);
             //let (method, uri, version, headers, body) = req.deconstruct();
-            return Box::new( chunk::handle_request(Request::new(Body::from("Fuck ya to chunk::handle_request"))));
+            let myresp = chunk::handle_request(Request::new(Body::from("Fuck ya to chunk::handle_request")));
+            return Box::new(myresp );
 
             //let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response);
             //return Box::new(future_result);
