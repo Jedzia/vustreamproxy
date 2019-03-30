@@ -9,10 +9,10 @@ extern crate pretty_env_logger;
 #[macro_use]
 extern crate log;
 
-use futures::future;
+use futures::{future, Async, Poll};
 use hyper::rt::{Future, Stream};
 use hyper::service::service_fn;
-use hyper::{Body, Method, Request, Response, Server, StatusCode, Uri};
+use hyper::{Body, Chunk, Method, Request, Response, Server, StatusCode, Uri};
 //use hyper::{Client, Server, Method, Body, Response, Request};
 use std::error::Error;
 use std::net::SocketAddr;
@@ -23,8 +23,6 @@ use std::fs::File;
 
 use std::io::prelude::*;
 use std::process::{Command, Stdio};
-
-static PANGRAM: &'static str = "the quick brown fox jumped over the lazy dog\n";
 
 //use std::thread;
 
@@ -84,75 +82,98 @@ fn echo(req: Request<Body>) -> BoxFut {
     match (req.method(), req.uri().path()) {
         // Serve some instructions at /
         (&Method::GET, "/") => {
-            //run_pipe_example();
-
             //command_name = 'ffmpeg',
             //command_opts = ['-i', 'pipe:0', '-f', 'mp3', '-acodec', 'libvorbis', '-ab', '128k', '-aq', '60', '-f', 'ogg', '-'];
+            /*
+                        let command_name = "ffmpeg";
+                        //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
+                        //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
+                        // -acodec libmp3lame -ab 128k -aq 60 -f mp3 - > bla.mp3
 
-            let command_name = "ffmpeg";
-            //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
-            //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
-            // -acodec libmp3lame -ab 128k -aq 60 -f mp3 - > bla.mp3
+                        //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
+                        let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+                        let command_opts = ["-i", media_addr,
+                            "-acodec", "libmp3lame", "-ab", "128k", "-aq", "60", "-f", "mp3", "-"];
+                        let mut ffmpeg_path = command_name;
+                        if cfg!(target_os = "windows") {
+                            ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
+                        }
 
-            //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
-            let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
-            let command_opts = [/*"-re",*/ "-i", media_addr,
-                "-acodec", "libmp3lame", "-ab", "128k", "-aq", "60", "-f", "mp3", "-"];
-            let mut ffmpeg_path = command_name;
-            if cfg!(target_os = "windows") {
-                ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
-            }
+                        // Spawn the `wc` command
+                        let process = match Command::new(ffmpeg_path)
+                            .args(&command_opts)
+                            .stdin(Stdio::piped())
+                            .stdout(Stdio::piped())
+                            .spawn()
+                        {
+                            Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
+                            Ok(process) => process,
+                        };
 
-            // Spawn the `wc` command
-            let process = match Command::new(ffmpeg_path)
-                .args(&command_opts)
-                .stdin(Stdio::piped())
-                .stdout(Stdio::piped())
-                .spawn()
+                        // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
+                        let mut buffer: Vec<u8> = Vec::new();
+                        match process.stdout.unwrap().read_to_end(&mut buffer) {
+                            Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
+                            Ok(_) => println!("buffer size:[{}]", buffer.len()),
+                        }
+            */
+
+            /*let mapping = || -> Vec(u8)
             {
-                Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
-                Ok(process) => process,
-            };
 
-            /*// Write a string to the `stdin` of `wc`.
-            //
-            // `stdin` has type `Option<ChildStdin>`, but since we know this instance
-            // must have one, we can directly `unwrap` it.
-            match process.stdin.unwrap().write_all(PANGRAM.as_bytes()) {
-                Err(why) => panic!("couldn't write to wc stdin: {}", why.description()),
-                Ok(_) => println!("sent pangram to wc"),
             }*/
 
-            // Because `stdin` does not live after the above calls, it is `drop`ed,
-            // and the pipe is closed.
-            //
-            // This is very important, otherwise `wc` wouldn't start processing the
-            // input we just sent.
+            //let chunks = vec!["hello", " ", "world"];
+            //let stream = futures::stream::iter_ok::<_, ::std::io::Error>(chunks);
 
-            // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
-            /*let mut s = String::new();
-            match process.stdout.unwrap().read_to_string(&mut s) {
-                Err(why) => panic!("couldn't read wc stdout: {}", why.description()),
-                Ok(_) => print!("wc responded with:\n{}", s),
-            }*/
+            /*let mapping = req
+            .into_body()
+            .map(|chunk| {
+                chunk.iter()
+                    .map(|byte| byte.to_ascii_uppercase())
+                    .collect::<Vec<u8>>()
+            });*/
 
-            // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
-            //let mut s = String::new();
-            let mut buffer: Vec<u8> = Vec::new();
-            match process.stdout.unwrap().read_to_end(&mut buffer) {
-                Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
-                Ok(_) => println!("buffer size:[{}]", buffer.len()),
-            }
+            let mapping1 = req.into_body().map(|chunk| {
+                chunk
+                    .iter()
+                    .map(|byte| {
+                        println!("chunk {}", byte.to_ascii_uppercase());
+                        byte.to_ascii_uppercase()
+                    })
+                    .collect::<Vec<u8>>()
+            });
+
+            let data_fuck = vec!["FUCK", " ", "YOU!"];
+            let chunk_fuck = Chunk::from("fuck");
+            let stream_fuck = futures::stream::iter_ok::<_, ::std::io::Error>(data_fuck);
+
+            //let data2 = vec!["hello", " ", "world"];
+            let data2: Vec<u8> = vec![0x55, 0x20, 0x66];
+            //let chunk2 = Chunk::from(data2);
+
+            //let conv = |x: Vec<u8>| x.iter();
+
+            let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
+            //let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
+
+            let chunks = load_local_mp3_buffer();
+            let c: &[u8] = &chunks; // c: &[u8]
+                                    //let chunk = Chunk::from(c);
+            let stream = futures::stream::iter_ok::<_, ::std::io::Error>(c);
+
+            // type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
+            //let bbb = Box::new(future::ok(Response::new("Fuck YOU")));
+            //let xxx: BoxFut = Box::new(future::ok(response));
+            //xxx
+
+            let my_stream = MyStream::new(5);
+            //let xstream = futures::stream::iter_ok::<_, ::std::io::Error>(my_stream.iter());
 
 
-            *response.body_mut() = Body::from(buffer);
-            //*response.body_mut() = Body::from(load_local_mp3_buffer());
-
-            //let fbuffer = filebuffer::FileBuffer::open("p.mp3").expect("failed to open file");
-            //let rustShitFUCK = fbuffer.leak();
-            //let fuckingBuffer: Vec<u8> = rustShitFUCK.iter().cloned().collect();
-            //*response.body_mut() = Body::from(rustShitFUCK);
-            //*response.body_mut() = Body::from("Try POSTing data to /echo");
+            *response.body_mut() = Body::wrap_stream(stream_fuck);
+            //*response.body_mut() = Body::empty();
+            //*response.set_body(Box::new(stream));
         }
 
         // Simply echo the body back to the client.
@@ -200,42 +221,33 @@ fn echo(req: Request<Body>) -> BoxFut {
     Box::new(future::ok(response))
 }
 
-fn run_pipe_example() -> () {
-    let mut wcpath = "wc";
-    if cfg!(target_os = "windows") {
-        wcpath = "C:/msys64/usr/bin/wc.exe";
+
+struct MyStream {
+    current: u32,
+    max: u32,
+}
+
+impl MyStream {
+    pub fn new(max: u32) -> MyStream {
+        MyStream {
+            current: 0,
+            max: max,
+        }
     }
+}
 
-    // Spawn the `wc` command
-    let process = match Command::new(wcpath)
-        .stdin(Stdio::piped())
-        .stdout(Stdio::piped())
-        .spawn()
-    {
-        Err(why) => panic!("couldn't spawn wc: {}", why.description()),
-        Ok(process) => process,
-    };
+impl Stream for MyStream {
+    type Item = u32;
+    type Error = Box<Error>;
 
-    // Write a string to the `stdin` of `wc`.
-    //
-    // `stdin` has type `Option<ChildStdin>`, but since we know this instance
-    // must have one, we can directly `unwrap` it.
-    match process.stdin.unwrap().write_all(PANGRAM.as_bytes()) {
-        Err(why) => panic!("couldn't write to wc stdin: {}", why.description()),
-        Ok(_) => println!("sent pangram to wc"),
-    }
-
-    // Because `stdin` does not live after the above calls, it is `drop`ed,
-    // and the pipe is closed.
-    //
-    // This is very important, otherwise `wc` wouldn't start processing the
-    // input we just sent.
-
-    // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
-    let mut s = String::new();
-    match process.stdout.unwrap().read_to_string(&mut s) {
-        Err(why) => panic!("couldn't read wc stdout: {}", why.description()),
-        Ok(_) => print!("wc responded with:\n{}", s),
+    fn poll(&mut self) -> Poll<Option<Self::Item>, Self::Error> {
+        match self.current {
+            ref mut x if *x < self.max => {
+                *x = *x + 1;
+                Ok(Async::Ready(Some(*x)))
+            }
+            _ => Ok(Async::Ready(None)),
+        }
     }
 }
 
@@ -256,7 +268,6 @@ fn load_local_mp3_buffer() -> Vec<u8> {
         .expect("failed to read mp3 file.");
     buffer
 }
-//static mut buffer: Vec<u8> = Vec<u8>;
 
 fn main() -> Result<(), Box<dyn Error>> {
     println!("Hello, lovely VU Duo!");
