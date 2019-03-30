@@ -65,7 +65,8 @@ impl <R: AsyncRead> Stream for ByteStream<R> {
     // it returns an `Option<u8>` instead of a `u8`. This is so that the
     // Stream can signal that it's finished by returning `None`:
     fn poll(&mut self) -> Result<Async<Option<hyper::Chunk>>, io::Error> {
-        const BUFFER_SIZE:usize = 8 * 8 * 1024;
+        //const BUFFER_SIZE:usize = 8 * 8 * 1024;
+        const BUFFER_SIZE:usize = 8;
         use bytes::{BytesMut, BufMut};
         let mut buf = [0;BUFFER_SIZE];
         match self.0.poll_read(&mut buf) {
@@ -230,9 +231,10 @@ pub fn handle_request(
         //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
         // -acodec libmp3   lame -ab 128k -aq 60 -f mp3 - > bla.mp3
 
-        //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
-        let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+        let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
+        //let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
         let command_opts = [
+            "-y", // overwrite
             "-i",
             media_addr,
             "-acodec",
@@ -243,7 +245,7 @@ pub fn handle_request(
             "60",
             "-f",
             "mp3",
-            "-",
+            "result.mp3", // or - for stdout
         ];
         let mut ffmpeg_path = command_name;
         if cfg!(target_os = "windows") {
@@ -293,9 +295,9 @@ pub fn handle_request(
             Box::new(future)
         }
 
-        let mut cmd = Command::new(ffmpeg_path);
-        cmd.args(&command_opts);
-        cmd.stdout(Stdio::piped());
+        ////let mut cmd = Command::new(ffmpeg_path);
+        ////cmd.args(&command_opts);
+        ////cmd.stdout(Stdio::piped());
         //let future = print_lines(cmd.spawn_async().expect("failed to spawn command"));
         //tokio::spawn(future);
 
@@ -337,7 +339,13 @@ pub fn handle_request(
         //reader.read_to_end(&mut buf);
         //Response::new(Body::from(buf))
 
-        let std_file = std::fs::File::open("p.mp3").unwrap();
+        use std::{thread, time};
+
+        let sleep_time = time::Duration::from_millis(10000);
+        //let now = time::Instant::now();
+        thread::sleep(sleep_time);
+
+        let std_file = std::fs::File::open("result.mp3").unwrap();
         let file = tokio::fs::File::from_std(std_file);
 
         //let filex = tokio::fs::File::framed(file, ChunkDecoder);
@@ -347,7 +355,7 @@ pub fn handle_request(
         let byte_stream2: ByteStream<File> = ByteStream(file);
         Response::new(Body::wrap_stream(byte_stream2))
     });
-//    return fuckfuture;
+    return fuckfuture;
 
     //let mut result = Result::Ok(());
     //let custom_error = Error::new(ErrorKind::Other, "oh no!");
@@ -441,11 +449,12 @@ pub fn handle_request(
 
         });*/
 
-        let mut cmd = Command::new(ffmpeg_path);
+        /*let mut cmd = Command::new(ffmpeg_path);
         cmd.args(&command_opts);
         cmd.stdout(Stdio::piped());
         let future = print_lines(cmd.spawn_async().expect("failed to spawn command"));
-        tokio::spawn(future);
+        tokio::spawn(future);*/
+
         // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
         let mut buffer: Vec<u8> = Vec::new();
 
