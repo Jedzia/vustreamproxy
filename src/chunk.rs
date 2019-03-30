@@ -46,14 +46,15 @@ struct ByteStream<R>(R);
 impl <R: AsyncRead> Stream for ByteStream<R> {
 
     // The same as our future above:
-    type Item = u8;
+    type Item = hyper::Chunk;
     type Error = io::Error;
 
     // poll is very similar to our Future implementation, except that
     // it returns an `Option<u8>` instead of a `u8`. This is so that the
     // Stream can signal that it's finished by returning `None`:
-    fn poll(&mut self) -> Result<Async<Option<u8>>, io::Error> {
-        let mut buf = [0;1];
+    fn poll(&mut self) -> Result<Async<Option<hyper::Chunk>>, io::Error> {
+        use bytes::{BytesMut, BufMut};
+        let mut buf = [0;128];
         match self.0.poll_read(&mut buf) {
             Ok(Async::Ready(n)) => {
                 // By convention, if an AsyncRead says that it read 0 bytes,
@@ -62,7 +63,22 @@ impl <R: AsyncRead> Stream for ByteStream<R> {
                 if n == 0 {
                     Ok(Async::Ready(None))
                 } else {
-                    Ok(Async::Ready(Some(buf[0])))
+                    //Ok(Async::Ready(Some(Chunk::from("Chunky!"))))
+                    let xbuf = buf[0];
+                    let cbuf = &[xbuf];
+                    //let bbuf: &mut bytes::BytesMut;
+                    let mut bbuf = BytesMut::with_capacity(128);
+                    //buf.iter().map(|b| bbuf.put_u8(*b));
+                    for i in 0..128 {
+                        bbuf.put(buf[i]);
+                    }
+
+                    //let ybuf = String::from(xbuf);
+                    //let zbuf = xbuf.encode()take().freeze().into();
+                    //Ok(Async::Ready(Some(Chunk::from(String::from_utf8_lossy(cbuf).into_owned()))))
+                    //hint:    Ok(Some(buf.take().freeze().into()))
+                    let chunk = Chunk::from(bbuf.freeze());
+                    Ok(Async::Ready(Some(chunk)))
                 }
             },
             Ok(Async::NotReady) => Ok(Async::NotReady),
@@ -138,7 +154,7 @@ pub fn handle_request(
 
         //let byte_stream1 = ByteStream(io::stdin());
         // via https://jsdw.me/posts/rust-futures-tokio/
-        let byte_stream = codec::FramedRead::new(io::stdin(), FuckingCodec::new())
+/*        let byte_stream = codec::FramedRead::new(io::stdin(), FuckingCodec::new())
         //let byte_stream = codec::FramedRead::new(io::stdin(), ChunkDecoder)
             // convert our bytes buffer into a stream that emits one byte at a time:
             .map(|chunk| stream::iter_ok::<_, io::Error>( {
@@ -146,9 +162,14 @@ pub fn handle_request(
                 chunk
             }))
             // flatten our stream of streams down into one stream:
-            .flatten();
+            .flatten();*/
 
-        Response::new(Body::wrap_stream(byte_stream))
+        //let byte_stream2 = ByteStream(io::stdin());
+        //let file: tokio::fs::File = File::open("p.mp3").map_err(|err| println!("file error = {:?}", err)).into();
+        let std_file = std::fs::File::open("p.mp3").unwrap();
+        let file = tokio::fs::File::from_std(std_file);
+        let byte_stream2 = ByteStream(file);
+        Response::new(Body::wrap_stream(byte_stream2))
     });
     return fuckfuture;
 
@@ -263,12 +284,13 @@ pub fn handle_request(
         //let stream = FramedRead::new(file, ChunkDecoder);
         //Response::new(Body::wrap_stream(stream))
 
-        //let buffer = load_local_mp3_buffer();
-        //Response::new(Body::from(buffer))
+        let buffer = load_local_mp3_buffer();
+        let body = Body::from(buffer);
+        Response::new(body)
 
         //for i in 0..10 {
         //}
-        Response::new(Body::from("tokioooooooo"))
+        //Response::new(Body::from("tokioooooooo"))
     });
     return myfuture;
     /**/
@@ -321,7 +343,7 @@ impl Decoder for ChunkDecoder {
     }
 }
 
-pub struct FuckingCodec(());
+/*pub struct FuckingCodec(());
 
 impl FuckingCodec {
     /// Creates a new `BytesCodec` for shipping around raw bytes.
@@ -332,12 +354,13 @@ impl Decoder for FuckingCodec {
     type Item = BytesMut;
     type Error = io::Error;
 
-    fn decode(&mut self, buf: &mut BytesMut) -> Result<Option<BytesMut>, io::Error> {
+    fn decode(&mut self, buf: &mut BytesMut) -> Result<Option<Chunk>, io::Error> {
         if buf.len() > 0 {
             let len = buf.len();
-            Ok(Some(buf.split_to(len)))
+            //Ok(Some(buf.split_to(len)))
+            Ok(Option::from(Chunk::from("Scheisse!! ")))
         } else {
             Ok(None)
         }
     }
-}
+}*/
