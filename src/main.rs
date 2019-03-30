@@ -97,7 +97,7 @@ fn echo(req: Request<Body>) -> BoxFut {
         (&Method::GET, "/") => {
             //command_name = 'ffmpeg',
             //command_opts = ['-i', 'pipe:0', '-f', 'mp3', '-acodec', 'libvorbis', '-ab', '128k', '-aq', '60', '-f', 'ogg', '-'];
-            /*
+/*
                         let command_name = "ffmpeg";
                         //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
                         //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
@@ -129,8 +129,10 @@ fn echo(req: Request<Body>) -> BoxFut {
                             Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
                             Ok(_) => println!("buffer size:[{}]", buffer.len()),
                         }
-            */
 
+            *response.body_mut() = Body::from(buffer);
+            return Box::new( future::ok(response));
+*/
             /*let mapping = || -> Vec(u8)
             {
 

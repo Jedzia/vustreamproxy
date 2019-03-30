@@ -17,21 +17,88 @@ use tokio::fs::File;
 use tokio::io;
 use futures::future::ok;
 use crate::fileio::load_local_mp3_buffer;
+use std::process::{Command, Stdio};
+//use std::error::Error;
+use std::io::{Read, ErrorKind};
+use core::borrow::BorrowMut;
+use std::error::Error;
 
 
-pub
+/*impl From<hyper::Error> for Error {
+    fn from(error: hyper::Error) -> Self {
+        Error::Request(error)
+    }
+}*/
 
-fn handle_request(req: Request<Body>) -> impl Future<Item = Response<Body>, Error = hyper::Error> {
+pub fn handle_request(req: Request<Body>) -> impl Future<Item = Response<Body>, Error = hyper::Error> {
 
     //let myfuture = ok::<_, ()>(String::from("hello"));
     //myfuture
 
+    /*let custom_error = Error::new(ErrorKind::Other, "oh no!");
+    //let fff: OrElse<Map<OpenFuture<&str>, fn(File) -> Response<Body>>, Result<Response<Body>, Error>, fn(Error) -> Result<Response<Body>, Error>> = File::open("p.mp3").map(file_response)
+    let fff = File::open("p.mp3").map(file_response)
+        //.or_else(|_| status_response(hyper::http::StatusCode::NOT_FOUND));
+        //.or_else(|_| ok::<_, hyper::Error>(Response::new(Body::from("ERRrrroooooooooooooooor"))));
+        .or_else(|e| err::<_, hyper::Error>(ok));
+    ;
+
+    return fff;*/
+
+
+    /**/
     let myfuture = ok::<_, hyper::Error>(
         {
-            let chunks = load_local_mp3_buffer();
-            Response::new(Body::from(chunks))
+
+
+            let command_name = "ffmpeg";
+            //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
+            //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
+            // -acodec libmp3lame -ab 128k -aq 60 -f mp3 - > bla.mp3
+
+            //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
+            let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+            let command_opts = ["-i", media_addr,
+                "-acodec", "libmp3lame", "-ab", "128k", "-aq", "60", "-f", "mp3", "-"];
+            let mut ffmpeg_path = command_name;
+            if cfg!(target_os = "windows") {
+                ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
+            }
+
+            // Spawn the `wc` command
+            let process = match Command::new(ffmpeg_path)
+                .args(&command_opts)
+                .stdin(Stdio::piped())
+                .stdout(Stdio::piped())
+                .spawn()
+                {
+                    Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
+                    Ok(process) => process,
+                };
+
+            // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
+            let mut buffer: Vec<u8> = Vec::new();
+            match process.stdout.unwrap().read_to_end(&mut buffer) {
+                Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
+                Ok(_) => println!("buffer size:[{}]", buffer.len()),
+            }
+
+            //**/response.body_mut() = Body::from(buffer);
+            //return Box::new( future::ok(response));
+
+
+
+
+
+            //let aaa = fff.flatten();
+            //let buffer = load_local_mp3_buffer();
+            Response::new(Body::from(buffer))
+
+            //Response::new(fff.flatten())
+
         });
-    myfuture
+    return myfuture;
+/**/
 
     /*|| {
         Response::new(Body::from("Fuck yaaaaaaaaaaaa"))
