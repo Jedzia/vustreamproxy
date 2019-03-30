@@ -27,7 +27,10 @@ use std::io::prelude::*;
 use std::process::{Command, Stdio};
 use std::io;
 use futures::future::FutureResult;
+use core::borrow::Borrow;
 
+mod chunk;
+mod fileio;
 
 //use tokio::codec::{Decoder, FramedRead};
 //use tokio::prelude::{AsyncRead};
@@ -158,7 +161,7 @@ fn echo(req: Request<Body>) -> BoxFut {
             let chunk_fuck = Chunk::from("fuck");
             let stream_fuck = futures::stream::iter_ok::<_, ::std::io::Error>(data_fuck);
 
-            //let data2 = vec!["hello", " ", "world"];
+/*            //let data2 = vec!["hello", " ", "world"];
             let data2: Vec<u8> = vec![0x55, 0x20, 0x66];
             //let chunk2 = Chunk::from(data2);
 
@@ -167,10 +170,13 @@ fn echo(req: Request<Body>) -> BoxFut {
             let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
             //let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
 
-            let chunks = load_local_mp3_buffer();
+            let chunks = fileio::load_local_mp3_buffer();
             let c: &[u8] = &chunks; // c: &[u8]
                                     //let chunk = Chunk::from(c);
             let stream = futures::stream::iter_ok::<_, ::std::io::Error>(c);
+            *response.body_mut() = Body::from(chunks);
+            return Box::new( future::ok(response));
+*/
 
             // type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
             //let bbb = Box::new(future::ok(Response::new("Fuck YOU")));
@@ -219,18 +225,20 @@ fn echo(req: Request<Body>) -> BoxFut {
             //let future_result = future::ok(response);
 
 
-            let mut buf = BytesMut::with_capacity(1024);
-            buf.put(&b"hello world"[..]);
+//            let mut buf = BytesMut::with_capacity(1024);
+//            buf.put(&b"hello world"[..]);
 
             //let mut response1 = Response::new("Fuck");
-            let mut response1 = Response::new(Body::from(buf.freeze()));
+//            let mut response1 = Response::new(Body::from(buf.freeze()));
 
-            let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response1);
+//            let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response1);
 
-
+            //return Box::new( future_result);
+            //let (method, uri, version, headers, body) = req.deconstruct();
+            return Box::new( chunk::handle_request(Request::new(Body::from("Fuck ya to chunk::handle_request"))));
 
             //let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response);
-            return Box::new(future_result);
+            //return Box::new(future_result);
         }
 
         // Simply echo the body back to the client.
@@ -331,24 +339,6 @@ impl Stream for MyStream {
     }
     filepath
 }*/
-
-fn load_local_mp3_buffer() -> Vec<u8> {
-    //let mut f = File::open("./p.mp3").expect("failed to open mp3 file!");
-    let mut filepath = "/media/hdd/jedzia/rust/p.mp3";
-    if cfg!(target_os = "windows") {
-        filepath = "p.mp3";
-    }
-
-    let mut f = File::open(filepath).expect("failed to open mp3 file!");
-    //let mut f = File::open(filepath);
-    //if let Err(err) = f{
-    //    error!("failed to open mp3 file! {}", err);
-    //}
-    let mut buffer: Vec<u8> = Vec::new();
-    f.read_to_end(&mut buffer)
-        .expect("failed to read mp3 file.");
-    buffer
-}
 
 fn main() -> Result<(), Box<dyn Error>> {
     println!("Hello, lovely VU Duo!");
