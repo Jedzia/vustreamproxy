@@ -9,7 +9,8 @@ rustflags = [
 ]
 
 #  "-C", "target-feature=+mips32,-mips32r2,-fpxx,-nooddspreg",
-
+#  "-C", "ar=mips-linux-gnu-ar",
+#  "-C", "linker=mips-linux-gnu-gcc",
 
 #  "-C", "link-arg=-g2",
 #  "-C", "link-arg=-mhard-float",

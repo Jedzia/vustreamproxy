@@ -37,19 +37,20 @@ use tokio::prelude::*;
 
 use futures::{Async, Poll, Stream};
 
+pub const DEFAULT_BUF_SIZE: usize = 8 * 1024;
+
 pub struct ChunkStream {
     curr: u64,
     countdown: u64,
     buffer: Vec<u8>,
-    //process: Child,
-    cstdout: ChildStdout,
+    child_stdout: ChildStdout,
 }
 
 impl ChunkStream {
-    pub fn new() -> ChunkStream {
+    pub fn new(media_addr: &str) -> ChunkStream {
         let command_name = "ffmpeg";
         //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
-        let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+        //let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
         let command_opts = [
             "-y", // overwrite
             //"-re", // realtime
@@ -98,7 +99,7 @@ impl ChunkStream {
 
         let mut buffer: Vec<u8> = Vec::new();
         //let mut buffer: Vec<u8> = Vec::with_capacity(256);
-        buffer.resize(1024, 0);
+        buffer.resize(DEFAULT_BUF_SIZE, 0);
 
         let cstdout: ChildStdout = process.stdout.unwrap();
         /*match process.stdout.unwrap().read_to_end(&mut buffer) {
@@ -115,7 +116,7 @@ impl ChunkStream {
             countdown: 3,
             buffer,
             //process,
-            cstdout,
+            child_stdout: cstdout,
         }
     }
 }
@@ -138,7 +139,7 @@ impl Stream for ChunkStream {
         //self.buffer.resize(1024, 0);
 
         let mut n = 0;
-        let result = self.cstdout.read(&mut self.buffer);
+        let result = self.child_stdout.read(&mut self.buffer);
         n = result.unwrap();
         println!("Read {} bytes from ffmpeg", n);
 
@@ -151,15 +152,21 @@ impl Stream for ChunkStream {
             }
         }*/
 
-        self.countdown = self.countdown - 1;
-        if self.countdown <= 0 {
+        //self.countdown = self.countdown - 1;
+        if n <= 0 {
             println!("ChunkStream reached endpoint");
             Ok(Async::Ready(None))
         } else {
             //Ok(Async::Ready(Some(42)))
-            Ok(Async::Ready(Some(Chunk::from(
-                " Its from the Chunk Stream ",
-            ))))
+            //Ok(Async::Ready(Some(Chunk::from(" Its from the Chunk Stream "))))
+            use bytes::{BufMut, BytesMut};
+            let mut bbuf = BytesMut::with_capacity(n);
+            //buf.iter().map(|b| bbuf.put_u8(*b));
+            for i in 0..n {
+                bbuf.put(self.buffer[i]);
+            }
+
+            Ok(Async::Ready(Some(Chunk::from(bbuf.freeze()))))
         }
     }
 }

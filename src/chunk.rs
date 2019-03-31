@@ -337,14 +337,15 @@ pub fn handle_request(
             thread::sleep(sleep_time);
         }*/
 
+        // working direct tokio ByteStream example
         //let std_file = std::fs::File::open("result.mp3").unwrap();
-        let std_file = std::fs::File::open("p.mp3").unwrap();
-        let file = tokio::fs::File::from_std(std_file);
+     //   let std_file = std::fs::File::open("p.mp3").unwrap();
+     //   let file = tokio::fs::File::from_std(std_file);
 
         //let filex = tokio::fs::File::framed(file, ChunkDecoder);
         //let blalalad = filex.
 
-        let fib = ChunkStream::new();
+        let fib = ChunkStream::new(media_addr);
         Response::new(Body::wrap_stream(fib))
 
         //let byte_stream2: ByteStream<ChildStdout> = ByteStream(child.stdout.unwrap());
