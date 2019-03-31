@@ -35,7 +35,7 @@ use futures::try_ready;
 use tokio::codec;
 use tokio::prelude::*;
 use crate::stream;
-use crate::stream::Fibonacci;
+use crate::stream::ChunkStream;
 
 /*impl From<hyper::Error> for Error {
     fn from(error: hyper::Error) -> Self {
@@ -268,11 +268,11 @@ pub fn handle_request(
             Box::new(my_fut())
         }
 
-        let mut cmd = Command::new(ffmpeg_path);
+        /*let mut cmd = Command::new(ffmpeg_path);
         cmd.args(&command_opts);
         cmd.stdout(Stdio::piped());
         let future = async_stream(cmd.spawn_async().expect("failed to spawn command"));
-        tokio::spawn(future);
+        tokio::spawn(future);*/
 
 
         /*// the trait `futures::Stream` is not implemented for `dyn futures::Future<Item=(), Error=()> + std::marker::Send`
@@ -281,12 +281,10 @@ pub fn handle_request(
             ok(())
         }*/
 
-        let fib = Fibonacci::new();
-
-        let std_file = std::fs::File::open("p.mp3").unwrap();
+        /*let std_file = std::fs::File::open("p.mp3").unwrap();
         let file = tokio::fs::File::from_std(std_file);
         let byte_stream2: ByteStream<File> = ByteStream(file);
- //       let test = Response::new(Body::wrap_stream(fib));
+        let test = Response::new(Body::wrap_stream(fib));*/
 
         /*impl AsyncRead for File {
             unsafe fn prepare_uninitialized_buffer(&self, _: &mut [u8]) -> bool {
@@ -346,9 +344,12 @@ pub fn handle_request(
         //let filex = tokio::fs::File::framed(file, ChunkDecoder);
         //let blalalad = filex.
 
+        let fib = ChunkStream::new();
+        Response::new(Body::wrap_stream(fib))
+
         //let byte_stream2: ByteStream<ChildStdout> = ByteStream(child.stdout.unwrap());
-        let byte_stream2: ByteStream<File> = ByteStream(file);
-        Response::new(Body::wrap_stream(byte_stream2))
+        //let byte_stream2: ByteStream<File> = ByteStream(file);
+        //Response::new(Body::wrap_stream(byte_stream2))
     });
     return fuckfuture;
 

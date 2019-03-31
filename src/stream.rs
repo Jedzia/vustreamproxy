@@ -37,6 +37,40 @@ use tokio::prelude::*;
 
 use futures::{Async, Poll, Stream};
 
+
+
+
+pub struct ChunkStream {
+    curr: u64,
+    countdown: u64,
+}
+
+impl ChunkStream {
+    pub fn new() -> ChunkStream {
+        ChunkStream { curr: 1, countdown: 100 }
+    }
+}
+
+impl Stream for ChunkStream {
+    type Item = hyper::Chunk;
+
+    // The stream will never yield an error
+    type Error = hyper::Error;
+
+    fn poll(&mut self) -> Poll<Option<hyper::Chunk>, hyper::Error> {
+
+        self.countdown = self.countdown - 1;
+        if self.countdown <= 1 {
+            println!("ChunkStream reached endpoint");
+            Ok(Async::Ready(None))
+        }
+        else {
+            //Ok(Async::Ready(Some(42)))
+            Ok(Async::Ready(Some(Chunk::from(" Its from the Chunk Stream "))))
+        }
+    }
+}
+
 pub struct Fibonacci {
     curr: u64,
     next: u64,
