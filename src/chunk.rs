@@ -23,7 +23,7 @@ use tokio::io;
 //use std::error::Error;
 use self::tokio::prelude::future::IntoFuture;
 use self::tokio_process::CommandExt;
-use core::borrow::BorrowMut;
+use core::borrow::{BorrowMut, Borrow};
 use std::convert::TryInto;
 use std::error::Error;
 use std::io::{stdout, BufReader, ErrorKind, Read};
@@ -35,6 +35,7 @@ use futures::try_ready;
 use tokio::codec;
 use tokio::prelude::*;
 use crate::stream;
+use crate::stream::Fibonacci;
 
 /*impl From<hyper::Error> for Error {
     fn from(error: hyper::Error) -> Self {
@@ -223,25 +224,69 @@ pub fn handle_request(
             Box::new(future)
         }
 
-        fn async_stream(mut cat: Child) -> Box<Future<Item = (), Error = ()> + Send + 'static> {
-            let stdout = cat.stdout().take().unwrap();
+        fn async_stream2(mut cat: Child) -> Box<Future<Item = (), Error = ()> + Send + 'static> {
+            /*let stdout = cat.stdout().take().unwrap();
             let reader = io::BufReader::new(stdout);
+
+            //let dings = tokio_io::io::lines(reader.clone());
+
             let lines = tokio_io::io::lines(reader);
             let cycle = lines.for_each(|l| {
                 println!("Line: {}", l);
                 Ok(())
             });
+            let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));*/
 
-            let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));
+            fn my_fut() -> impl Future<Item = (), Error = () > {
+                println!("In the FUTURE: {}", 1);
+                ok(())
+            }
 
-            Box::new(future)
+            //let future:Future<Item = (), Error = ()> = ok::<(), ()>(());
+            Box::new(my_fut())
         }
 
-        ////let mut cmd = Command::new(ffmpeg_path);
-        ////cmd.args(&command_opts);
-        ////cmd.stdout(Stdio::piped());
-        //let future = print_lines(cmd.spawn_async().expect("failed to spawn command"));
-        //tokio::spawn(future);
+        fn async_stream(mut cat: Child) -> Box<Future<Item = (), Error = ()> + Send + 'static> {
+            /*let stdout = cat.stdout().take().unwrap();
+            let reader = io::BufReader::new(stdout);
+
+            //let dings = tokio_io::io::lines(reader.clone());
+
+            let lines = tokio_io::io::lines(reader);
+            let cycle = lines.for_each(|l| {
+                println!("Line: {}", l);
+                Ok(())
+            });
+            let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));*/
+
+            fn my_fut() -> impl Future<Item = (), Error = () > {
+                println!("In the FUTURE: {}", 1);
+                ok(())
+            }
+
+            //let future:Future<Item = (), Error = ()> = ok::<(), ()>(());
+            Box::new(my_fut())
+        }
+
+        let mut cmd = Command::new(ffmpeg_path);
+        cmd.args(&command_opts);
+        cmd.stdout(Stdio::piped());
+        let future = async_stream(cmd.spawn_async().expect("failed to spawn command"));
+        tokio::spawn(future);
+
+
+        /*// the trait `futures::Stream` is not implemented for `dyn futures::Future<Item=(), Error=()> + std::marker::Send`
+        fn my_fut() -> impl Future<Item = Stream<Item =(), Error=()> + 'static, Error = () > {
+            println!("In the FUTURE: {}", 1);
+            ok(())
+        }*/
+
+        let fib = Fibonacci::new();
+
+        let std_file = std::fs::File::open("p.mp3").unwrap();
+        let file = tokio::fs::File::from_std(std_file);
+        let byte_stream2: ByteStream<File> = ByteStream(file);
+ //       let test = Response::new(Body::wrap_stream(fib));
 
         /*impl AsyncRead for File {
             unsafe fn prepare_uninitialized_buffer(&self, _: &mut [u8]) -> bool {
@@ -270,10 +315,10 @@ pub fn handle_request(
         let child = Command::new(ffmpeg_path)
             .args(&command_opts)
             //.stdin(Stdio::piped())
-            .stdout(Stdio::piped())
-            .spawn()
+            .stdout(Stdio::piped());
             //.output_async();
-            .expect(&format!("Error starting {}", ffmpeg_path));
+            //  .spawn()
+            //.expect(&format!("Error starting {}", ffmpeg_path));
 
         //let byte_stream2 = ByteStream(child.stdout.unwrap());
         //let mut reader = BufReader::new(child.stdout.unwrap());

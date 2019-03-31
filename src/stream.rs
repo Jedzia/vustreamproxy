@@ -35,6 +35,35 @@ use futures::try_ready;
 use tokio::codec;
 use tokio::prelude::*;
 
+use futures::{Async, Poll, Stream};
+
+pub struct Fibonacci {
+    curr: u64,
+    next: u64,
+}
+
+impl Fibonacci {
+    pub fn new() -> Fibonacci {
+        Fibonacci { curr: 1, next: 1 }
+    }
+}
+
+impl Stream for Fibonacci {
+    type Item = u64;
+
+    // The stream will never yield an error
+    type Error = ();
+
+    fn poll(&mut self) -> Poll<Option<u64>, ()> {
+        let curr = self.curr;
+        let next = curr + self.next;
+
+        self.curr = self.next;
+        self.next = next;
+
+        Ok(Async::Ready(Some(curr)))
+    }
+}
 
 /*impl<R> ByteStream<R> {
     /*pub fn new(inner: R) -> ByteStream<R> {
@@ -47,7 +76,6 @@ use tokio::prelude::*;
         }*/
     }
 }*/
-
 
 /*impl AsyncRead for ByteStream<Chunk> {
     unsafe fn prepare_uninitialized_buffer(&self, _: &mut [u8]) -> bool {
