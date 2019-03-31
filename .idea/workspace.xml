@@ -37,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chunk.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="67" selection-start-line="65" selection-start-column="1" selection-end-line="67" />
+            <state relative-caret-position="425">
+              <caret line="337" column="11" selection-start-line="337" selection-start-column="11" selection-end-line="337" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -46,15 +46,50 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/stream.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+            <state relative-caret-position="545">
+              <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="11" />
               <folding>
-                <element signature="e#1066#1067#0" expanded="true" />
-                <element signature="e#1113#1114#0" expanded="true" />
-                <element signature="e#1558#1559#0" expanded="true" />
-                <element signature="e#1603#1604#0" expanded="true" />
-                <element signature="e#3210#3211#0" expanded="true" />
-                <element signature="e#3267#3268#0" expanded="true" />
+                <element signature="e#4807#4808#0" expanded="true" />
+                <element signature="e#4852#4853#0" expanded="true" />
+                <element signature="e#6459#6460#0" expanded="true" />
+                <element signature="e#6516#6517#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/io/mod.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="511">
+              <caret line="522" column="7" selection-start-line="522" selection-start-column="7" selection-end-line="522" selection-end-column="7" />
+              <folding>
+                <element signature="e#19130#19131#0" expanded="true" />
+                <element signature="e#19167#19168#0" expanded="true" />
+                <element signature="e#20956#20957#0" expanded="true" />
+                <element signature="e#20993#20994#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/liballoc/vec.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="194">
+              <caret line="352" column="24" selection-start-line="352" selection-start-column="11" selection-end-line="352" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/process.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="270" column="7" selection-start-line="270" selection-start-column="7" selection-end-line="270" selection-end-column="7" />
+              <folding>
+                <element signature="e#8555#8556#0" expanded="true" />
+                <element signature="e#8590#8591#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -114,6 +149,7 @@
       <find>asyncread</find>
       <find>async_stream</find>
       <find>print_lines</find>
+      <find>size</find>
       <find>wrap_str</find>
     </findStrings>
     <replaceStrings>
@@ -505,7 +541,7 @@
       <workItem from="1553481251404" duration="4491000" />
       <workItem from="1553517988262" duration="13178000" />
       <workItem from="1553676632341" duration="1434000" />
-      <workItem from="1553764224446" duration="85013000" />
+      <workItem from="1553764224446" duration="89273000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -689,11 +725,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554016252710</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="finally a stream full of chunk">
+      <created>1554018130655</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1554018130655</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104133000" />
+    <option name="totallyTimeSpent" value="108393000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
@@ -757,7 +800,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="more fun with random numbers" />
     <MESSAGE value="local build on host" />
     <MESSAGE value="string fuckery" />
     <MESSAGE value="filebuffer is SHIT" />
@@ -782,7 +824,8 @@
     <MESSAGE value="streaming pipe: trial and error" />
     <MESSAGE value="lets test a streaming adapter again" />
     <MESSAGE value="lets wrap a stream" />
-    <option name="LAST_COMMIT_MESSAGE" value="lets wrap a stream" />
+    <MESSAGE value="finally a stream full of chunk" />
+    <option name="LAST_COMMIT_MESSAGE" value="finally a stream full of chunk" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -805,13 +848,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libcore/str/mod.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="3429" column="11" selection-start-line="3429" selection-start-column="11" selection-end-line="3429" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/liballoc/str.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="581">
@@ -1098,35 +1134,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/io/mod.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="2172" column="18" selection-start-line="2172" selection-start-column="18" selection-end-line="2172" selection-end-column="18" />
-          <folding>
-            <element signature="e#19130#19131#0" expanded="true" />
-            <element signature="e#19167#19168#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fileio.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/process.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="446" selection-start-line="443" selection-end-line="446" />
         </state>
       </provider>
     </entry>
@@ -1199,24 +1210,60 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/process.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="270" column="7" selection-start-line="270" selection-start-column="7" selection-end-line="270" selection-end-column="7" />
+          <folding>
+            <element signature="e#8555#8556#0" expanded="true" />
+            <element signature="e#8590#8591#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/liballoc/vec.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="352" column="24" selection-start-line="352" selection-start-column="11" selection-end-line="352" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/chunk.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="67" selection-start-line="65" selection-start-column="1" selection-end-line="67" />
+        <state relative-caret-position="425">
+          <caret line="337" column="11" selection-start-line="337" selection-start-column="11" selection-end-line="337" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libstd/io/mod.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="511">
+          <caret line="522" column="7" selection-start-line="522" selection-start-column="7" selection-end-line="522" selection-end-column="7" />
+          <folding>
+            <element signature="e#19130#19131#0" expanded="true" />
+            <element signature="e#19167#19168#0" expanded="true" />
+            <element signature="e#20956#20957#0" expanded="true" />
+            <element signature="e#20993#20994#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/stream.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="53" column="29" lean-forward="true" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
+        <state relative-caret-position="545">
+          <caret line="151" column="11" selection-start-line="151" selection-start-column="11" selection-end-line="151" selection-end-column="11" />
           <folding>
-            <element signature="e#1066#1067#0" expanded="true" />
-            <element signature="e#1113#1114#0" expanded="true" />
-            <element signature="e#1558#1559#0" expanded="true" />
-            <element signature="e#1603#1604#0" expanded="true" />
-            <element signature="e#3210#3211#0" expanded="true" />
-            <element signature="e#3267#3268#0" expanded="true" />
+            <element signature="e#4807#4808#0" expanded="true" />
+            <element signature="e#4852#4853#0" expanded="true" />
+            <element signature="e#6459#6460#0" expanded="true" />
+            <element signature="e#6516#6517#0" expanded="true" />
           </folding>
         </state>
       </provider>

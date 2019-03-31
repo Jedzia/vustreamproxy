@@ -16,7 +16,7 @@ use hyper::rt;
 use hyper::service::service_fn;
 use hyper::StatusCode;
 use hyper::{Body, Chunk, Request, Response, Server};
-use std::process::{Command, Stdio};
+use std::process::{Child, ChildStdout, Command, Stdio};
 use tokio::codec::{Decoder, FramedRead};
 use tokio::fs::File;
 use tokio::io;
@@ -37,17 +37,86 @@ use tokio::prelude::*;
 
 use futures::{Async, Poll, Stream};
 
-
-
-
 pub struct ChunkStream {
     curr: u64,
     countdown: u64,
+    buffer: Vec<u8>,
+    //process: Child,
+    cstdout: ChildStdout,
 }
 
 impl ChunkStream {
     pub fn new() -> ChunkStream {
-        ChunkStream { curr: 1, countdown: 100 }
+        let command_name = "ffmpeg";
+        //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
+        let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+        let command_opts = [
+            "-y", // overwrite
+            //"-re", // realtime
+            "-i",
+            media_addr,
+            "-acodec",
+            "libmp3lame",
+            //"-ab",
+            //"128k",
+            //"-aq",
+            //"60",
+            "-f",
+            "mp3",
+            //"result.mp3", // or - for stdout
+            "-",
+        ];
+        let mut ffmpeg_path = command_name;
+        if cfg!(target_os = "windows") {
+            ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
+        }
+
+        // Use the standard library's `Command` type to build a process and
+        // then execute it via the `CommandExt` trait.
+        let mut process = match Command::new(ffmpeg_path)
+            .args(&command_opts)
+            .stdin(Stdio::piped())
+            .stdout(Stdio::piped())
+            //.spawn_async()
+            .spawn()
+        {
+            Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
+            Ok(process) => process,
+        };
+
+        {
+            use std::{thread, time};
+
+            let mut sleep_time_i = 3;
+            if cfg!(target_os = "windows") {
+                sleep_time_i = 3;
+            }
+            let sleep_time = time::Duration::from_secs(sleep_time_i);
+            //let now = time::Instant::now();
+            thread::sleep(sleep_time);
+        }
+
+        let mut buffer: Vec<u8> = Vec::new();
+        //let mut buffer: Vec<u8> = Vec::with_capacity(256);
+        buffer.resize(1024, 0);
+
+        let cstdout: ChildStdout = process.stdout.unwrap();
+        /*match process.stdout.unwrap().read_to_end(&mut buffer) {
+            Err(why) => panic!(
+                "couldn't read {} stdout: {}",
+                command_name,
+                why.description()
+            ),
+            Ok(_) => println!("buffer size:[{}]", buffer.len()),
+        }*/
+
+        ChunkStream {
+            curr: 1,
+            countdown: 3,
+            buffer,
+            //process,
+            cstdout,
+        }
     }
 }
 
@@ -58,15 +127,39 @@ impl Stream for ChunkStream {
     type Error = hyper::Error;
 
     fn poll(&mut self) -> Poll<Option<hyper::Chunk>, hyper::Error> {
+        /*match self.cstdout.read_to_end(&mut self.buffer) {
+            Err(why) => panic!(
+                "couldn't read {} stdout from '{}'",
+                "ffmpeg",
+                why.description()
+            ),
+        }*/
+
+        //self.buffer.resize(1024, 0);
+
+        let mut n = 0;
+        let result = self.cstdout.read(&mut self.buffer);
+        n = result.unwrap();
+        println!("Read {} bytes from ffmpeg", n);
+
+
+        /*while n == 0 {
+            let result = self.cstdout.read(&mut self.buffer);
+            n = result.unwrap();
+            if n != 0 {
+                println!("Read {} bytes from ffmpeg", n);
+            }
+        }*/
 
         self.countdown = self.countdown - 1;
-        if self.countdown <= 1 {
+        if self.countdown <= 0 {
             println!("ChunkStream reached endpoint");
             Ok(Async::Ready(None))
-        }
-        else {
+        } else {
             //Ok(Async::Ready(Some(42)))
-            Ok(Async::Ready(Some(Chunk::from(" Its from the Chunk Stream "))))
+            Ok(Async::Ready(Some(Chunk::from(
+                " Its from the Chunk Stream ",
+            ))))
         }
     }
 }

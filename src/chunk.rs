@@ -325,7 +325,7 @@ pub fn handle_request(
         //reader.read_to_end(&mut buf);
         //Response::new(Body::from(buf))
 
-        {
+        /*{
             use std::{thread, time};
 
             let mut sleep_time_i = 60;
@@ -335,7 +335,7 @@ pub fn handle_request(
             let sleep_time = time::Duration::from_secs(sleep_time_i);
             //let now = time::Instant::now();
             thread::sleep(sleep_time);
-        }
+        }*/
 
         //let std_file = std::fs::File::open("result.mp3").unwrap();
         let std_file = std::fs::File::open("p.mp3").unwrap();
