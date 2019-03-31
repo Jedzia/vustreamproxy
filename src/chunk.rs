@@ -34,6 +34,7 @@ use futures::future;
 use futures::try_ready;
 use tokio::codec;
 use tokio::prelude::*;
+use crate::stream;
 
 /*impl From<hyper::Error> for Error {
     fn from(error: hyper::Error) -> Self {
@@ -41,18 +42,7 @@ use tokio::prelude::*;
     }
 }*/
 
-struct ByteStream<R>(R);
-
-/*impl AsyncRead for ByteStream<Chunk> {
-    unsafe fn prepare_uninitialized_buffer(&self, _: &mut [u8]) -> bool {
-        false
-    }
-
-    fn read(&mut self, buf: &mut [u8]) -> Result<usize> {
-        Result::Ok(5)
-    }
-}*/
-
+pub struct ByteStream<R>(R);
 impl<R: AsyncRead> Stream for ByteStream<R> {
     // The same as our future above:
     type Item = hyper::Chunk;
@@ -97,50 +87,6 @@ impl<R: AsyncRead> Stream for ByteStream<R> {
             Ok(Async::NotReady) => Ok(Async::NotReady),
             Err(e) => Err(e),
             _ => { Err(std::io::Error::new(ErrorKind::Other, "ByteStream poll_read error.")) }
-        }
-    }
-}
-
-pub struct FuckReader<R> {
-    inner: R,
-    buf: Box<[u8]>,
-    pos: usize,
-    cap: usize,
-}
-
-impl<R: Read> FuckReader<R> {
-    const DEFAULT_BUF_SIZE: usize = 8 * 1024;
-
-    /// Creates a new `BufReader` with a default buffer capacity. The default is currently 8 KB,
-    /// but may change in the future.
-    ///
-    /// # Examples
-    ///
-    /// ```no_run
-    /// use std::io::BufReader;
-    /// use std::fs::File;
-    ///
-    /// fn main() -> std::io::Result<()> {
-    ///     let f = File::open("log.txt")?;
-    ///     let reader = BufReader::new(f);
-    ///     Ok(())
-    /// }
-    /// ```
-    pub fn new(inner: R) -> FuckReader<R> {
-        FuckReader::with_capacity(8 * 1024, inner)
-    }
-
-    pub fn with_capacity(cap: usize, inner: R) -> FuckReader<R> {
-        unsafe {
-            let mut buffer = Vec::with_capacity(cap);
-            buffer.set_len(cap);
-            //inner.initializer().initialize(&mut buffer);
-            FuckReader {
-                inner,
-                buf: buffer.into_boxed_slice(),
-                pos: 0,
-                cap: 0,
-            }
         }
     }
 }
@@ -241,7 +187,8 @@ pub fn handle_request(
             //"60",
             "-f",
             "mp3",
-            "result.mp3", // or - for stdout
+            //"result.mp3", // or - for stdout
+            "-"
         ];
         let mut ffmpeg_path = command_name;
         if cfg!(target_os = "windows") {
@@ -347,7 +294,8 @@ pub fn handle_request(
             thread::sleep(sleep_time);
         }
 
-        let std_file = std::fs::File::open("result.mp3").unwrap();
+        //let std_file = std::fs::File::open("result.mp3").unwrap();
+        let std_file = std::fs::File::open("p.mp3").unwrap();
         let file = tokio::fs::File::from_std(std_file);
 
         //let filex = tokio::fs::File::framed(file, ChunkDecoder);

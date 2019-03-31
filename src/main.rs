@@ -29,6 +29,7 @@ use std::io;
 use futures::future::FutureResult;
 use core::borrow::Borrow;
 
+mod stream;
 mod chunk;
 mod fileio;
 
