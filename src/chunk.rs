@@ -96,6 +96,7 @@ impl<R: AsyncRead> Stream for ByteStream<R> {
             }
             Ok(Async::NotReady) => Ok(Async::NotReady),
             Err(e) => Err(e),
+            _ => { Err(std::io::Error::new(ErrorKind::Other, "ByteStream poll_read error.")) }
         }
     }
 }
@@ -324,8 +325,8 @@ pub fn handle_request(
             //.stdin(Stdio::piped())
             .stdout(Stdio::piped())
             .spawn()
-            .expect("REEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-        //.output_async();
+            //.output_async();
+            .expect(&format!("Error starting {}", ffmpeg_path));
 
         //let byte_stream2 = ByteStream(child.stdout.unwrap());
         //let mut reader = BufReader::new(child.stdout.unwrap());
