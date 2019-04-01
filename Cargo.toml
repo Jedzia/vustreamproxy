@@ -5,7 +5,12 @@ authors = ["Jedzia <jed69@gmx.de>"]
 edition = "2018"
 
 [dependencies]
+#openssl-src = { path = "./dependencies/openssl-src-111.2.1+1.1.1b" }
+openssl-sys = { version = "0.9.12", features = ["vendored"] }
+#openssl-sys = { version = "0.9.12", path = "./dependencies/openssl-sys-0.9.43", features = ["vendored"] }
 #openssl = { version = "0.10", features = ["vendored"] }
+####openssl = { version = "0.10", path = "./dependencies/openssl-0.10.20", features = ["vendored"] }
+#openssl = { version = "0.10", path = "/dependencies./openssl-0.10.20" }
 #rand = "0.6.5"
 hyper = "0.12.25"
 pretty_env_logger = "0.2.0"
@@ -16,4 +21,15 @@ tokio = "0.1.18"
 tokio-io = "0.1.12"
 tokio-process = "0.2"
 #reqwest = { version = "0.9.12", features = ["rustls-tls"] }
+#reqwest = { version = "0.9.12", features = ["default-tls"] }
+reqwest = { version = "0.9.12" }
 #http = "0.1"
+
+[patch.crates-io]
+openssl-src = { path = './dependencies/openssl-src-111.2.1+1.1.1b' }
+#openssl-src = { path = './dependencies/openssl-src-111.2.1+1.1.1b' }
+
+#[replace]
+#"openssl-src:110.0.0" = { path = './dependencies/openssl-src-111.2.1+1.1.1b' }
+#"openssl-sys:0.9.12" = { path = './dependencies/openssl-sys-0.9.43', features = ["vendored"] }
+#"openssl:0.10.20" = { path = './dependencies/openssl-0.10.20' }
