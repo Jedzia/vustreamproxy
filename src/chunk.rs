@@ -23,19 +23,19 @@ use tokio::io;
 //use std::error::Error;
 use self::tokio::prelude::future::IntoFuture;
 use self::tokio_process::CommandExt;
-use core::borrow::{BorrowMut, Borrow};
+use core::borrow::{Borrow, BorrowMut};
 use std::convert::TryInto;
 use std::error::Error;
 use std::io::{stdout, BufReader, ErrorKind, Read};
 
 use self::tokio::codec::BytesCodec;
+use crate::stream;
+use crate::stream::ChunkStream;
 use bytes::BytesMut;
 use futures::future;
 use futures::try_ready;
 use tokio::codec;
 use tokio::prelude::*;
-use crate::stream;
-use crate::stream::ChunkStream;
 
 /*impl From<hyper::Error> for Error {
     fn from(error: hyper::Error) -> Self {
@@ -87,7 +87,10 @@ impl<R: AsyncRead> Stream for ByteStream<R> {
             }
             Ok(Async::NotReady) => Ok(Async::NotReady),
             Err(e) => Err(e),
-            _ => { Err(std::io::Error::new(ErrorKind::Other, "ByteStream poll_read error.")) }
+            _ => Err(std::io::Error::new(
+                ErrorKind::Other,
+                "ByteStream poll_read error.",
+            )),
         }
     }
 }
@@ -189,7 +192,7 @@ pub fn handle_request(
             "-f",
             "mp3",
             //"result.mp3", // or - for stdout
-            "-"
+            "-",
         ];
         let mut ffmpeg_path = command_name;
         if cfg!(target_os = "windows") {
@@ -237,7 +240,7 @@ pub fn handle_request(
             });
             let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));*/
 
-            fn my_fut() -> impl Future<Item = (), Error = () > {
+            fn my_fut() -> impl Future<Item = (), Error = ()> {
                 println!("In the FUTURE: {}", 1);
                 ok(())
             }
@@ -259,7 +262,7 @@ pub fn handle_request(
             });
             let future = cycle.join(cat).map(|_| ()).map_err(|e| panic!("{}", e));*/
 
-            fn my_fut() -> impl Future<Item = (), Error = () > {
+            fn my_fut() -> impl Future<Item = (), Error = ()> {
                 println!("In the FUTURE: {}", 1);
                 ok(())
             }
@@ -273,7 +276,6 @@ pub fn handle_request(
         cmd.stdout(Stdio::piped());
         let future = async_stream(cmd.spawn_async().expect("failed to spawn command"));
         tokio::spawn(future);*/
-
 
         /*// the trait `futures::Stream` is not implemented for `dyn futures::Future<Item=(), Error=()> + std::marker::Send`
         fn my_fut() -> impl Future<Item = Stream<Item =(), Error=()> + 'static, Error = () > {
@@ -314,9 +316,9 @@ pub fn handle_request(
             .args(&command_opts)
             //.stdin(Stdio::piped())
             .stdout(Stdio::piped());
-            //.output_async();
-            //  .spawn()
-            //.expect(&format!("Error starting {}", ffmpeg_path));
+        //.output_async();
+        //  .spawn()
+        //.expect(&format!("Error starting {}", ffmpeg_path));
 
         //let byte_stream2 = ByteStream(child.stdout.unwrap());
         //let mut reader = BufReader::new(child.stdout.unwrap());
@@ -339,8 +341,8 @@ pub fn handle_request(
 
         // working direct tokio ByteStream example
         //let std_file = std::fs::File::open("result.mp3").unwrap();
-     //   let std_file = std::fs::File::open("p.mp3").unwrap();
-     //   let file = tokio::fs::File::from_std(std_file);
+        //   let std_file = std::fs::File::open("p.mp3").unwrap();
+        //   let file = tokio::fs::File::from_std(std_file);
 
         //let filex = tokio::fs::File::framed(file, ChunkDecoder);
         //let blalalad = filex.

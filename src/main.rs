@@ -3,13 +3,15 @@
 //#![deny(warnings)]
 #![feature(type_ascription)]
 
+#[macro_use]
+extern crate log;
+
+extern crate bytes;
 extern crate futures;
 extern crate hyper;
 extern crate pretty_env_logger;
-extern crate bytes;
+//extern crate reqwest;
 //extern crate tokio;
-#[macro_use]
-extern crate log;
 
 use futures::{future, Async, Poll};
 use hyper::rt::{Future, Stream};
@@ -23,15 +25,15 @@ use std::fs::File;
 //use std::io;
 //use std::io::prelude::*;
 
+use core::borrow::Borrow;
+use futures::future::FutureResult;
+use std::io;
 use std::io::prelude::*;
 use std::process::{Command, Stdio};
-use std::io;
-use futures::future::FutureResult;
-use core::borrow::Borrow;
 
-mod stream;
 mod chunk;
 mod fileio;
+mod stream;
 
 //use tokio::codec::{Decoder, FramedRead};
 //use tokio::prelude::{AsyncRead};
@@ -86,8 +88,16 @@ fn echo(req: Request<Body>) -> BoxFut {
     match req.method() {
         &Method::GET => {
             if req.uri().path().starts_with("/fwd/") {
-                *response.body_mut() =
-                    Body::from("Lets forward: ".to_owned() + &reduce_forwarded_uri(req.uri()));
+                let req_uri = reduce_forwarded_uri(req.uri());
+                //let forwarded_uri = Uri::from_static(&req_uri);
+                *response.body_mut() = Body::from("Lets forward: ".to_owned() + &req_uri);
+
+                /*let body = reqwest::get(req_uri.as_str())//.unwrap();
+                    .expect(&format!("cannot get '{}'", &req_uri))
+                    .text()//.unwrap();
+                    .expect(&format!("cannot get text for '{}'", &req_uri));
+
+                println!("body = {}", body);*/
             }
         }
         _ => {}
@@ -98,42 +108,42 @@ fn echo(req: Request<Body>) -> BoxFut {
         (&Method::GET, "/") => {
             //command_name = 'ffmpeg',
             //command_opts = ['-i', 'pipe:0', '-f', 'mp3', '-acodec', 'libvorbis', '-ab', '128k', '-aq', '60', '-f', 'ogg', '-'];
-/*
-                        let command_name = "ffmpeg";
-                        //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
-                        //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
-                        // -acodec libmp3lame -ab 128k -aq 60 -f mp3 - > bla.mp3
+            /*
+                                    let command_name = "ffmpeg";
+                                    //let command_opts = ["-i", "pipe:0", "-f", "mp3", "-acodec", "libvorbis", "-ab", "128k", "-aq", "60", "-f", "ogg", "-"];
+                                    //"D:\Program Files\ffmpeg\bin\ffmpeg" -re -i "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg"
+                                    // -acodec libmp3lame -ab 128k -aq 60 -f mp3 - > bla.mp3
 
-                        //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
-                        let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
-                        let command_opts = ["-i", media_addr,
-                            "-acodec", "libmp3lame", "-ab", "128k", "-aq", "60", "-f", "mp3", "-"];
-                        let mut ffmpeg_path = command_name;
-                        if cfg!(target_os = "windows") {
-                            ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
-                        }
+                                    //let media_addr = "https://cdn.netzpolitik.org/wp-upload/2019/02/NPP169-Worum-geht-es-eigentlich-bei-der-ePrivacy-Reform.ogg";
+                                    let media_addr = "https://upload.wikimedia.org/wikipedia/commons/f/f2/Median_test.ogg";
+                                    let command_opts = ["-i", media_addr,
+                                        "-acodec", "libmp3lame", "-ab", "128k", "-aq", "60", "-f", "mp3", "-"];
+                                    let mut ffmpeg_path = command_name;
+                                    if cfg!(target_os = "windows") {
+                                        ffmpeg_path = "D:/Program Files/ffmpeg/bin/ffmpeg.exe";
+                                    }
 
-                        // Spawn the `wc` command
-                        let process = match Command::new(ffmpeg_path)
-                            .args(&command_opts)
-                            .stdin(Stdio::piped())
-                            .stdout(Stdio::piped())
-                            .spawn()
-                        {
-                            Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
-                            Ok(process) => process,
-                        };
+                                    // Spawn the `wc` command
+                                    let process = match Command::new(ffmpeg_path)
+                                        .args(&command_opts)
+                                        .stdin(Stdio::piped())
+                                        .stdout(Stdio::piped())
+                                        .spawn()
+                                    {
+                                        Err(why) => panic!("couldn't spawn {}: {}", command_name, why.description()),
+                                        Ok(process) => process,
+                                    };
 
-                        // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
-                        let mut buffer: Vec<u8> = Vec::new();
-                        match process.stdout.unwrap().read_to_end(&mut buffer) {
-                            Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
-                            Ok(_) => println!("buffer size:[{}]", buffer.len()),
-                        }
+                                    // The `stdout` field also has type `Option<ChildStdout>` so must be unwrapped.
+                                    let mut buffer: Vec<u8> = Vec::new();
+                                    match process.stdout.unwrap().read_to_end(&mut buffer) {
+                                        Err(why) => panic!("couldn't read {} stdout: {}", command_name, why.description()),
+                                        Ok(_) => println!("buffer size:[{}]", buffer.len()),
+                                    }
 
-            *response.body_mut() = Body::from(buffer);
-            return Box::new( future::ok(response));
-*/
+                        *response.body_mut() = Body::from(buffer);
+                        return Box::new( future::ok(response));
+            */
             /*let mapping = || -> Vec(u8)
             {
 
@@ -164,22 +174,22 @@ fn echo(req: Request<Body>) -> BoxFut {
             let chunk_fuck = Chunk::from("fuck");
             let stream_fuck = futures::stream::iter_ok::<_, ::std::io::Error>(data_fuck);
 
-/*            //let data2 = vec!["hello", " ", "world"];
-            let data2: Vec<u8> = vec![0x55, 0x20, 0x66];
-            //let chunk2 = Chunk::from(data2);
+            /*            //let data2 = vec!["hello", " ", "world"];
+                        let data2: Vec<u8> = vec![0x55, 0x20, 0x66];
+                        //let chunk2 = Chunk::from(data2);
 
-            //let conv = |x: Vec<u8>| x.iter();
+                        //let conv = |x: Vec<u8>| x.iter();
 
-            let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
-            //let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
+                        let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
+                        //let stream2 = futures::stream::iter_ok::<_, ::std::io::Error>(data2);
 
-            let chunks = fileio::load_local_mp3_buffer();
-            let c: &[u8] = &chunks; // c: &[u8]
-                                    //let chunk = Chunk::from(c);
-            let stream = futures::stream::iter_ok::<_, ::std::io::Error>(c);
-            *response.body_mut() = Body::from(chunks);
-            return Box::new( future::ok(response));
-*/
+                        let chunks = fileio::load_local_mp3_buffer();
+                        let c: &[u8] = &chunks; // c: &[u8]
+                                                //let chunk = Chunk::from(c);
+                        let stream = futures::stream::iter_ok::<_, ::std::io::Error>(c);
+                        *response.body_mut() = Body::from(chunks);
+                        return Box::new( future::ok(response));
+            */
 
             // type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
             //let bbb = Box::new(future::ok(Response::new("Fuck YOU")));
@@ -212,12 +222,11 @@ fn echo(req: Request<Body>) -> BoxFut {
 
             let akjsd = decode(chunks);*/
 
-            use bytes::{Buf, IntoBuf, BigEndian,BytesMut, BufMut};
+            use bytes::{BigEndian, Buf, BufMut, BytesMut, IntoBuf};
 
             let bytes = b"\x00\x01hello world";
             let mut bytes_buf = bytes.into_buf();
             let bytes_stream = futures::stream::iter_ok::<_, ::std::io::Error>(bytes);
-
 
             //*response.body_mut() = Body::wrap_stream(bytes_stream);
             *response.body_mut() = Body::wrap_stream(stream_fuck);
@@ -227,19 +236,19 @@ fn echo(req: Request<Body>) -> BoxFut {
             // type BoxFut = Box<Future<Item = Response<Body>, Error = hyper::Error> + Send>;
             //let future_result = future::ok(response);
 
-
-//            let mut buf = BytesMut::with_capacity(1024);
-//            buf.put(&b"hello world"[..]);
+            //            let mut buf = BytesMut::with_capacity(1024);
+            //            buf.put(&b"hello world"[..]);
 
             //let mut response1 = Response::new("Fuck");
-//            let mut response1 = Response::new(Body::from(buf.freeze()));
+            //            let mut response1 = Response::new(Body::from(buf.freeze()));
 
-//            let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response1);
+            //            let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response1);
 
             //return Box::new( future_result);
             //let (method, uri, version, headers, body) = req.deconstruct();
-            let myresp = chunk::handle_request(Request::new(Body::from("Fuck ya to chunk::handle_request")));
-            return Box::new(myresp );
+            let myresp =
+                chunk::handle_request(Request::new(Body::from("Fuck ya to chunk::handle_request")));
+            return Box::new(myresp);
 
             //let future_result: FutureResult<Response<Body>, hyper::Error> = future::ok(response);
             //return Box::new(future_result);

@@ -143,7 +143,6 @@ impl Stream for ChunkStream {
         n = result.unwrap();
         println!("Read {} bytes from ffmpeg", n);
 
-
         /*while n == 0 {
             let result = self.cstdout.read(&mut self.buffer);
             n = result.unwrap();
