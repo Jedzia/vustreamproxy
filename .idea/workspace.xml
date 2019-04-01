@@ -2,6 +2,7 @@
 <project version="4">
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/src/chunk.rs" line="416" mnemonic="1" />
+    <bookmark url="file://$PROJECT_DIR$/src/main.rs" line="101" mnemonic="2" />
   </component>
   <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
     <generated />
@@ -14,8 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" beforeDir="false" afterPath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" beforeDir="false" afterPath="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Xargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Xargo.toml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+            <state relative-caret-position="409">
+              <caret line="101" selection-start-line="101" selection-end-line="101" />
             </state>
           </provider>
         </entry>
@@ -64,17 +66,26 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Cargo.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="51">
+              <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Cargo.lock">
+        <entry file="file://$PROJECT_DIR$/.cargo/config">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="193">
-              <caret line="548" column="2" selection-start-line="548" selection-start-column="2" selection-end-line="548" selection-end-column="20" />
+            <state relative-caret-position="17">
+              <caret line="1" column="34" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Xargo.toml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -131,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Xargo.toml" />
         <option value="$PROJECT_DIR$/.cargo/config" />
         <option value="$PROJECT_DIR$/doc/DevelNotes.md" />
         <option value="$PROJECT_DIR$/src/fileio.rs" />
@@ -140,6 +150,7 @@
         <option value="$PROJECT_DIR$/src/chunk.rs" />
         <option value="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" />
         <option value="$PROJECT_DIR$/src/main.rs" />
+        <option value="$PROJECT_DIR$/Xargo.toml" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
       </list>
     </option>
@@ -209,7 +220,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.build">
+  <component name="RunManager" selected="Cargo Command.run (local)">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="cargo run --package vustreamproxy --bin vustreamproxy --target=x86_64-pc-windows-gnu" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -309,7 +320,7 @@
       <workItem from="1553517988262" duration="13178000" />
       <workItem from="1553676632341" duration="1434000" />
       <workItem from="1553764224446" duration="99101000" />
-      <workItem from="1554109711206" duration="7920000" />
+      <workItem from="1554109711206" duration="11419000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -521,11 +532,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554112855487</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="local patched openssl-src does the trick of compiling with mipsel">
+      <created>1554127103097</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1554127103097</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126141000" />
+    <option name="totallyTimeSpent" value="129640000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -598,7 +616,6 @@
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="parse /fwd/ route" />
     <MESSAGE value="conditional compilation for the video box" />
     <MESSAGE value="conditional compilation for the video box refined" />
     <MESSAGE value="fixed warnings" />
@@ -623,7 +640,8 @@
     <MESSAGE value="implementing a stdio streaming reader for the ChunkStream" />
     <MESSAGE value="runs fine, but not on mipsel" />
     <MESSAGE value="compiles for mipsel. prepared reqwest integration, but openssl fails" />
-    <option name="LAST_COMMIT_MESSAGE" value="compiles for mipsel. prepared reqwest integration, but openssl fails" />
+    <MESSAGE value="local patched openssl-src does the trick of compiling with mipsel" />
+    <option name="LAST_COMMIT_MESSAGE" value="local patched openssl-src does the trick of compiling with mipsel" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -646,30 +664,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libcore/iter/traits/iterator.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="1013" column="7" selection-start-line="1013" selection-start-column="7" selection-end-line="1013" selection-end-column="7" />
-          <folding>
-            <element signature="e#35177#35178#0" expanded="true" />
-            <element signature="e#35210#35211#0" expanded="true" />
-            <element signature="e#58#59#0" expanded="true" />
-            <element signature="e#82#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-0.1.25/src/future/result.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="47" column="7" selection-start-line="47" selection-start-column="7" selection-end-line="47" selection-end-column="7" />
-          <folding>
-            <element signature="e#1396#1397#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/futures-0.1.25/src/future/chain.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-269" />
@@ -993,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/chunk.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/.cargo_vcs_info.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1020,10 +1007,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/chunk.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="101" column="9" selection-start-line="101" selection-start-column="9" selection-end-line="101" selection-end-column="9" />
+        <state relative-caret-position="409">
+          <caret line="101" selection-start-line="101" selection-end-line="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.cargo/config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1034,10 +1035,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Xargo.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Cargo.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="51">
+          <caret line="3" column="30" lean-forward="true" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
         </state>
       </provider>
     </entry>
