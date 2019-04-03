@@ -1,0 +1,4 @@
+diff B D:/Users/Jedzia.pubsiX/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-src-111.2.1+1.1.1b/src/lib.rs E:/Projects/Rust/vuduo2/vustreamproxy/dependencies/openssl-src-111.2.1+1.1.1b/src/lib.rs
+83a84,85
+>         } else if target.contains("mipsel-unknown-linux-gnu") {
+>             configure.arg(&format!("--prefix={}", sanitize_sh(&install_dir)));

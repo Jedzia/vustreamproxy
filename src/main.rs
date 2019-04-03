@@ -9,9 +9,13 @@ extern crate log;
 extern crate bytes;
 extern crate futures;
 extern crate hyper;
+extern crate regex;
 extern crate pretty_env_logger;
 //extern crate reqwest;
 //extern crate tokio;
+
+#[macro_use]
+extern crate lazy_static;
 
 use futures::{future, Async, Poll};
 use hyper::rt::{Future, Stream};
@@ -30,6 +34,9 @@ use futures::future::FutureResult;
 use std::io;
 use std::io::prelude::*;
 use std::process::{Command, Stdio};
+
+use regex::Regex;
+use std::borrow::Cow;
 
 mod chunk;
 mod fileio;
@@ -70,6 +77,17 @@ fn reduce_forwarded_uri(uri: &Uri) -> String {
     result
 }
 
+fn reformat_dates(before: &str) -> Cow<str> {
+    lazy_static! {
+        static ref ISO8601_DATE_REGEX : Regex = Regex::new(
+            //r"(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})"
+            //r"/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
+            r"(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
+            ).unwrap();
+    }
+    ISO8601_DATE_REGEX.replace_all(before, "FUCK YA")
+}
+
 /// We need to return different futures depending on the route matched,
 /// and we can do that with an enum, such as `futures::Either`, or with
 /// trait objects.
@@ -92,12 +110,19 @@ fn echo(req: Request<Body>) -> BoxFut {
                 //let forwarded_uri = Uri::from_static(&req_uri);
                 *response.body_mut() = Body::from("Lets forward: ".to_owned() + &req_uri);
 
-                /*let body = reqwest::get(req_uri.as_str())//.unwrap();
+                let body = reqwest::get(req_uri.as_str())//.unwrap();
                     .expect(&format!("cannot get '{}'", &req_uri))
                     .text()//.unwrap();
                     .expect(&format!("cannot get text for '{}'", &req_uri));
 
-                println!("body = {}", body);*/
+                println!("body = {}", body);
+
+                /*let re_weburl = Regex::new(
+                    r"/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
+                );*/
+
+                let after = reformat_dates(&body);
+                println!("body = {}", after);
             }
         }
         _ => {}
