@@ -3,7 +3,7 @@ REM set PATH=C:\Toolchain\MIPS\gcc-4.9.2-mips-unknown-linux-gnu\bin;C:\Toolchain
 set PATH=C:\Toolchain\MIPS\mips-2016.05\bin;C:\Toolchain\mingw-w64\x86_64-6.2.0-posix-seh-rt_v5-rev1\mingw64\bin;C:\msys64\usr\bin;%PATH%
 
 set CC=mips-linux-gnu-gcc
-set CFLAGS_mipsel-unknown-linux-gnu=-EL -mips32
+set CFLAGS_mipsel-unknown-linux-gnu=-EL -mips32 -msoft-float
 set AR_mipsel-unknown-linux-gnu=mips-linux-gnu-ar
 
 set MAKEFLAGS=-j8

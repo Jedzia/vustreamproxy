@@ -453,13 +453,26 @@ fn main() -> Result<(), Box<dyn Error>> {
     let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
     println!("  env: cert_dir {:?}", cert_dir);
 
+    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
     env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+    //env::set_var("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt");
+    env::set_var("SSL_CERT_FILE", "/media/hdd/jedzia/rust/ca-bundle.trust.crt");
+
+    if cfg!(target_os = "windows") {
+        //env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+        env::set_var(
+            "SSL_CERT_FILE",
+            r"C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt",
+        );
+        // set SSL_CERT_FILE=C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt
+    }
 
     println!("After env::set_var");
     let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
     println!("  env: cert_file {:?}", cert_file);
     let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
     println!("  env: cert_dir {:?}", cert_dir);
+
 
     /*    //let cert_file_path = "/etc/ssl/certs/ca-certificates.crt";
         let cert_file_path = "/media/hdd/jedzia/rust/GIAG2.crt";
@@ -470,8 +483,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     */
 
     testOpenSSL();
-    return Ok(());
 
+    println!("===== TestBody =====");
     let body = reqwest::Client::builder()
         .danger_accept_invalid_hostnames(true)
         .danger_accept_invalid_certs(true)
@@ -484,7 +497,9 @@ fn main() -> Result<(), Box<dyn Error>> {
         .text()
         .unwrap();
 
-    println!("body = {}", body);
+    //let bla = body.lines().take(3).collect::<String>();
+    println!("body = {}", body.lines().take(1).collect::<String>());
+    return Ok(());
 
     let in_addr = get_in_addr();
 
@@ -550,10 +565,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-extern crate openssl;
 
-//#cfg!(target_os = "windows")
+/*//#cfg!(target_os = "windows")
 fn testOpenSSL1() {
+    extern crate openssl;
     use openssl::rsa::{Padding, Rsa};
 
     let rsa = Rsa::generate(2048).unwrap();
@@ -562,11 +577,13 @@ fn testOpenSSL1() {
     let mut buf = vec![0; rsa.size() as usize];
     let encrypted_len = rsa.public_encrypt(data, &mut buf, Padding::PKCS1).unwrap();
     println!("encripted {:?}", buf);
-}
+}*/
 
 fn testOpenSSL() {
+    extern crate openssl;
+    println!("===== testOpenSSL =====");
 
-    use openssl::ssl::{SslMethod, SslConnector};
+    use openssl::ssl::{SslConnector, SslMethod};
     use std::io::{Read, Write};
     use std::net::TcpStream;
 
@@ -578,5 +595,11 @@ fn testOpenSSL() {
     stream.write_all(b"GET / HTTP/1.0\r\n\r\n").unwrap();
     let mut res = vec![];
     stream.read_to_end(&mut res).unwrap();
-    println!("{}", String::from_utf8_lossy(&res));
+    println!(
+        "{}",
+        String::from_utf8_lossy(&res)
+            .lines()
+            .take(3)
+            .collect::<String>()
+    );
 }

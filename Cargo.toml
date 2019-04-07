@@ -32,9 +32,9 @@ openssl-probe = "0.1.2"
 
 [target.'cfg(target_os = "windows")'.dependencies]
 openssl = { version = "0.10.20" }
-#openssl-sys = { version = "0.9.12" }
 
 [target.'cfg(target_os = "linux")'.dependencies]
+# openssl needs vendored feature to build from openssl-sys for mips target
 openssl = { version = "0.10.20", features = ["vendored"] }
 #openssl = { version = "0.10.20", features = ["vendored"] }
 #openssl-sys = { version = "0.9.12", features = ["vendored"] }
