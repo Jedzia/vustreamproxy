@@ -1,3 +1,25 @@
+content header
+
+    const config = {
+      headers: {
+        accept: 'application/json',
+      },
+      data: {},
+    };
+or
+    const config = {
+      headers: {
+        'Content-Type':  'application/json',
+      },
+      body: myBodyVariable
+    };
+
+https://gist.github.com/dtrce/1204243/47b9adf3c398dbcf092378c1f036c579aed76426
+    response.writeHead(200, {
+            'Content-Type': 'audio/mpeg',
+            'Content-Length': stat.size
+        });
+
 https://github.com/hyperium/hyper/issues/1468
 
 I think you're in luck. (And me; I've been wanting this too.) Looks like 0.12.x is going to add it. See Body::wrap_stream on master and #1438.
