@@ -82,7 +82,8 @@ fn reformat_dates(before: &str) -> Cow<str> {
         static ref ISO8601_DATE_REGEX : Regex = Regex::new(
             //r"(?P<y>\d{4})-(?P<m>\d{2})-(?P<d>\d{2})"
             //r"/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
-            r"(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
+            //r"(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
+            r"(https?://(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)*.(\.ogg))"
             ).unwrap();
     }
     ISO8601_DATE_REGEX.replace_all(before, "FUCK YA")
@@ -121,8 +122,22 @@ fn echo(req: Request<Body>) -> BoxFut {
                     r"/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
                 );*/
 
+                // check if there is an alternative to the ogg-vorbis stream
+                // when true, then prioritize the mp3 over it
+                // else create a reference to the mp3 forwarding endpoint
+
+                // SSL Certificates on the host are important. make shure:
+                //   ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+                //   ENV SSL_CERT_DIR=/etc/ssl/certs
+                // are set.
+
                 let after = reformat_dates(&body);
-                println!("body = {}", after);
+                //println!("body = {}", after);
+                //let chunk = Chunk::from(after);
+                //*response.body_mut() = Body::from(after.to_string());
+                *response.body_mut() = Body::from(after.to_string());
+                *response.body_mut() = Body::from("got regex");
+                return Box::new(future::ok(response));
             }
         }
         _ => {}
@@ -399,6 +414,15 @@ fn main() -> Result<(), Box<dyn Error>> {
     //f.read_to_string(&mut buffer)?;
 
     //let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
+
+    /*extern crate openssl_static_sys = "openssl-static-sys";
+    if cfg!(target_os = "linux") {
+        openssl_static_sys::init_ssl_cert_env_vars();
+    }*/
+
+    extern crate openssl_probe;
+    let ssl = openssl_probe::init_ssl_cert_env_vars();
+    println!("cert {:?}", ssl);
 
     let in_addr = get_in_addr();
 

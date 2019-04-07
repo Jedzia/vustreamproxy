@@ -6,7 +6,7 @@ std = {features = ["panic_unwind"]}
 #openssl-sys = { version = "0.9.12", features = ["vendored"] }
 
 #[mipsel-unknown-linux-gnu.patch.crates-io]
-#openssl-src = { path = './dependencies/openssl-src-111.2.1+1.1.1b' }
+#openssl-src = { path = './dependencies/openssl-src-rs' }
 
 [build]
 target = "mipsel-unknown-linux-gnu"
