@@ -9,8 +9,8 @@ extern crate log;
 extern crate bytes;
 extern crate futures;
 extern crate hyper;
-extern crate regex;
 extern crate pretty_env_logger;
+extern crate regex;
 //extern crate reqwest;
 //extern crate tokio;
 
@@ -111,10 +111,22 @@ fn echo(req: Request<Body>) -> BoxFut {
                 //let forwarded_uri = Uri::from_static(&req_uri);
                 *response.body_mut() = Body::from("Lets forward: ".to_owned() + &req_uri);
 
-                let body = reqwest::get(req_uri.as_str())//.unwrap();
-                    .expect(&format!("cannot get '{}'", &req_uri))
-                    .text()//.unwrap();
-                    .expect(&format!("cannot get text for '{}'", &req_uri));
+                /*let body = reqwest::get(req_uri.as_str())//.unwrap();
+                //.danger_disable_certs_verification()
+                .expect(&format!("cannot get '{}'", &req_uri))
+                .text()//.unwrap();
+                .expect(&format!("cannot get text for '{}'", &req_uri));*/
+
+                let body = reqwest::Client::builder()
+                    .danger_accept_invalid_hostnames(true)
+                    .danger_accept_invalid_certs(true)
+                    .build()
+                    .unwrap()
+                    .get("https://www.google.de/")
+                    .send()
+                    .unwrap()
+                    .text()
+                    .unwrap();
 
                 println!("body = {}", body);
 
@@ -410,6 +422,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     pretty_env_logger::init();
 
+    //testOpenSSL();
+
     //let mut buffer = String::new();
     //f.read_to_string(&mut buffer)?;
 
@@ -420,9 +434,57 @@ fn main() -> Result<(), Box<dyn Error>> {
         openssl_static_sys::init_ssl_cert_env_vars();
     }*/
 
+    use std::env;
+    use std::fs;
+    use std::path::PathBuf;
+    println!("Entry");
+    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
+    println!("  env: cert_file {:?}", cert_file);
+    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
+    println!("  env: cert_dir {:?}", cert_dir);
+
     extern crate openssl_probe;
     let ssl = openssl_probe::init_ssl_cert_env_vars();
     println!("cert {:?}", ssl);
+
+    println!("After openssl_probe");
+    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
+    println!("  env: cert_file {:?}", cert_file);
+    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
+    println!("  env: cert_dir {:?}", cert_dir);
+
+    env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+
+    println!("After env::set_var");
+    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
+    println!("  env: cert_file {:?}", cert_file);
+    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
+    println!("  env: cert_dir {:?}", cert_dir);
+
+    /*    //let cert_file_path = "/etc/ssl/certs/ca-certificates.crt";
+        let cert_file_path = "/media/hdd/jedzia/rust/GIAG2.crt";
+        let mut buf = Vec::new();
+        File::open(cert_file_path).unwrap().read_to_end(&mut buf).unwrap();
+        let cert = reqwest::Certificate::from_der(&buf).unwrap();
+        println!("  cert {:?}", cert);
+    */
+
+    testOpenSSL();
+    return Ok(());
+
+    let body = reqwest::Client::builder()
+        .danger_accept_invalid_hostnames(true)
+        .danger_accept_invalid_certs(true)
+        //.add_root_certificate(cert)
+        .build()
+        .unwrap()
+        .get("https://www.google.de/")
+        .send()
+        .unwrap()
+        .text()
+        .unwrap();
+
+    println!("body = {}", body);
 
     let in_addr = get_in_addr();
 
@@ -486,4 +548,35 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     println!("finished.");
     Ok(())
+}
+
+extern crate openssl;
+
+//#cfg!(target_os = "windows")
+fn testOpenSSL1() {
+    use openssl::rsa::{Padding, Rsa};
+
+    let rsa = Rsa::generate(2048).unwrap();
+    let data = b"foobar";
+    println!("data {:?}", data);
+    let mut buf = vec![0; rsa.size() as usize];
+    let encrypted_len = rsa.public_encrypt(data, &mut buf, Padding::PKCS1).unwrap();
+    println!("encripted {:?}", buf);
+}
+
+fn testOpenSSL() {
+
+    use openssl::ssl::{SslMethod, SslConnector};
+    use std::io::{Read, Write};
+    use std::net::TcpStream;
+
+    let connector = SslConnector::builder(SslMethod::tls()).unwrap().build();
+
+    let stream = TcpStream::connect("google.com:443").unwrap();
+    let mut stream = connector.connect("google.com", stream).unwrap();
+
+    stream.write_all(b"GET / HTTP/1.0\r\n\r\n").unwrap();
+    let mut res = vec![];
+    stream.read_to_end(&mut res).unwrap();
+    println!("{}", String::from_utf8_lossy(&res));
 }
