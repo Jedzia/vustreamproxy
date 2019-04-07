@@ -15,9 +15,9 @@
   <component name="ChangeListManager">
     <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" beforeDir="false" afterPath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" beforeDir="false" afterPath="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="582" lean-forward="true" selection-start-line="582" selection-end-line="582" />
+            <state relative-caret-position="244">
+              <caret line="488" column="10" selection-start-line="488" selection-start-column="10" selection-end-line="488" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -41,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/src/stream.rs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2145">
-              <caret line="269" lean-forward="true" selection-start-line="269" selection-end-line="269" />
+              <caret line="269" selection-start-line="269" selection-end-line="269" />
             </state>
           </provider>
         </entry>
@@ -58,17 +58,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cargo.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="60" selection-start-line="5" selection-end-line="5" selection-end-column="60" />
+            <state relative-caret-position="247">
+              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -83,19 +74,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/Cargo.toml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="332">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
+            <state relative-caret-position="437">
+              <caret line="77" column="37" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -105,15 +87,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="119">
               <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.cargo/config">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -179,7 +152,6 @@
         <option value="$PROJECT_DIR$/Xargo.toml" />
         <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/Cargo.toml" />
         <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/crypto/bio/b_addr.c" />
-        <option value="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" />
         <option value="$PROJECT_DIR$/doc/DevelNotes.md" />
         <option value="$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.43/build/main.rs" />
         <option value="$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/Cargo.toml" />
@@ -188,6 +160,7 @@
         <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
         <option value="$PROJECT_DIR$/src/main.rs" />
+        <option value="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" />
       </list>
     </option>
   </component>
@@ -310,24 +283,6 @@
               <item name="openssl-src" type="20ee2d1f:SyntheticLibraryElementNode" />
               <item name="openssl-src-rs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl-sys" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl-sys" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="openssl-sys-0.9.43" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl-sys" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="openssl-sys-0.9.43" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
@@ -463,7 +418,7 @@
       </envs>
       <method v="2" />
     </configuration>
-    <configuration name="run (local)" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+    <configuration name="run (local) SSL ENV" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package vustreamproxy --bin vustreamproxy --target=x86_64-pc-windows-gnu" />
       <option name="allFeatures" value="false" />
@@ -476,6 +431,21 @@
         <env name="PATH" value="C:\Toolchain\mingw-w64\x86_64-6.2.0-posix-seh-rt_v5-rev1\mingw64\bin;C:\msys64\usr\bin" />
         <env name="AR" value="x86_64-w64-mingw32-gcc-ar" />
         <env name="SSL_CERT_FILE" value="C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt" />
+      </envs>
+      <method v="2" />
+    </configuration>
+    <configuration name="run (local)" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="channel" value="DEFAULT" />
+      <option name="command" value="run --package vustreamproxy --bin vustreamproxy --target=x86_64-pc-windows-gnu" />
+      <option name="allFeatures" value="false" />
+      <option name="nocapture" value="false" />
+      <option name="backtrace" value="SHORT" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$" />
+      <envs>
+        <env name="CC" value="x86_64-w64-mingw32-gcc" />
+        <env name="RUSTFLAGS" value="-LC:/Toolchain/mingw-w64/x86_64-6.2.0-posix-seh-rt_v5-rev1/mingw64/lib" />
+        <env name="PATH" value="C:\Toolchain\mingw-w64\x86_64-6.2.0-posix-seh-rt_v5-rev1\mingw64\bin;C:\msys64\usr\bin" />
+        <env name="AR" value="x86_64-w64-mingw32-gcc-ar" />
       </envs>
       <method v="2" />
     </configuration>
@@ -497,6 +467,7 @@
       <item itemvalue="Cargo Command.build" />
       <item itemvalue="Cargo Command.run" />
       <item itemvalue="Cargo Command.run (local)" />
+      <item itemvalue="Cargo Command.run (local) SSL ENV" />
       <item itemvalue="Cargo Command.example regex" />
       <item itemvalue="GDB Remote Debug.remote debug on vuduo2x" />
     </list>
@@ -523,7 +494,7 @@
       <workItem from="1553676632341" duration="1434000" />
       <workItem from="1553764224446" duration="99101000" />
       <workItem from="1554109711206" duration="25455000" />
-      <workItem from="1554564914881" duration="37262000" />
+      <workItem from="1554564914881" duration="39053000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -753,7 +724,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180938000" />
+    <option name="totallyTimeSpent" value="182729000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -768,7 +739,7 @@
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.19616205" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.19616205" />
       <window_info x="-610" y="-47" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
       <window_info id="Favorites" order="2" sideWeight="0.39517346" side_tool="true" type="SLIDING" weight="0.35607675" />
       <window_info id="Designer" order="3" />
@@ -779,7 +750,7 @@
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49307036" weight="0.32883817" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7334755" visible="true" weight="0.31224066" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7334755" weight="0.31224066" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6977612" weight="0.39834026" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -924,9 +895,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libunwind/Cargo.toml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/bytes-0.4.12/src/buf/reader.rs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -968,13 +936,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CLion 2018.3.2 D Language.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
@@ -1192,45 +1153,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="82" selection-start-line="82" selection-end-line="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Xargo.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.cargo/config">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="60" selection-start-line="5" selection-end-line="5" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="222">
           <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Cargo.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
@@ -1261,7 +1187,7 @@
     <entry file="file://$PROJECT_DIR$/src/stream.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2145">
-          <caret line="269" lean-forward="true" selection-start-line="269" selection-end-line="269" />
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
         </state>
       </provider>
     </entry>
@@ -1272,10 +1198,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="77" column="37" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rust-shell-pc-windows-gnu.bat">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="5" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CLion 2018.3.2 D Language.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Cargo.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.cargo/config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Xargo.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="43" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="582" lean-forward="true" selection-start-line="582" selection-end-line="582" />
+        <state relative-caret-position="244">
+          <caret line="488" column="10" selection-start-line="488" selection-start-column="10" selection-end-line="488" selection-end-column="10" />
         </state>
       </provider>
     </entry>

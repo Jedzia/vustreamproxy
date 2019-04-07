@@ -453,7 +453,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
     println!("  env: cert_dir {:?}", cert_dir);
 
-    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
+/*    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
     env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
     //env::set_var("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt");
     env::set_var("SSL_CERT_FILE", "/media/hdd/jedzia/rust/ca-bundle.trust.crt");
@@ -466,7 +466,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         );
         // set SSL_CERT_FILE=C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt
     }
-
+*/
     println!("After env::set_var");
     let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
     println!("  env: cert_file {:?}", cert_file);
@@ -486,8 +486,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     println!("===== TestBody =====");
     let body = reqwest::Client::builder()
-        .danger_accept_invalid_hostnames(true)
-        .danger_accept_invalid_certs(true)
+        //.danger_accept_invalid_hostnames(true)
+        //.danger_accept_invalid_certs(true)
         //.add_root_certificate(cert)
         .build()
         .unwrap()
@@ -580,7 +580,7 @@ fn testOpenSSL1() {
 }*/
 
 fn testOpenSSL() {
-    extern crate openssl;
+/*    extern crate openssl;
     println!("===== testOpenSSL =====");
 
     use openssl::ssl::{SslConnector, SslMethod};
@@ -601,5 +601,5 @@ fn testOpenSSL() {
             .lines()
             .take(3)
             .collect::<String>()
-    );
+    );*/
 }
