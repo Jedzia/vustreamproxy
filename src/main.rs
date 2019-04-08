@@ -422,8 +422,8 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     pretty_env_logger::init();
 
-    //testOpenSSL();
-    //fun
+    //fun_with_ssl();
+    //return Ok(());
 
     /*
     // helps when certificates are not found
@@ -616,5 +616,4 @@ fn fun_with_ssl() {
     //return Ok(());
     testOpenSSL();
     testGoogleSSL();
-    //return Ok(());
 }

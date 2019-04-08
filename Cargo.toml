@@ -34,16 +34,19 @@ lazy_static = "1.3.0"
 #openssl = { version = "0.10" }
 
 [target.'cfg(target_os = "linux")'.dependencies]
-# openssl needs vendored feature to build from openssl-sys for mips target
+# linked against ENV OPENSSL_DIR
 openssl = { version = "0.10" }
+# openssl uses openssl-src for local build
 #openssl = { version = "0.10", features = ["vendored"] }
+
 #openssl = { version = "0.10", features = ["vendored"] }
 #openssl-sys = { version = "0.9.12", features = ["vendored"] }
 #openssl-sys = { version = "0.9.43", features = ["vendored"] }
 
 [patch.crates-io]
+# when compiling local openssl use our MSYS fixed version
 #openssl-src = { path = './dependencies/openssl-src-rs' }
-# openssl-sys needs a local fixed variant for MinGW builds ... or look at
+# openssl-sys needs a local fixed variant for MinGW builds ... or set
 # env("OPENSSL_LIBS"); "ssl", "crypto" -> "ssl:crypto"
 #openssl-sys = { path = './dependencies/openssl-sys-0.9.43' }
 

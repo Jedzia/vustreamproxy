@@ -1,4 +1,5 @@
-call C:\D\dmd2vars64ldc2.bat
+REM call C:\D\dmd2vars64ldc2.bat
+set HOME=%USERPROFILE%
 
 set PATH=C:\Toolchain\MIPS\mips-2016.05\bin;C:\Toolchain\mingw-w64\x86_64-6.2.0-posix-seh-rt_v5-rev1\mingw64\bin;C:\msys64\usr\bin;%PATH%
 
