@@ -13,14 +13,9 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" beforeDir="false" afterPath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" beforeDir="false" afterPath="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,8 +31,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3508">
-              <caret line="617" column="20" lean-forward="true" selection-start-line="617" selection-start-column="20" selection-end-line="617" selection-end-column="20" />
+            <state relative-caret-position="188">
+              <caret line="114" column="35" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/test/shlibloadtest.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="38" column="30" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="30" />
+              <folding>
+                <element signature="e#1263#1839#0" expanded="true" />
+                <element signature="e#2378#8132#0" expanded="true" />
+                <element signature="e#9301#9335#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -45,7 +54,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stream.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="581">
+            <state relative-caret-position="683">
               <caret line="269" selection-start-line="269" selection-end-line="269" />
             </state>
           </provider>
@@ -60,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cargo.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="213">
-              <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+            <state relative-caret-position="332">
+              <caret line="41" column="62" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -89,9 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>size</find>
-      <find>bufmut</find>
-      <find>BufMut</find>
       <find>SIZE</find>
       <find>const</find>
       <find>8 * 1024</find>
@@ -119,13 +125,16 @@
       <find>no-shared</find>
       <find>/fwd</find>
       <find>testGoogleSSL</find>
+      <find>dlopen</find>
+      <find>test_lib</find>
+      <find>SHLIB_INIT</find>
     </findStrings>
     <replaceStrings>
       <replace />
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -148,6 +157,7 @@
         <option value="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" />
         <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -193,7 +203,15 @@
               <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
               <item name="dependencies" type="462c0819:PsiDirectoryNode" />
               <item name="openssl-src-rs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="openssl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
+              <item name="dependencies" type="462c0819:PsiDirectoryNode" />
+              <item name="openssl-src-rs" type="462c0819:PsiDirectoryNode" />
+              <item name="openssl" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
@@ -208,46 +226,6 @@
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
               <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -418,7 +396,7 @@
       <workItem from="1554109711206" duration="25455000" />
       <workItem from="1554564914881" duration="39053000" />
       <workItem from="1554659161324" duration="8388000" />
-      <workItem from="1554715153743" duration="1502000" />
+      <workItem from="1554715153743" duration="3508000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -644,11 +622,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554130687149</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Link against target specific OpenSSL.">
+      <created>1554716865555</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1554716865556</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="192619000" />
+    <option name="totallyTimeSpent" value="194625000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -661,7 +646,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.20042644" />
       <window_info x="-610" y="-47" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
@@ -726,7 +710,6 @@
       <path value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/krb5" />
       <path value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/pyca-cryptography" />
     </ignored-roots>
-    <MESSAGE value="conditional compilation for the video box refined" />
     <MESSAGE value="fixed warnings" />
     <MESSAGE value="refactored into functions" />
     <MESSAGE value="working buffered mp3 convert from online ressource" />
@@ -751,7 +734,8 @@
     <MESSAGE value="compiles for mipsel. prepared reqwest integration, but openssl fails" />
     <MESSAGE value="local patched openssl-src does the trick of compiling with mipsel" />
     <MESSAGE value="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched" />
-    <option name="LAST_COMMIT_MESSAGE" value="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched" />
+    <MESSAGE value="Link against target specific OpenSSL." />
+    <option name="LAST_COMMIT_MESSAGE" value="Link against target specific OpenSSL." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -819,16 +803,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libunwind/build.rs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/src/into_url.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/.cargo_vcs_info.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1150,13 +1124,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stream.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="269" selection-start-line="269" selection-end-line="269" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/chunk.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2405">
@@ -1164,17 +1131,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.rs">
+    <entry file="file://$PROJECT_DIR$/Cargo.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3508">
-          <caret line="617" column="20" lean-forward="true" selection-start-line="617" selection-start-column="20" selection-end-line="617" selection-end-column="20" />
+        <state relative-caret-position="332">
+          <caret line="41" column="62" selection-start-line="41" selection-start-column="62" selection-end-line="41" selection-end-column="62" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cargo.toml">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="30" column="1" selection-start-line="30" selection-start-column="1" selection-end-line="30" selection-end-column="1" />
+        <state relative-caret-position="51">
+          <caret line="3" column="5" lean-forward="true" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stream.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="114" column="35" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/test/shlibloadtest.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="38" column="30" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="30" />
+          <folding>
+            <element signature="e#1263#1839#0" expanded="true" />
+            <element signature="e#2378#8132#0" expanded="true" />
+            <element signature="e#9301#9335#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
