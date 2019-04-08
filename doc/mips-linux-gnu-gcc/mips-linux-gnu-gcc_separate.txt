@@ -1,0 +1,73 @@
+The following options take separate arguments:
+  --CLASSPATH                 This switch lacks documentation
+  --assert                    This switch lacks documentation
+  --bootclasspath             This switch lacks documentation
+  --classpath                 This switch lacks documentation
+  --define-macro              This switch lacks documentation
+  --dump                      This switch lacks documentation
+  --dumpbase                  This switch lacks documentation
+  --dumpdir                   This switch lacks documentation
+  --encoding                  This switch lacks documentation
+  --extdirs                   This switch lacks documentation
+  --imacros                   This switch lacks documentation
+  --include                   This switch lacks documentation
+  --include-directory         This switch lacks documentation
+  --include-directory-after   This switch lacks documentation
+  --include-prefix            This switch lacks documentation
+  --include-with-prefix       This switch lacks documentation
+  --include-with-prefix-after This switch lacks documentation
+  --include-with-prefix-before This switch lacks documentation
+  --output                    This switch lacks documentation
+  --output-class-directory    This switch lacks documentation
+  --output-pch=               This switch lacks documentation
+  --param <param>=<value>     Set parameter <param> to value.  See below for a
+                              complete list of parameters
+  --resource                  This switch lacks documentation
+  --undefine-macro            This switch lacks documentation
+  --write-dependencies        This switch lacks documentation
+  --write-user-dependencies   This switch lacks documentation
+  -A<question>=<answer>       Assert the <answer> to <question>.  Putting '-'
+                              before <question> disables the <answer> to
+                              <question>
+  -CLASSPATH                  This switch lacks documentation
+  -D<macro>[=<val>]           Define a <macro> with <val> as its value.  If
+                              just <macro> is given, <val> is taken to be 1
+  -F <dir>                    Add <dir> to the end of the main framework
+                              include path
+  -G<number>                  Put global and static data smaller than <number>
+                              bytes into a special section (on some targets)
+  -I <dir>                    Add <dir> to the end of the main include path
+  -J<directory>               Put MODULE files in 'directory'
+  -L                          This switch lacks documentation
+  -MD                         Generate make dependencies and compile
+  -MF <file>                  Write dependency output to the given file
+  -MMD                        Like -MD but ignore system header files
+  -MQ <target>                Add a MAKE-quoted target
+  -MT <target>                Add an unquoted target
+  -U<macro>                   Undefine <macro>
+  -aux-info <file>            Emit declaration information into <file>
+  -auxbase                    This switch lacks documentation
+  -auxbase-strip              This switch lacks documentation
+  -bootclasspath              This switch lacks documentation
+  -classpath                  This switch lacks documentation
+  -d<letters>                 Enable dumps from specific passes of the compiler
+  -dumpbase <file>            Set the file basename to be used for dumps
+  -dumpdir <dir>              Set the directory name to be used for dumps
+  -encoding                   This switch lacks documentation
+  -faux-classpath             This switch lacks documentation
+  -fintrinsic-modules-path    Specify where to find the compiled intrinsic
+                              modules
+  -gnatO                      Set name of output ALI file (internal switch)
+  -idirafter <dir>            Add <dir> to the end of the system include path
+  -imacros <file>             Accept definition of macros in <file>
+  -imultiarch <dir>           Set <dir> to be the multiarch include subdirectory
+  -imultilib <dir>            Set <dir> to be the multilib include subdirectory
+  -include <file>             Include the contents of <file> before other files
+  -iprefix <path>             Specify <path> as a prefix for next two options
+  -iquote <dir>               Add <dir> to the end of the quote include path
+  -isysroot <dir>             Set <dir> to be the system root directory
+  -isystem <dir>              Add <dir> to the start of the system include path
+  -iwithprefix <dir>          Add <dir> to the end of the system include path
+  -iwithprefixbefore <dir>    Add <dir> to the end of the main include path
+  -o <file>                   Place output into <file>
+

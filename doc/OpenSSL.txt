@@ -1,0 +1,134 @@
+     Running `E:\Projects\Rust\vuduo2\vustreamproxy\target\debug\build\openssl-sys-4da9428c7de06e0a\build-script-main`
+[openssl-sys 0.9.43] cargo:rustc-cfg=const_fn
+[openssl-sys 0.9.43] CC_mipsel-unknown-linux-gnu = None
+[openssl-sys 0.9.43] CC_mipsel_unknown_linux_gnu = None
+[openssl-sys 0.9.43] TARGET_CC = None
+[openssl-sys 0.9.43] CC = Some("mips-linux-gnu-gcc")
+[openssl-sys 0.9.43] CFLAGS_mipsel-unknown-linux-gnu = Some("-EL -mips32 -msoft-float")
+[openssl-sys 0.9.43] CRATE_CC_NO_DEFAULTS = None
+[openssl-sys 0.9.43] DEBUG = Some("true")
+[openssl-sys 0.9.43] CARGO_CFG_TARGET_FEATURE = None
+[openssl-sys 0.9.43] running "perl" "./Configure" "--prefix=/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b46
+50529be942/out/openssl-build/install" "no-dso" "no-ssl3" "no-unit-test" "no-comp" "no-zlib" "no-zlib-dynamic" "no-engine" "no-async" "no-shared" "linux-mips32"
+"-O2" "-ffunction-sections" "-fdata-sections" "-fPIC" "-g" "-fno-omit-frame-pointer" "-EL" "-mips32" "-msoft-float"
+[openssl-sys 0.9.43] Configuring OpenSSL version 1.1.1b (0x1010102fL) for linux-mips32
+[openssl-sys 0.9.43] Using os-specific seed configuration
+[openssl-sys 0.9.43] Creating configdata.pm
+[openssl-sys 0.9.43] Creating Makefile
+[openssl-sys 0.9.43]
+[openssl-sys 0.9.43] **********************************************************************
+[openssl-sys 0.9.43] ***                                                                ***
+[openssl-sys 0.9.43] ***   OpenSSL has been successfully configured                     ***
+[openssl-sys 0.9.43] ***                                                                ***
+[openssl-sys 0.9.43] ***   If you encounter a problem while building, please open an    ***
+[openssl-sys 0.9.43] ***   issue on GitHub <https://github.com/openssl/openssl/issues>  ***
+[openssl-sys 0.9.43] ***   and include the output from the following command:           ***
+[openssl-sys 0.9.43] ***                                                                ***
+[openssl-sys 0.9.43] ***       perl configdata.pm --dump                                ***
+[openssl-sys 0.9.43] ***                                                                ***
+[openssl-sys 0.9.43] ***   (If you are new to OpenSSL, you might want to consult the    ***
+[openssl-sys 0.9.43] ***   'Troubleshooting' section in the INSTALL file first)         ***
+[openssl-sys 0.9.43] ***                                                                ***
+[openssl-sys 0.9.43] **********************************************************************
+[openssl-sys 0.9.43] running "make" "depend"
+[openssl-sys 0.9.43] running "make"
+[openssl-sys 0.9.43] /usr/bin/perl "-I." -Mconfigdata "util/dofile.pl" \
+[openssl-sys 0.9.43]     "-oMakefile" crypto/include/internal/bn_conf.h.in > crypto/include/internal/bn_conf.h
+[openssl-sys 0.9.43] /usr/bin/perl "-I." -Mconfigdata "util/dofile.pl" \
+[openssl-sys 0.9.43]     "-oMakefile" crypto/include/internal/dso_conf.h.in > crypto/include/internal/dso_conf.h
+[openssl-sys 0.9.43] /usr/bin/perl "-I." -Mconfigdata "util/dofile.pl" \
+[openssl-sys 0.9.43]     "-oMakefile" include/openssl/opensslconf.h.in > include/openssl/opensslconf.h
+[openssl-sys 0.9.43] make depend && make _all
+[openssl-sys 0.9.43] make[1]: Entering directory '/e/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942
+/out/openssl-build/build/src'
+[openssl-sys 0.9.43] make[1]: Leaving directory '/e/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/
+out/openssl-build/build/src'
+[openssl-sys 0.9.43] make[1]: Entering directory '/e/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942
+/out/openssl-build/build/src'
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-sections -fPIC -g -fno
+-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPENSSLDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENGINESDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-1.1\"" -DNDEBUG
+-MMD -MF apps/app_rand.d.tmp -MT apps/app_rand.o -c -o apps/app_rand.o apps/app_rand.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-sections -fPIC -g -fno
+-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPENSSLDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENGINESDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-1.1\"" -DNDEBUG
+-MMD -MF apps/apps.d.tmp -MT apps/apps.o -c -o apps/apps.o apps/apps.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-sections -fPIC -g -fno
+-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPENSSLDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENGINESDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-1.1\"" -DNDEBUG
+-MMD -MF apps/bf_prefix.d.tmp -MT apps/bf_prefix.o -c -o apps/bf_prefix.o apps/bf_prefix.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-sections -fPIC -g -fno
+-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPENSSLDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENGINESDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-1.1\"" -DNDEBUG
+-MMD -MF apps/opt.d.tmp -MT apps/opt.o -c -o apps/opt.o apps/opt.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-sections -fPIC -g -fno
+-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPENSSLDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENGINESDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-1.1\"" -DNDEBUG
+-MMD -MF apps/s_cb.d.tmp -MT apps/s_cb.o -c -o apps/s_cb.o apps/s_cb.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-sections -fPIC -g -fno
+-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPENSSLDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENGINESDIR="\"/E/Pro
+jects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-1.1\"" -DNDEBUG
+-MMD -MF apps/s_socket.d.tmp -MT apps/s_socket.o -c -o apps/s_socket.o apps/s_socket.c
+[openssl-sys 0.9.43] CC="mips-linux-gnu-gcc" /usr/bin/perl crypto/aes/asm/aes-mips.pl o32 crypto/aes/aes-mips.S
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_cbc.d.tmp -MT crypto/aes/aes_cbc.o -c -o crypto/aes/aes_cbc.o crypto/aes/aes_cbc.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_cfb.d.tmp -MT crypto/aes/aes_cfb.o -c -o crypto/aes/aes_cfb.o crypto/aes/aes_cfb.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_ecb.d.tmp -MT crypto/aes/aes_ecb.o -c -o crypto/aes/aes_ecb.o crypto/aes/aes_ecb.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_ige.d.tmp -MT crypto/aes/aes_ige.o -c -o crypto/aes/aes_ige.o crypto/aes/aes_ige.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_misc.d.tmp -MT crypto/aes/aes_misc.o -c -o crypto/aes/aes_misc.o crypto/aes/aes_misc.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_ofb.d.tmp -MT crypto/aes/aes_ofb.o -c -o crypto/aes/aes_ofb.o crypto/aes/aes_ofb.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aes/aes_wrap.d.tmp -MT crypto/aes/aes_wrap.o -c -o crypto/aes/aes_wrap.o crypto/aes/aes_wrap.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/aria/aria.d.tmp -MT crypto/aria/aria.o -c -o crypto/aria/aria.o crypto/aria/aria.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/asn1/a_bitstr.d.tmp -MT crypto/asn1/a_bitstr.o -c -o crypto/asn1/a_bitstr.o crypto/asn1/a_bitstr.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/asn1/a_d2i_fp.d.tmp -MT crypto/asn1/a_d2i_fp.o -c -o crypto/asn1/a_d2i_fp.o crypto/asn1/a_d2i_fp.c
+[openssl-sys 0.9.43] mips-linux-gnu-gcc  -I. -Icrypto/include -Iinclude -fPIC -pthread -mabi=32 -Wa,--noexecstack -Wall -O3 -O2 -ffunction-sections -fdata-secti
+ons -fPIC -g -fno-omit-frame-pointer -EL -mips32 -msoft-float -DOPENSSL_USE_NODELETE -DOPENSSL_PIC -DOPENSSL_BN_ASM_MONT -DSHA1_ASM -DSHA256_ASM -DAES_ASM -DOPE
+NSSLDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/ssl\"" -DENG
+INESDIR="\"/E/Projects/Rust/vuduo2/vustreamproxy/target/mipsel-unknown-linux-gnu/debug/build/openssl-sys-576b4650529be942/out/openssl-build/install/lib/engines-
+1.1\"" -DNDEBUG  -MMD -MF crypto/asn1/a_digest.d.tmp -MT crypto/asn1/a_digest.o -c -o crypto/asn1/a_digest.o crypto/asn1/a_digest.c
+    Building [===================================================>   ] 195/204: openssl-sys(build)

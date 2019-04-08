@@ -1,0 +1,375 @@
+The --param option recognizes the following as parameters:
+  predictable-branch-outcome  Maximal estimated outcome of branch considered
+                              predictable
+  inline-min-speedup          The minimal estimated speedup allowing inliner to
+                              ignore inline-insns-single and inline-isnsns-auto
+  max-inline-insns-single     The maximum number of instructions in a single
+                              function eligible for inlining
+  max-inline-insns-auto       The maximum number of instructions when
+                              automatically inlining
+  max-inline-insns-recursive  The maximum number of instructions inline
+                              function can grow to via recursive inlining
+  max-inline-insns-recursive-auto The maximum number of instructions non-inline
+                              function can grow to via recursive inlining
+  max-inline-recursive-depth  The maximum depth of recursive inlining for
+                              inline functions
+  max-inline-recursive-depth-auto The maximum depth of recursive inlining for
+                              non-inline functions
+  min-inline-recursive-probability Inline recursively only when the probability
+                              of call being executed exceeds the parameter
+  max-early-inliner-iterations The maximum number of nested indirect inlining
+                              performed by early inliner
+  comdat-sharing-probability  Probability that COMDAT function will be shared
+                              with different compilation unit
+  partial-inlining-entry-probability Maximum probability of the entry BB of
+                              split region (in percent relative to entry BB of
+                              the function) to make partial inlining happen
+  max-variable-expansions-in-unroller If -fvariable-expansion-in-unroller is
+                              used, the maximum number of times that an
+                              individual variable will be expanded during loop
+                              unrolling
+  min-vect-loop-bound         If -ftree-vectorize is used, the minimal loop
+                              bound of a loop to be considered for vectorization
+  max-delay-slot-insn-search  The maximum number of instructions to consider to
+                              fill a delay slot
+  max-delay-slot-live-search  The maximum number of instructions to consider to
+                              find accurate live register information
+  max-pending-list-length     The maximum length of scheduling's pending
+                              operations list
+  max-modulo-backtrack-attempts The maximum number of backtrack attempts the
+                              scheduler should make when modulo scheduling a
+                              loop
+  large-function-insns        The size of function body to be considered large
+  large-function-growth       Maximal growth due to inlining of large function
+                              (in percent)
+  large-unit-insns            The size of translation unit to be considered
+                              large
+  inline-unit-growth          How much can given compilation unit grow because
+                              of the inlining (in percent)
+  ipcp-unit-growth            How much can given compilation unit grow because
+                              of the interprocedural constant propagation (in
+                              percent)
+  early-inlining-insns        Maximal estimated growth of function body caused
+                              by early inlining of single call
+  large-stack-frame           The size of stack frame to be considered large
+  large-stack-frame-growth    Maximal stack frame growth due to inlining (in
+                              percent)
+  max-gcse-memory             The maximum amount of memory to be allocated by
+                              GCSE
+  max-gcse-insertion-ratio    The maximum ratio of insertions to deletions of
+                              expressions in GCSE
+  gcse-after-reload-partial-fraction The threshold ratio for performing partial
+                              redundancy elimination after reload
+  gcse-after-reload-critical-fraction The threshold ratio of critical edges
+                              execution count that permit performing redundancy
+                              elimination after reload
+  gcse-cost-distance-ratio    Scaling factor in calculation of maximum distance
+                              an expression can be moved by GCSE optimizations
+  gcse-unrestricted-cost      Cost at which GCSE optimizations will not
+                              constraint the distance an expression can travel
+  max-hoist-depth             Maximum depth of search in the dominator tree for
+                              expressions to hoist
+  max-unrolled-insns          The maximum number of instructions to consider to
+                              unroll in a loop
+  max-average-unrolled-insns  The maximum number of instructions to consider to
+                              unroll in a loop on average
+  max-unroll-times            The maximum number of unrollings of a single loop
+  max-peeled-insns            The maximum number of insns of a peeled loop
+  max-peel-times              The maximum number of peelings of a single loop
+  max-peel-branches           The maximum number of branches on the path
+                              through the peeled sequence
+  max-completely-peeled-insns The maximum number of insns of a completely
+                              peeled loop
+  max-completely-peel-times   The maximum number of peelings of a single loop
+                              that is peeled completely
+  max-once-peeled-insns       The maximum number of insns of a peeled loop that
+                              rolls only once
+  max-completely-peel-loop-nest-depth The maximum depth of a loop nest we
+                              completely peel
+  max-unswitch-insns          The maximum number of insns of an unswitched loop
+  max-unswitch-level          The maximum number of unswitchings in a single
+                              loop
+  max-iterations-to-track     Bound on the number of iterations the brute force
+                              # of iterations analysis algorithm evaluates
+  max-iterations-computation-cost Bound on the cost of an expression to compute
+                              the number of iterations
+  sms-max-ii-factor           A factor for tuning the upper bound that swing
+                              modulo scheduler uses for scheduling a loop
+  sms-min-sc                  The minimum value of stage count that swing
+                              modulo scheduler will generate.
+  sms-dfa-history             The number of cycles the swing modulo scheduler
+                              considers when checking conflicts using DFA
+  sms-loop-average-count-threshold A threshold on the average loop count
+                              considered by the swing modulo scheduler
+  hot-bb-count-ws-permille    A basic block profile count is considered hot if
+                              it contributes to the given permillage of the
+                              entire profiled execution
+  hot-bb-frequency-fraction   Select fraction of the maximal frequency of
+                              executions of basic block in function given basic
+                              block needs to have to be considered hot
+  unlikely-bb-count-fraction  The minimum fraction of profile runs a given
+                              basic block execution count must be not to be
+                              considered unlikely
+  align-threshold             Select fraction of the maximal frequency of
+                              executions of basic block in function given basic
+                              block get alignment
+  align-loop-iterations       Loops iterating at least selected number of
+                              iterations will get loop alignement.
+  max-predicted-iterations    The maximum number of loop iterations we predict
+                              statically
+  builtin-expect-probability  Set the estimated probability in percentage for
+                              builtin expect. The default value is 90%
+                              probability.
+  tracer-dynamic-coverage-feedback The percentage of function, weighted by
+                              execution frequency, that must be covered by
+                              trace formation. Used when profile feedback is
+                              available
+  tracer-dynamic-coverage     The percentage of function, weighted by execution
+                              frequency, that must be covered by trace
+                              formation. Used when profile feedback is not
+                              available
+  tracer-max-code-growth      Maximal code growth caused by tail duplication
+                              (in percent)
+  tracer-min-branch-ratio     Stop reverse growth if the reverse probability of
+                              best edge is less than this threshold (in percent)
+  tracer-min-branch-probability-feedback Stop forward growth if the probability
+                              of best edge is less than this threshold (in
+                              percent). Used when profile feedback is available
+  tracer-min-branch-probability Stop forward growth if the probability of best
+                              edge is less than this threshold (in percent).
+                              Used when profile feedback is not available
+  max-crossjump-edges         The maximum number of incoming edges to consider
+                              for crossjumping
+  min-crossjump-insns         The minimum number of matching instructions to
+                              consider for crossjumping
+  max-grow-copy-bb-insns      The maximum expansion factor when copying basic
+                              blocks
+  max-goto-duplication-insns  The maximum number of insns to duplicate when
+                              unfactoring computed gotos
+  max-cse-path-length         The maximum length of path considered in cse
+  max-cse-insns               The maximum instructions CSE process before
+                              flushing
+  lim-expensive               The minimum cost of an expensive expression in
+                              the loop invariant motion
+  iv-consider-all-candidates-bound Bound on number of candidates below that all
+                              candidates are considered in iv optimizations
+  iv-max-considered-uses      Bound on number of iv uses in loop optimized in
+                              iv optimizations
+  iv-always-prune-cand-set-bound If number of candidates in the set is smaller,
+                              we always try to remove unused ivs during its
+                              optimization
+  scev-max-expr-size          Bound on size of expressions used in the scalar
+                              evolutions analyzer
+  scev-max-expr-complexity    Bound on the complexity of the expressions in the
+                              scalar evolutions analyzer
+  omega-max-vars              Bound on the number of variables in Omega
+                              constraint systems
+  omega-max-geqs              Bound on the number of inequalities in Omega
+                              constraint systems
+  omega-max-eqs               Bound on the number of equalities in Omega
+                              constraint systems
+  omega-max-wild-cards        Bound on the number of wild cards in Omega
+                              constraint systems
+  omega-hash-table-size       Bound on the size of the hash table in Omega
+                              constraint systems
+  omega-max-keys              Bound on the number of keys in Omega constraint
+                              systems
+  omega-eliminate-redundant-constraints When set to 1, use expensive methods to
+                              eliminate all redundant constraints
+  vect-max-version-for-alignment-checks Bound on number of runtime checks
+                              inserted by the vectorizer's loop versioning for
+                              alignment check
+  vect-max-version-for-alias-checks Bound on number of runtime checks inserted
+                              by the vectorizer's loop versioning for alias
+                              check
+  vect-max-peeling-for-alignment Max number of loop peels to enhancement
+                              alignment of data references in a loop
+  max-cselib-memory-locations The maximum memory locations recorded by cselib
+  ggc-min-expand              Minimum heap expansion to trigger garbage
+                              collection, as a percentage of the total size of
+                              the heap
+  ggc-min-heapsize            Minimum heap size before we start collecting
+                              garbage, in kilobytes
+  max-reload-search-insns     The maximum number of instructions to search
+                              backward when looking for equivalent reload
+  sink-frequency-threshold    Target block's relative execution frequency (as a
+                              percentage) required to sink a statement
+  max-sched-region-blocks     The maximum number of blocks in a region to be
+                              considered for interblock scheduling
+  max-sched-region-insns      The maximum number of insns in a region to be
+                              considered for interblock scheduling
+  max-pipeline-region-blocks  The maximum number of blocks in a region to be
+                              considered for interblock scheduling
+  max-pipeline-region-insns   The maximum number of insns in a region to be
+                              considered for interblock scheduling
+  min-spec-prob               The minimum probability of reaching a source
+                              block for interblock speculative scheduling
+  max-sched-extend-regions-iters The maximum number of iterations through CFG
+                              to extend regions
+  max-sched-insn-conflict-delay The maximum conflict delay for an insn to be
+                              considered for speculative motion
+  sched-spec-prob-cutoff      The minimal probability of speculation success
+                              (in percents), so that speculative insn will be
+                              scheduled.
+  sched-state-edge-prob-cutoff The minimum probability an edge must have for
+                              the scheduler to save its state across it.
+  selsched-max-lookahead      The maximum size of the lookahead window of
+                              selective scheduling
+  selsched-max-sched-times    Maximum number of times that an insn could be
+                              scheduled
+  selsched-insns-to-rename    Maximum number of instructions in the ready list
+                              that are considered eligible for renaming
+  sched-mem-true-dep-cost     Minimal distance between possibly conflicting
+                              store and load
+  sched-autopref-queue-depth  Hardware autoprefetcher scheduler model control
+                              flag.  Number of lookahead cycles the model looks
+                              into; at '0' only enable instruction sorting
+                              heuristic.  Disabled by default.
+  max-last-value-rtl          The maximum number of RTL nodes that can be
+                              recorded as combiner's last value
+  max-combine-insns           The maximum number of insns combine tries to
+                              combine
+  integer-share-limit         The upper bound for sharing integer constants
+  ssp-buffer-size             The lower bound for a buffer to be considered for
+                              stack smashing protection
+  min-size-for-stack-sharing  The minimum size of variables taking part in
+                              stack slot sharing when not optimizing
+  max-jump-thread-duplication-stmts Maximum number of statements allowed in a
+                              block that needs to be duplicated when threading
+                              jumps
+  max-fields-for-field-sensitive Maximum number of fields in a structure before
+                              pointer analysis treats the structure as a single
+                              variable
+  max-sched-ready-insns       The maximum number of instructions ready to be
+                              issued to be considered by the scheduler during
+                              the first scheduling pass
+  max-dse-active-local-stores Maximum number of active local stores in RTL dead
+                              store elimination
+  prefetch-latency            The number of insns executed before prefetch is
+                              completed
+  simultaneous-prefetches     The number of prefetches that can run at the same
+                              time
+  l1-cache-size               The size of L1 cache
+  l1-cache-line-size          The size of L1 cache line
+  l2-cache-size               The size of L2 cache
+  use-canonical-types         Whether to use canonical types
+  max-partial-antic-length    Maximum length of partial antic set when
+                              performing tree pre optimization
+  sccvn-max-scc-size          Maximum size of a SCC before SCCVN stops
+                              processing a function
+  sccvn-max-alias-queries-per-access Maximum number of disambiguations to
+                              perform per memory access
+  ira-max-loops-num           Max loops number for regional RA
+  ira-max-conflict-table-size Max size of conflict table in MB
+  ira-loop-reserved-regs      The number of registers in each class kept unused
+                              by loop invariant motion
+  lra-max-considered-reload-pseudos The max number of reload pseudos which are
+                              considered during spilling a non-reload pseudo
+  lra-inheritance-ebb-probability-cutoff Minimal fall-through edge probability
+                              in percentage used to add BB to inheritance EBB
+                              in LRA
+  switch-conversion-max-branch-ratio The maximum ratio between array size and
+                              switch branches for a switch conversion to take
+                              place
+  loop-block-tile-size        size of tiles for loop blocking
+  loop-unroll-jam-size        size of unrolling factor for unroll-and-jam
+  loop-unroll-jam-depth       depth of unrolled loop for unroll-and-jam
+  graphite-max-nb-scop-params maximum number of parameters in a SCoP
+  graphite-max-bbs-per-function maximum number of basic blocks per function to
+                              be analyzed by Graphite
+  loop-max-datarefs-for-datadeps Maximum number of datarefs in loop for
+                              building loop data dependencies
+  loop-invariant-max-bbs-in-loop Max basic blocks number in loop for loop
+                              invariant motion
+  profile-func-internal-id    use internal function id in profile lookup
+  indir-call-topn-profile     track topn target addresses in indirect-call
+                              profile
+  slp-max-insns-in-bb         Maximum number of instructions in basic block to
+                              be considered for SLP vectorization
+  min-insn-to-prefetch-ratio  Min. ratio of insns to prefetches to enable
+                              prefetching for a loop with an unknown trip count
+  prefetch-min-insn-to-mem-ratio Min. ratio of insns to mem ops to enable
+                              prefetching in a loop
+  max-vartrack-size           Max. size of var tracking hash tables
+  max-vartrack-expr-depth     Max. recursion depth for expanding var tracking
+                              expressions
+  max-vartrack-reverse-op-size Max. size of loc list for which reverse ops
+                              should be added
+  min-nondebug-insn-uid       The minimum UID to be used for a nondebug insn
+  ipa-sra-ptr-growth-factor   Maximum allowed growth of size of new parameters
+                              ipa-sra replaces a pointer to an aggregate with
+  tm-max-aggregate-size       Size in bytes after which thread-local aggregates
+                              should be instrumented with the logging functions
+                              instead of save/restore pairs
+  sra-max-scalarization-size-Ospeed Maximum size, in storage units, of an
+                              aggregate which should be considered for
+                              scalarization when compiling for speed
+  sra-max-scalarization-size-Osize Maximum size, in storage units, of an
+                              aggregate which should be considered for
+                              scalarization when compiling for size
+  ipa-cp-value-list-size      Maximum size of a list of values associated with
+                              each parameter for interprocedural constant
+                              propagation
+  ipa-cp-eval-threshold       Threshold ipa-cp opportunity evaluation that is
+                              still considered beneficial to clone.
+  ipa-cp-recursion-penalty    Percentage penalty the recursive functions will
+                              receive when they are evaluated for cloning.
+  ipa-cp-single-call-penalty  Percentage penalty functions containg a single
+                              call to another function will receive when they
+                              are evaluated for cloning.
+  ipa-max-agg-items           Maximum number of aggregate content items for a
+                              parameter in jump functions and lattices
+  ipa-cp-loop-hint-bonus      Compile-time bonus IPA-CP assigns to candidates
+                              which make loop bounds or strides known.
+  ipa-cp-array-index-hint-bonus Compile-time bonus IPA-CP assigns to candidates
+                              which make an array index known.
+  ipa-max-aa-steps            Maximum number of statements that will be visited
+                              by IPA formal parameter analysis based on alias
+                              analysis in any given function
+  lto-partitions              Number of partitions the program should be split
+                              to
+  lto-min-partition           Minimal size of a partition for LTO (in estimated
+                              instructions)
+  cxx-max-namespaces-for-diagnostic-help Maximum number of namespaces to search
+                              for alternatives when name lookup fails
+  max-stores-to-sink          Maximum number of conditional store pairs that
+                              can be sunk
+  case-values-threshold       The smallest number of different values for which
+                              it is best to use a jump-table instead of a tree
+                              of conditional branches, if 0, use the default
+                              for the machine
+  allow-store-data-races      Allow new data races on stores to be introduced
+  tree-reassoc-width          Set the maximum number of instructions executed
+                              in parallel in reassociated tree. If 0, use the
+                              target dependent heuristic.
+  max-tail-merge-comparisons  Maximum amount of similar bbs to compare a bb with
+  max-tail-merge-iterations   Maximum amount of iterations of the pass over a
+                              function
+  max-tracked-strlens         Maximum number of strings for which strlen
+                              optimization pass will track string lengths
+  sched-pressure-algorithm    Which -fsched-pressure algorithm to apply
+  max-slsr-cand-scan          Maximum length of candidate scans for straight-
+                              line strength reduction
+  asan-stack                  Enable asan stack protection
+  asan-globals                Enable asan globals protection
+  asan-instrument-writes      Enable asan store operations protection
+  asan-instrument-reads       Enable asan load operations protection
+  asan-memintrin              Enable asan builtin functions protection
+  asan-use-after-return       Enable asan detection of use-after-return bugs
+  asan-instrumentation-with-call-threshold Use callbacks instead of inline code
+                              if number of accesses in function becomes greater
+                              or equal to this number
+  uninit-control-dep-attempts Maximum number of nested calls to search for
+                              control dependencies during uninitialized
+                              variable analysis
+  chkp-max-ctor-size          Maximum number of statements to be included into
+                              a single static constructor generated by Pointer
+                              Bounds Checker
+  max-fsm-thread-path-insns   Maximum number of instructions to copy when
+                              duplicating blocks on a finite state automaton
+                              jump thread path
+  max-fsm-thread-length       Maximum number of basic blocks on a finite state
+                              automaton jump thread path
+  max-fsm-thread-paths        Maximum number of new jump thread paths to create
+                              for a finite state automaton
+

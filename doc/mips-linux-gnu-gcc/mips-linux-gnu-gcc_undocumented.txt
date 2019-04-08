@@ -1,0 +1,28 @@
+The following options are not documented:
+  --preprocess                This switch lacks documentation
+  -E                          This switch lacks documentation
+  -MD_                        This switch lacks documentation
+  -MMD_                       This switch lacks documentation
+  -Wimport                    This switch lacks documentation
+  -Wlarger-than-              This switch lacks documentation
+  -Wpsabi                     This switch lacks documentation
+  -cpp=                       This switch lacks documentation
+  -fallow-leading-underscore  This switch lacks documentation
+  -faux-classpath             This switch lacks documentation
+  -fbuilding-libgcc           This switch lacks documentation
+  -fsaw-java-file             This switch lacks documentation
+  -fsource-filename=          This switch lacks documentation
+  -ftemplate-depth-           This switch lacks documentation
+  -fuse-linker-plugin         This switch lacks documentation
+  -gant                       Catch typos
+  -lang-asm                   This switch lacks documentation
+  -mdebug                     This switch lacks documentation
+  -mdebugd                    This switch lacks documentation
+  -std=c++0x                  Deprecated in favor of -std=c++11
+  -std=c++14                  Conform to the ISO 2014 C++ standard
+                              (experimental and incomplete support)
+  -std=c++17                  This switch lacks documentation
+  -std=c++1y                  Deprecated in favor of -std=c++14
+  -std=gnu++17                This switch lacks documentation
+  -std=gnu++1y                This switch lacks documentation
+

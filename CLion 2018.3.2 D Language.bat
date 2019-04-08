@@ -6,6 +6,8 @@ set CC=mips-linux-gnu-gcc
 set CFLAGS_mipsel-unknown-linux-gnu=-EL -mips32 -msoft-float
 set AR_mipsel-unknown-linux-gnu=mips-linux-gnu-ar
 
+set OPENSSL_DIR=C:\Toolchain\MIPS\openssl\usr
+
 set MAKEFLAGS=-j8
 
 start "" "C:\Program Files\JetBrains\CLion 2018.3.2\bin\clion64.exe"

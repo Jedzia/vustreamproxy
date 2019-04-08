@@ -28,20 +28,21 @@ reqwest = { version = "0.9.12", features = ["tls"] }
 regex = "1.1.5"
 lazy_static = "1.3.0"
 #openssl-static-sys = { git = "git://github.com/alexcrichton/openssl-static-sys" }
-openssl-probe = "0.1.2"
+#openssl-probe = "0.1.2"
 
 #[target.'cfg(target_os = "windows")'.dependencies]
 #openssl = { version = "0.10" }
 
 [target.'cfg(target_os = "linux")'.dependencies]
 # openssl needs vendored feature to build from openssl-sys for mips target
-openssl = { version = "0.10", features = ["vendored"] }
+openssl = { version = "0.10" }
+#openssl = { version = "0.10", features = ["vendored"] }
 #openssl = { version = "0.10", features = ["vendored"] }
 #openssl-sys = { version = "0.9.12", features = ["vendored"] }
 #openssl-sys = { version = "0.9.43", features = ["vendored"] }
 
 [patch.crates-io]
-openssl-src = { path = './dependencies/openssl-src-rs' }
+#openssl-src = { path = './dependencies/openssl-src-rs' }
 # openssl-sys needs a local fixed variant for MinGW builds ... or look at
 # env("OPENSSL_LIBS"); "ssl", "crypto" -> "ssl:crypto"
 #openssl-sys = { path = './dependencies/openssl-sys-0.9.43' }

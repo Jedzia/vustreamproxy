@@ -4,8 +4,5 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/dependencies/openssl-src-rs" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/boringssl" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/krb5" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/pyca-cryptography" vcs="Git" />
   </component>
 </project>

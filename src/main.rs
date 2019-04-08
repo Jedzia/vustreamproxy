@@ -111,24 +111,24 @@ fn echo(req: Request<Body>) -> BoxFut {
                 //let forwarded_uri = Uri::from_static(&req_uri);
                 *response.body_mut() = Body::from("Lets forward: ".to_owned() + &req_uri);
 
-                /*let body = reqwest::get(req_uri.as_str())//.unwrap();
-                //.danger_disable_certs_verification()
-                .expect(&format!("cannot get '{}'", &req_uri))
-                .text()//.unwrap();
-                .expect(&format!("cannot get text for '{}'", &req_uri));*/
+                let body = reqwest::get(req_uri.as_str()) //.unwrap();
+                    //.danger_disable_certs_verification()
+                    .expect(&format!("cannot get '{}'", &req_uri))
+                    .text() //.unwrap();
+                    .expect(&format!("cannot get text for '{}'", &req_uri));
 
-                let body = reqwest::Client::builder()
-                    .danger_accept_invalid_hostnames(true)
-                    .danger_accept_invalid_certs(true)
-                    .build()
-                    .unwrap()
-                    .get("https://www.google.de/")
-                    .send()
-                    .unwrap()
-                    .text()
-                    .unwrap();
+                /*let body = reqwest::Client::builder()
+                .danger_accept_invalid_hostnames(true)
+                .danger_accept_invalid_certs(true)
+                .build()
+                .unwrap()
+                .get("https://www.google.de/")
+                .send()
+                .unwrap()
+                .text()
+                .unwrap();*/
 
-                println!("body = {}", body);
+                println!("body = {}", body.lines().take(3).collect::<String>());
 
                 /*let re_weburl = Regex::new(
                     r"/^(?:(?:(?:https?|ftp):)?\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z0-9\u00a1-\uffff][a-z0-9\u00a1-\uffff_-]{0,62})?[a-z0-9\u00a1-\uffff]\.)+(?:[a-z\u00a1-\uffff]{2,}\.?))(?::\d{2,5})?(?:[/?#]\S*)?$/i"
@@ -148,7 +148,7 @@ fn echo(req: Request<Body>) -> BoxFut {
                 //let chunk = Chunk::from(after);
                 //*response.body_mut() = Body::from(after.to_string());
                 *response.body_mut() = Body::from(after.to_string());
-                *response.body_mut() = Body::from("got regex");
+                //*response.body_mut() = Body::from("got regex");
                 return Box::new(future::ok(response));
             }
         }
@@ -423,89 +423,18 @@ fn main() -> Result<(), Box<dyn Error>> {
     pretty_env_logger::init();
 
     //testOpenSSL();
+    //fun
+
+    /*
+    // helps when certificates are not found
+    extern crate openssl_probe;
+    let ssl = openssl_probe::init_ssl_cert_env_vars();
+    */
 
     //let mut buffer = String::new();
     //f.read_to_string(&mut buffer)?;
 
     //let in_addr: SocketAddr = ([127, 0, 0, 1], 3333).into();
-
-    /*extern crate openssl_static_sys = "openssl-static-sys";
-    if cfg!(target_os = "linux") {
-        openssl_static_sys::init_ssl_cert_env_vars();
-    }*/
-
-    use std::env;
-    use std::fs;
-    use std::path::PathBuf;
-    println!("Entry");
-    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
-    println!("  env: cert_file {:?}", cert_file);
-    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
-    println!("  env: cert_dir {:?}", cert_dir);
-
-    extern crate openssl_probe;
-    let ssl = openssl_probe::init_ssl_cert_env_vars();
-    //println!("ssl {:?}", ssl);
-
-    println!("After openssl_probe");
-    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
-    println!("  env: cert_file {:?}", cert_file);
-    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
-    println!("  env: cert_dir {:?}", cert_dir);
-
-    /*    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
-        env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
-        //env::set_var("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt");
-        env::set_var("SSL_CERT_FILE", "/media/hdd/jedzia/rust/ca-bundle.trust.crt");
-
-        if cfg!(target_os = "windows") {
-            //env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
-            env::set_var(
-                "SSL_CERT_FILE",
-                r"C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt",
-            );
-            // set SSL_CERT_FILE=C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt
-        }
-    */
-    println!("After env::set_var");
-    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
-    println!("  env: cert_file {:?}", cert_file);
-    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
-    println!("  env: cert_dir {:?}", cert_dir);
-
-    //let cert_file_path = "/etc/ssl/certs/ca-certificates.crt";
-    let mut cert_file_path = "/media/hdd/jedzia/rust/ca-bundle.trust.crt";
-    if cfg!(target_os = "windows") {
-        cert_file_path = r"\\VUDUO2X\Harddisk\jedzia\rust\ssl\ca-bundle.trust.crt";
-    }
-
-    let mut buf = Vec::new();
-    File::open(cert_file_path)
-        .unwrap()
-        .read_to_end(&mut buf)
-        .unwrap();
-    let cert = reqwest::Certificate::from_pem(&buf).unwrap();
-    println!("  cert {:?}", cert);
-
-    return Ok(());
-    testOpenSSL();
-
-    println!("===== TestBody =====");
-    let body = reqwest::Client::builder()
-        //.danger_accept_invalid_hostnames(true)
-        //.danger_accept_invalid_certs(true)
-        //.add_root_certificate(cert)
-        .build()
-        .unwrap()
-        .get("https://www.google.de/")
-        .send()
-        .unwrap()
-        .text()
-        .unwrap();
-
-    //let bla = body.lines().take(3).collect::<String>();
-    println!("body = {}", body.lines().take(1).collect::<String>());
-    return Ok(());
 
     let in_addr = get_in_addr();
 
@@ -607,4 +536,85 @@ fn testOpenSSL() {
             .take(3)
             .collect::<String>()
     );*/
+}
+
+fn testGoogleSSL() {
+    println!("===== TestBody =====");
+    let body = reqwest::Client::builder()
+        //.danger_accept_invalid_hostnames(true)
+        //.danger_accept_invalid_certs(true)
+        //.add_root_certificate(cert)
+        .build()
+        .unwrap()
+        .get("https://www.google.de/")
+        .send()
+        .unwrap()
+        .text()
+        .unwrap();
+
+    //let bla = body.lines().take(3).collect::<String>();
+    println!("body = {}", body.lines().take(1).collect::<String>());
+}
+
+fn fun_with_ssl() {
+    /*extern crate openssl_static_sys = "openssl-static-sys";
+    if cfg!(target_os = "linux") {
+        openssl_static_sys::init_ssl_cert_env_vars();
+    }*/
+
+    use std::env;
+    use std::fs;
+    use std::path::PathBuf;
+    println!("Entry");
+    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
+    println!("  env: cert_file {:?}", cert_file);
+    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
+    println!("  env: cert_dir {:?}", cert_dir);
+
+    //println!("ssl {:?}", ssl);
+
+    println!("After openssl_probe");
+    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
+    println!("  env: cert_file {:?}", cert_file);
+    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
+    println!("  env: cert_dir {:?}", cert_dir);
+
+    /*    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
+        env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+        //env::set_var("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt");
+        env::set_var("SSL_CERT_FILE", "/media/hdd/jedzia/rust/ca-bundle.trust.crt");
+
+        if cfg!(target_os = "windows") {
+            //env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+            env::set_var(
+                "SSL_CERT_FILE",
+                r"C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt",
+            );
+            // set SSL_CERT_FILE=C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt
+        }
+    */
+    println!("After env::set_var");
+    let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
+    println!("  env: cert_file {:?}", cert_file);
+    let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
+    println!("  env: cert_dir {:?}", cert_dir);
+
+    //let cert_file_path = "/etc/ssl/certs/ca-certificates.crt";
+    let mut cert_file_path = "/media/hdd/jedzia/rust/ca-bundle.trust.crt";
+    if cfg!(target_os = "windows") {
+        cert_file_path = r"\\VUDUO2X\Harddisk\jedzia\rust\ssl\ca-bundle.trust.crt";
+    }
+
+    /*let mut buf = Vec::new();
+    File::open(cert_file_path)
+        .unwrap()
+        .read_to_end(&mut buf)
+        .unwrap();
+    let cert = reqwest::Certificate::from_der(&buf).unwrap();
+    println!("  cert {:?}", cert);*/
+
+    //return Ok(());
+    testOpenSSL();
+    testGoogleSSL();
+    //return Ok(());
 }
