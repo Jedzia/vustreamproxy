@@ -445,7 +445,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     extern crate openssl_probe;
     let ssl = openssl_probe::init_ssl_cert_env_vars();
-    println!("cert {:?}", ssl);
+    //println!("ssl {:?}", ssl);
 
     println!("After openssl_probe");
     let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
@@ -453,35 +453,41 @@ fn main() -> Result<(), Box<dyn Error>> {
     let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
     println!("  env: cert_dir {:?}", cert_dir);
 
-/*    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
-    env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
-    //env::set_var("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt");
-    env::set_var("SSL_CERT_FILE", "/media/hdd/jedzia/rust/ca-bundle.trust.crt");
+    /*    // /media/hdd/jedzia/rust/ca-bundle.trust.crt
+        env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+        //env::set_var("SSL_CERT_FILE", "/etc/ssl/certs/ca-certificates.crt");
+        env::set_var("SSL_CERT_FILE", "/media/hdd/jedzia/rust/ca-bundle.trust.crt");
 
-    if cfg!(target_os = "windows") {
-        //env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
-        env::set_var(
-            "SSL_CERT_FILE",
-            r"C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt",
-        );
-        // set SSL_CERT_FILE=C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt
-    }
-*/
+        if cfg!(target_os = "windows") {
+            //env::set_var("SSL_CERT_DIR", "/etc/ssl/certs");
+            env::set_var(
+                "SSL_CERT_FILE",
+                r"C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt",
+            );
+            // set SSL_CERT_FILE=C:\msys64\etc\pki\ca-trust\extracted\openssl\ca-bundle.trust.crt
+        }
+    */
     println!("After env::set_var");
     let cert_file = env::var_os("SSL_CERT_FILE").map(PathBuf::from);
     println!("  env: cert_file {:?}", cert_file);
     let cert_dir = env::var_os("SSL_CERT_DIR").map(PathBuf::from);
     println!("  env: cert_dir {:?}", cert_dir);
 
+    //let cert_file_path = "/etc/ssl/certs/ca-certificates.crt";
+    let mut cert_file_path = "/media/hdd/jedzia/rust/ca-bundle.trust.crt";
+    if cfg!(target_os = "windows") {
+        cert_file_path = r"\\VUDUO2X\Harddisk\jedzia\rust\ssl\ca-bundle.trust.crt";
+    }
 
-    /*    //let cert_file_path = "/etc/ssl/certs/ca-certificates.crt";
-        let cert_file_path = "/media/hdd/jedzia/rust/GIAG2.crt";
-        let mut buf = Vec::new();
-        File::open(cert_file_path).unwrap().read_to_end(&mut buf).unwrap();
-        let cert = reqwest::Certificate::from_der(&buf).unwrap();
-        println!("  cert {:?}", cert);
-    */
+    let mut buf = Vec::new();
+    File::open(cert_file_path)
+        .unwrap()
+        .read_to_end(&mut buf)
+        .unwrap();
+    let cert = reqwest::Certificate::from_pem(&buf).unwrap();
+    println!("  cert {:?}", cert);
 
+    return Ok(());
     testOpenSSL();
 
     println!("===== TestBody =====");
@@ -565,7 +571,6 @@ fn main() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
-
 /*//#cfg!(target_os = "windows")
 fn testOpenSSL1() {
     extern crate openssl;
@@ -580,7 +585,7 @@ fn testOpenSSL1() {
 }*/
 
 fn testOpenSSL() {
-/*    extern crate openssl;
+    /*    extern crate openssl;
     println!("===== testOpenSSL =====");
 
     use openssl::ssl::{SslConnector, SslMethod};

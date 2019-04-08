@@ -14,9 +14,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" beforeDir="false" afterPath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" beforeDir="false" afterPath="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
     </list>
@@ -26,13 +23,34 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="vustreamproxy" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="488" column="10" selection-start-line="488" selection-start-column="10" selection-end-line="488" selection-end-column="10" />
+            <state relative-caret-position="431">
+              <caret line="487" selection-start-line="487" selection-end-line="487" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/src/tls.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/native-tls-0.2.2/src/lib.rs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="188" column="11" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -40,7 +58,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/stream.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2145">
+            <state relative-caret-position="581">
               <caret line="269" selection-start-line="269" selection-end-line="269" />
             </state>
           </provider>
@@ -49,8 +67,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/chunk.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="198" selection-start-line="197" selection-end-line="198" />
+            <state relative-caret-position="263">
+              <caret line="200" lean-forward="true" selection-start-line="197" selection-end-line="200" />
             </state>
           </provider>
         </entry>
@@ -58,8 +76,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Cargo.toml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
+            <state relative-caret-position="230">
+              <caret line="25" column="7" selection-start-line="25" selection-end-line="25" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -67,8 +85,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="375">
+              <caret line="136" column="12" selection-start-line="136" selection-start-column="12" selection-end-line="136" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -76,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="77" column="37" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="37" />
+            <state relative-caret-position="241">
+              <caret line="280" column="10" lean-forward="true" selection-start-line="280" selection-start-column="10" selection-end-line="280" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -102,10 +120,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>read_to_end</find>
-      <find>async</find>
-      <find>DEFAULT</find>
-      <find>asyncread</find>
       <find>async_stream</find>
       <find>print_lines</find>
       <find>size</find>
@@ -132,6 +146,10 @@
       <find>test</find>
       <find>re</find>
       <find>cfg</find>
+      <find>static</find>
+      <find>shared</find>
+      <find>dynamic</find>
+      <find>no-shared</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -155,12 +173,12 @@
         <option value="$PROJECT_DIR$/doc/DevelNotes.md" />
         <option value="$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.43/build/main.rs" />
         <option value="$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/Cargo.toml" />
-        <option value="$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs" />
         <option value="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" />
-        <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
-        <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" />
+        <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" />
+        <option value="$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs" />
+        <option value="$PROJECT_DIR$/src/main.rs" />
       </list>
     </option>
   </component>
@@ -243,28 +261,20 @@
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
             </path>
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="libcore" type="462c0819:PsiDirectoryNode" />
+              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="libcore" type="462c0819:PsiDirectoryNode" />
-              <item name="iter" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="core" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="libcore" type="462c0819:PsiDirectoryNode" />
-              <item name="iter" type="462c0819:PsiDirectoryNode" />
-              <item name="traits" type="462c0819:PsiDirectoryNode" />
+              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
@@ -301,32 +311,6 @@
               <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
               <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="async_impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="std" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="std" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="libstd" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="std" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="libstd" type="462c0819:PsiDirectoryNode" />
-              <item name="thread" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -340,7 +324,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="Debugger.Rust" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -354,7 +338,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.run">
+  <component name="RunManager" selected="Cargo Command.run (local)">
     <configuration name="remote debug on vuduo2x" type="CLion_Remote" remoteCommand="vuduo2x:9991" symbolFile="target/mipsel-unknown-linux-gnu/debug/vustreamproxy" sysroot="target/mipsel-unknown-linux-gnu/debug">
       <method v="2" />
     </configuration>
@@ -434,7 +418,7 @@
       </envs>
       <method v="2" />
     </configuration>
-    <configuration name="run (local)" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+    <configuration name="run (local)" type="CargoCommandRunConfiguration" factoryName="Cargo Command" singleton="false">
       <option name="channel" value="DEFAULT" />
       <option name="command" value="run --package vustreamproxy --bin vustreamproxy --target=x86_64-pc-windows-gnu" />
       <option name="allFeatures" value="false" />
@@ -495,6 +479,7 @@
       <workItem from="1553764224446" duration="99101000" />
       <workItem from="1554109711206" duration="25455000" />
       <workItem from="1554564914881" duration="39053000" />
+      <workItem from="1554659161324" duration="6803000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -724,7 +709,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="182729000" />
+    <option name="totallyTimeSpent" value="189532000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -737,9 +722,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.19616205" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.19829424" />
       <window_info x="-610" y="-47" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
       <window_info id="Favorites" order="2" sideWeight="0.39517346" side_tool="true" type="SLIDING" weight="0.35607675" />
       <window_info id="Designer" order="3" />
@@ -750,8 +734,8 @@
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49307036" weight="0.32883817" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7334755" weight="0.31224066" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.6977612" weight="0.39834026" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7318763" weight="0.31224066" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.69616205" visible="true" weight="0.39834026" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49733475" weight="0.32883817" />
@@ -760,7 +744,7 @@
       <window_info anchor="bottom" id="Tool Output" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.48560768" weight="0.32883817" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.26652452" side_tool="true" visible="true" weight="0.31224066" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.30383795" side_tool="true" visible="true" weight="0.39834026" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="14" />
       <window_info anchor="bottom" id="DB Execution Console" order="15" />
@@ -848,11 +832,6 @@
           <option name="timeStamp" value="20" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/src/main.rs</url>
-          <line>498</line>
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/src/async_impl/client.rs</url>
           <line>184</line>
           <option name="timeStamp" value="22" />
@@ -864,8 +843,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
           <url>file://$PROJECT_DIR$/src/main.rs</url>
-          <line>558</line>
+          <line>560</line>
           <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/src/main.rs</url>
+          <line>486</line>
+          <option name="timeStamp" value="25" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -895,9 +879,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/bytes-0.4.12/src/buf/reader.rs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libunwind/build.rs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -967,13 +948,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2015">
           <caret line="344" column="7" selection-start-line="344" selection-start-column="7" selection-end-line="344" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/src/tls.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="78" column="19" selection-start-line="78" selection-start-column="11" selection-end-line="78" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1153,13 +1127,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="222">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/WinJunked/Users/Jedzia.pubsiX/.rustup/toolchains/nightly-x86_64-pc-windows-gnu/lib/rustlib/src/rust/src/libcore/iter/traits/iterator.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -1184,27 +1151,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/stream.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2145">
-          <caret line="269" selection-start-line="269" selection-end-line="269" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/chunk.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="198" selection-start-line="197" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="77" column="37" selection-start-line="77" selection-start-column="22" selection-end-line="77" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rust-shell-pc-windows-gnu.bat">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1222,13 +1168,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Cargo.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="32" column="1" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.cargo/config">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1243,10 +1182,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Cargo.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="25" column="7" selection-start-line="25" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="136" column="12" selection-start-line="136" selection-start-column="12" selection-end-line="136" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="280" column="10" lean-forward="true" selection-start-line="280" selection-start-column="10" selection-end-line="280" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/stream.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="269" selection-start-line="269" selection-end-line="269" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/chunk.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="200" lean-forward="true" selection-start-line="197" selection-end-line="200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/reqwest-0.9.12/src/tls.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="31" lean-forward="true" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/native-tls-0.2.2/src/lib.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="188" column="11" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="488" column="10" selection-start-line="488" selection-start-column="10" selection-end-line="488" selection-end-column="10" />
+        <state relative-caret-position="431">
+          <caret line="487" selection-start-line="487" selection-end-line="487" />
         </state>
       </provider>
     </entry>
