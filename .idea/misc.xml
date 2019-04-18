@@ -6,6 +6,9 @@
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="xCLsmlSa" />
+  </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -42,5 +45,6 @@
   <component name="RustProjectSettings">
     <option name="compileAllTargets" value="false" />
     <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
 </project>

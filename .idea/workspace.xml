@@ -14,8 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" beforeDir="false" afterPath="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,17 +32,35 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
+            <state relative-caret-position="299">
+              <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CLion 2018.3.2 D Language.bat">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Cargo.toml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Cargo.toml">
+        <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="323">
+              <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -93,7 +112,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/dependencies/openssl-src-rs" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -110,12 +129,12 @@
         <option value="$PROJECT_DIR$/doc/DevelNotes.md" />
         <option value="$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.43/build/main.rs" />
         <option value="$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/Cargo.toml" />
-        <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" />
         <option value="$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs" />
         <option value="$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat" />
-        <option value="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" />
         <option value="$PROJECT_DIR$/src/main.rs" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/CLion 2018.3.2 D Language.bat" />
+        <option value="$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs" />
         <option value="$PROJECT_DIR$/Cargo.toml" />
       </list>
     </option>
@@ -134,7 +153,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -146,6 +164,24 @@
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
               <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
               <item name=".cargo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
+              <item name="dependencies" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
+              <item name="dependencies" type="462c0819:PsiDirectoryNode" />
+              <item name="openssl-src-rs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
+              <item name="dependencies" type="462c0819:PsiDirectoryNode" />
+              <item name="openssl-src-rs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
@@ -162,173 +198,11 @@
               <item name="vustreamproxy" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="futures" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="futures" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="futures-0.1.25" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="futures" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="futures-0.1.25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="futures" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="futures-0.1.25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="future" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="hyper-0.12.25" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="hyper-0.12.25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="hyper-0.12.25" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="hyper-tls-0.3.2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="hyper-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="hyper-tls-0.3.2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="native-tls" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="native-tls-0.2.2" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="imp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="openssl-0.10.20" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="openssl-0.10.20" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="openssl" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="openssl-0.10.20" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="ssl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="reqwest" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="reqwest-0.9.12" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="async_impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="std" type="20ee2d1f:SyntheticLibraryElementNode" />
-            </path>
-            <path>
-              <item name="vustreamproxy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
-              <item name="std" type="20ee2d1f:SyntheticLibraryElementNode" />
-              <item name="libstd" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -351,7 +225,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Cargo Command.run (local)">
+  <component name="RunManager" selected="Cargo Command.run">
     <configuration name="remote debug on vuduo2x" type="CLion_Remote" remoteCommand="vuduo2x:9991" symbolFile="target/mipsel-unknown-linux-gnu/debug/vustreamproxy" sysroot="target/mipsel-unknown-linux-gnu/debug">
       <method v="2" />
     </configuration>
@@ -459,13 +333,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Cargo Command.[release] run" />
       <item itemvalue="Cargo Command.[release] run (local)" />
+      <item itemvalue="Cargo Command.[release] run" />
       <item itemvalue="Cargo Command.build" />
-      <item itemvalue="Cargo Command.run" />
-      <item itemvalue="Cargo Command.run (local)" />
-      <item itemvalue="Cargo Command.run (local) SSL ENV" />
       <item itemvalue="Cargo Command.example regex" />
+      <item itemvalue="Cargo Command.run (local) SSL ENV" />
+      <item itemvalue="Cargo Command.run (local)" />
+      <item itemvalue="Cargo Command.run" />
       <item itemvalue="GDB Remote Debug.remote debug on vuduo2x" />
     </list>
     <recent_temporary>
@@ -494,6 +368,8 @@
       <workItem from="1554564914881" duration="39053000" />
       <workItem from="1554659161324" duration="8388000" />
       <workItem from="1554715153743" duration="3508000" />
+      <workItem from="1554845656645" duration="4000" />
+      <workItem from="1555576441362" duration="1098000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -726,11 +602,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554716865556</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="deps major numbers">
+      <created>1554745385272</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1554745385272</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="195773000" />
+    <option name="totallyTimeSpent" value="198713000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -744,7 +627,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.20255864" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.60482657" visible="true" weight="0.20682302" />
       <window_info x="-610" y="-47" width="605" height="1040" id="Structure" order="1" sideWeight="0.50151056" side_tool="true" type="FLOATING" visible="true" weight="0.32249466" />
       <window_info id="Favorites" order="2" sideWeight="0.39517346" side_tool="true" type="SLIDING" weight="0.35607675" />
       <window_info id="Designer" order="3" />
@@ -755,7 +638,7 @@
       <window_info id="UI Designer" order="8" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.49307036" weight="0.32883817" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7302772" visible="true" weight="0.31224066" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.72974414" weight="0.31224066" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.69616205" weight="0.39834026" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -765,7 +648,7 @@
       <window_info anchor="bottom" id="Tool Output" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.48560768" weight="0.32883817" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.26972282" side_tool="true" visible="true" weight="0.31224066" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.27025586" side_tool="true" visible="true" weight="0.31224066" />
       <window_info anchor="bottom" id="ANTLR Preview" order="13" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="14" />
       <window_info anchor="bottom" id="DB Execution Console" order="15" />
@@ -780,6 +663,7 @@
       <window_info anchor="bottom" id="Statistic" order="24" />
       <window_info anchor="bottom" id="Inspection Results" order="25" sideWeight="0.49733475" weight="0.32982087" />
       <window_info anchor="bottom" id="Messages" order="26" sideWeight="0.4946695" weight="0.32883817" />
+      <window_info anchor="right" id="make" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -807,7 +691,6 @@
       <path value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/krb5" />
       <path value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/pyca-cryptography" />
     </ignored-roots>
-    <MESSAGE value="fixed warnings" />
     <MESSAGE value="refactored into functions" />
     <MESSAGE value="working buffered mp3 convert from online ressource" />
     <MESSAGE value="before using tokio fuckup" />
@@ -832,7 +715,8 @@
     <MESSAGE value="local patched openssl-src does the trick of compiling with mipsel" />
     <MESSAGE value="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched" />
     <MESSAGE value="Link against target specific OpenSSL." />
-    <option name="LAST_COMMIT_MESSAGE" value="Link against target specific OpenSSL." />
+    <MESSAGE value="deps major numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="deps major numbers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1059,13 +943,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/Cargo.toml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/.cargo/registry/src/github.com-1ecc6299db9ec823/openssl-sys-0.9.43/build/main.rs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -1116,21 +993,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2244">
-          <caret line="136" column="12" selection-start-line="136" selection-start-column="12" selection-end-line="136" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dependencies/openssl-sys-0.9.43/build/main.rs" />
-    <entry file="file://$PROJECT_DIR$/CLion 2018.3.2 D Language.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rust-shell-mipsel-unknown-linux-gnu.bat">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1241,17 +1104,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/CLion 2018.3.2 D Language.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="70" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main.rs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="127" column="23" selection-start-line="127" selection-start-column="23" selection-end-line="127" selection-end-column="23" />
+        <state relative-caret-position="299">
+          <caret line="122" column="24" selection-start-line="122" selection-start-column="24" selection-end-line="122" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/Cargo.toml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Cargo.toml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="391">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dependencies/openssl-src-rs/src/lib.rs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
         </state>
       </provider>
     </entry>
