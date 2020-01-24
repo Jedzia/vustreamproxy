@@ -14,9 +14,8 @@
   <component name="ChangeListManager">
     <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CLion 2018.3.2 RUST mips.bat" beforeDir="false" afterPath="$PROJECT_DIR$/CLion 2018.3.2 RUST mips.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,7 +72,7 @@
     </replaceStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/dependencies/openssl-src-rs" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="xCLsmlSa" />
@@ -81,27 +80,21 @@
   <component name="OCFindUsagesOptions" text="false" ivars="false" properties="false" derivedClasses="false" />
   <component name="ProjectId" id="1Se0SyFfBV2JsjbrRcNqYf0JM7j" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="org.rust.cargo.project.model.PROJECT_DISCOVERY" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
-  <component name="RunManager" selected="Cargo Command.run">
+  <component name="RunManager" selected="Cargo Command.build">
     <configuration name="remote debug on vuduo2x" type="CLion_Remote" remoteCommand="vuduo2x:9991" symbolFile="target/mipsel-unknown-linux-gnu/debug/vustreamproxy" sysroot="target/mipsel-unknown-linux-gnu/debug">
       <method v="2" />
     </configuration>
@@ -274,6 +267,7 @@
       <workItem from="1555576441362" duration="1098000" />
       <workItem from="1557393808999" duration="663000" />
       <workItem from="1571908764860" duration="129000" />
+      <workItem from="1579858095758" duration="491000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -533,7 +527,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -571,6 +567,28 @@
     <MESSAGE value="Link against target specific OpenSSL." />
     <MESSAGE value="deps major numbers" />
     <option name="LAST_COMMIT_MESSAGE" value="deps major numbers" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1832" height="385" key="GridCell.Tab.0.bottom" timestamp="1579858294069">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1832" height="385" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294069" />
+    <state width="1832" height="385" key="GridCell.Tab.0.center" timestamp="1579858294068">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1832" height="385" key="GridCell.Tab.0.center/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294068" />
+    <state width="1832" height="385" key="GridCell.Tab.0.left" timestamp="1579858294068">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1832" height="385" key="GridCell.Tab.0.left/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294068" />
+    <state width="1832" height="385" key="GridCell.Tab.0.right" timestamp="1579858294068">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1832" height="385" key="GridCell.Tab.0.right/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294068" />
+    <state x="358" y="94" width="1504" height="949" key="SettingsEditor" timestamp="1579858231337">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state x="358" y="94" width="1504" height="949" key="SettingsEditor/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858231337" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

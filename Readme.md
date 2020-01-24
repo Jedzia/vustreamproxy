@@ -1,6 +1,14 @@
 Minimal build for VU+ DUO2 mipsel-unknown-linux-gnu with Rust on Windows
 ==============================================================================
 
+## TLDR; ##
+
+    E:\Projects\Rust\vuduo2\vustreamproxy>
+    rust-shell-mipsel-unknown-linux-gnu-USE_THIS.bat
+    
+    xargo build --target=mipsel-unknown-linux-gnu
+
+-------------------------------------------------------------------------------
 To save you some hours i describe the process how i build a hello world without
 ending up with `Illegal instruction` errors on the **BCM7425B2 STB platform**.
 
