@@ -12,10 +12,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/Readme.md" afterDir="false" />
-    </list>
+    <list default="true" id="edc503ef-41d8-4cc1-b956-e6b62dc7c764" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -267,7 +264,7 @@
       <workItem from="1555576441362" duration="1098000" />
       <workItem from="1557393808999" duration="663000" />
       <workItem from="1571908764860" duration="129000" />
-      <workItem from="1579858095758" duration="491000" />
+      <workItem from="1579858095758" duration="561000" />
     </task>
     <task id="LOCAL-00001" summary="fun with random numbers">
       <created>1553484097712</created>
@@ -507,7 +504,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554745385272</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="note about how to open first the development environment">
+      <created>1579858649658</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1579858649658</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView">
@@ -541,7 +545,6 @@
       <path value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/krb5" />
       <path value="$PROJECT_DIR$/dependencies/openssl-src-rs/openssl/pyca-cryptography" />
     </ignored-roots>
-    <MESSAGE value="refactored into functions" />
     <MESSAGE value="working buffered mp3 convert from online ressource" />
     <MESSAGE value="before using tokio fuckup" />
     <MESSAGE value="bytes" />
@@ -566,25 +569,30 @@
     <MESSAGE value="xargo for mips, cargo for win &#10;... better is to get the openssl-src builder patched" />
     <MESSAGE value="Link against target specific OpenSSL." />
     <MESSAGE value="deps major numbers" />
-    <option name="LAST_COMMIT_MESSAGE" value="deps major numbers" />
+    <MESSAGE value="note about how to open first the development environment" />
+    <option name="LAST_COMMIT_MESSAGE" value="note about how to open first the development environment" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1832" height="385" key="GridCell.Tab.0.bottom" timestamp="1579858294069">
+    <state x="316" y="134" width="1453" height="1047" key="CommitChangelistDialog2" timestamp="1579858649201">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1832" height="385" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294069" />
-    <state width="1832" height="385" key="GridCell.Tab.0.center" timestamp="1579858294068">
+    <state x="316" y="134" width="1453" height="1047" key="CommitChangelistDialog2/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858649201" />
+    <state width="1832" height="385" key="GridCell.Tab.0.bottom" timestamp="1579858657523">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1832" height="385" key="GridCell.Tab.0.center/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294068" />
-    <state width="1832" height="385" key="GridCell.Tab.0.left" timestamp="1579858294068">
+    <state width="1832" height="385" key="GridCell.Tab.0.bottom/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858657523" />
+    <state width="1832" height="385" key="GridCell.Tab.0.center" timestamp="1579858657523">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1832" height="385" key="GridCell.Tab.0.left/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294068" />
-    <state width="1832" height="385" key="GridCell.Tab.0.right" timestamp="1579858294068">
+    <state width="1832" height="385" key="GridCell.Tab.0.center/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858657523" />
+    <state width="1832" height="385" key="GridCell.Tab.0.left" timestamp="1579858657523">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
-    <state width="1832" height="385" key="GridCell.Tab.0.right/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858294068" />
+    <state width="1832" height="385" key="GridCell.Tab.0.left/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858657523" />
+    <state width="1832" height="385" key="GridCell.Tab.0.right" timestamp="1579858657523">
+      <screen x="0" y="0" width="2560" height="1440" />
+    </state>
+    <state width="1832" height="385" key="GridCell.Tab.0.right/0.0.2560.1440/-1680.0.1680.1050@0.0.2560.1440" timestamp="1579858657523" />
     <state x="358" y="94" width="1504" height="949" key="SettingsEditor" timestamp="1579858231337">
       <screen x="0" y="0" width="2560" height="1440" />
     </state>
