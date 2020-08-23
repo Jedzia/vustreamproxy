@@ -7,7 +7,7 @@
 CXX=mips-linux-gnu-g++
 CXXFLAGS=-EL -mips32
 
-TARGETDIR=\\VUDUO2X/Harddisk/jedzia/rust
+TARGETDIR=\\VUDUO2X/Stick01/jedzia/rust
 
 SCP="C:/Program Files/Git/usr/bin/scp.exe"
 SSH="C:/Program Files/Git/usr/bin/ssh.exe" 
@@ -28,7 +28,7 @@ install: all
 #	copy -p hello "$(TARGETDIR)/"
 
 run: install
-	$(SSH) root@vuduo2x /media/hdd/jedzia/rust/hello
+	$(SSH) root@vuduo2x /media/hdd/stick01/jedzia/rust/hello
 
 # This rule tells make to delete hello and hello.o
 .PHONY: clean 
