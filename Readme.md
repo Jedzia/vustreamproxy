@@ -6,7 +6,7 @@ Minimal build for VU+ DUO2 mipsel-unknown-linux-gnu with Rust on Windows
     E:\Projects\Rust\vuduo2\vustreamproxy>
     rust-shell-mipsel-unknown-linux-gnu-USE_THIS.bat
     
-    xargo build --target=mipsel-unknown-linux-gnu
+    xargo -Z build-std build --target=mipsel-unknown-linux-gnu
 
 -------------------------------------------------------------------------------
 To save you some hours i describe the process how i build a hello world without
@@ -132,28 +132,38 @@ Build file for Xargo `Xargo.toml`:
 * The **[build] target** specifies the default architecture to build. 
   Can also be specified at the command-line with
     
-        cargo build --target=mipsel-unknown-linux-gnu
-        xargo build --target=my-unknown-system-dos
+        cargo -Z build-std build --target=mipsel-unknown-linux-gnu
+        xargo -Z build-std build --target=my-unknown-system-dos
 
 ### Cargo configuration
 
 Local [cargo configuration](https://doc.rust-lang.org/cargo/reference/config.html) `.cargo/config`:
 
-    [build]
-    target = "mipsel-unknown-linux-gnu"
-    
-    [target.mipsel-unknown-linux-gnu]
-    rustflags = [
-      "-C", "link-arg=-EL",
-      "-C", "target-cpu=mips32",
-      "-C", "target-feature=+mips32,-mips32r2,-fpxx,-nooddspreg",
-    ]
-    
-    ar = "mips-linux-gnu-ar"
-    linker = "mips-linux-gnu-gcc"
-    runner = "run.bat"  
+```toml
+[build]
+target = "mipsel-unknown-linux-gnu"
+
+#[unstable]
+#build-std = ["core", "std", "alloc", "proc_macro"]
+
+[target.mipsel-unknown-linux-gnu]
+rustflags = [
+  "-C", "link-arg=-EL",
+  "-C", "target-cpu=mips32",
+  "-C", "target-feature=+mips32,-mips32r2,-fpxx,-nooddspreg",
+]
+```
+
+ar = "mips-linux-gnu-ar"
+linker = "mips-linux-gnu-gcc"
+runner = "run.bat"  
 
 * The **[build] target** specifies the default architecture to build (see above).
+* Cargo now has its own feature for cross compiling the sysroot: 
+  [**`build-std`**](https://doc.rust-lang.org/nightly/cargo/reference/unstable.html#build-std). 
+  You can use it by passing `-Z build-std=core,alloc` to `cargo build`. Alternatively, you can specify 
+  the upper in your configuration file (**WHICH DOES NOT WORK AT THE TIME. USE the -Z build-std command line
+  option**.
 * Under **[target.mipsel-unknown-linux-gnu]** we specify the flags used for creating the binary
   and linking it. **-C** is forwarded to the rustc-compiler and indicates a code-generation option.
   `rustc -C help` will list all options available. The default target specs for the current rustc 
@@ -193,13 +203,13 @@ Local [cargo configuration](https://doc.rust-lang.org/cargo/reference/config.htm
 
 ## Compiling
 
-run
+To build your project, run
 
-    xargo build
+    xargo -Z build-std build
 
-or if you have set up a runner in `.cargo/config` for remote execution
+or if you have set up a runner in `.cargo/config` for remote execution, start
  
-    xargo run 
+    xargo -Z build-std run 
 to see it work.
 
 and 
@@ -207,3 +217,8 @@ and
     cargo build
 to see it fail again with illegal instruction as it is compiled against the Rust 
 *mipsel-unknown-linux-gnu* target and not our custom one built by xargo.
+
+## Changelog
+
+- `8/24/2020 10:13:12 PM`: Added -Z build-std cargo/xargo option to counter `string::parse::<f32/f64>()` having illegal
+  instructions (lwxc1 $xx,at(v0)) compiled via the default core library.

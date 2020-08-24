@@ -14,8 +14,12 @@ rem cd E:\Projects\D
 
 echo .
 echo .
-echo cargo build --target=mipsel-unknown-linux-gnu
-echo xargo build --target=mipsel-unknown-linux-gnu
+echo xargo -Z build-std build --target=mipsel-unknown-linux-gnu
+echo xargo -Z build-std run --target=mipsel-unknown-linux-gnu -- -o options
+echo or since Rust nightly 2020-07-15
+echo cargo -Z build-std build --target=mipsel-unknown-linux-gnu
+echo cargo -Z build-std run --target=mipsel-unknown-linux-gnu -- -o options
+echo or local on the host:
 echo cargo build --target=x86_64-pc-windows-gnu
 echo .
 cmd
